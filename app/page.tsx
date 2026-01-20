@@ -117,19 +117,17 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-border/50 mt-32">
-        <div className="container mx-auto px-6 py-12 max-w-7xl">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <div className="flex items-center gap-3">
-              <div className="w-8 h-8 bg-gradient-to-br from-accent to-primary rounded-lg flex items-center justify-center">
-                <span className="text-accent-foreground font-bold text-sm">C&P</span>
-              </div>
-              <span className="text-sm text-muted-foreground">© 2026 Command & Palette. All rights reserved.</span>
-            </div>
-            <div className="flex gap-8 text-sm text-muted-foreground font-medium">
-            <Link href="/privacy" className="hover:text-accent transition-colors">
-  Privacy
-</Link>
+      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
+          <Link href="/privacy" className="hover:text-accent transition-colors">
+            Privacy
+          </Link>
+          <Link href="/terms" className="hover:text-accent transition-colors">
+            Terms
+          </Link>
+          <a href="mailto:command.palette.th@gmail.com" className="hover:text-accent transition-colors">
+            Contact
+          </a>
+        </footer>
 
 <Link href="/terms" className="hover:text-accent transition-colors">
   Terms
