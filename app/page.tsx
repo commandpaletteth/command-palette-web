@@ -128,7 +128,7 @@ export default function Home() {
             </div>
             <div className="flex gap-8 text-sm text-muted-foreground font-medium">
             <Link href="/privacy" className="hover:text-accent transition-colors">
-  Privacy.
+  Privacy
 </Link>
 
 <Link href="/terms" className="hover:text-accent transition-colors">
