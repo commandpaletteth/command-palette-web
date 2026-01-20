@@ -128,18 +128,6 @@ export default function Home() {
             Contact
           </a>
         </footer>
-
-<Link href="/terms" className="hover:text-accent transition-colors">
-  Terms
-</Link>
-
-<a href="mailto:command.palette.th@gmail.com" className="hover:text-accent transition-colors">
-  Contact
-</a>
-            </div>
-          </div>
-        </div>
-      </footer>
     </div>
   )
 }
