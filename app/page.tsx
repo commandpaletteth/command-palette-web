@@ -116,8 +116,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
+      {/* Footer: เติม py-6 ให้มันมีพื้นที่หายใจหน่อยครับ */}
+      <footer className="flex gap-6 flex-wrap items-center justify-center py-6 w-full shrink-0 items-center px-4 md:px-6 border-t">
           <Link href="/privacy" className="hover:text-accent transition-colors">
             Privacy
           </Link>
