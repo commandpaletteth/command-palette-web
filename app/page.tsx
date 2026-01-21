@@ -107,10 +107,13 @@ export default function Home() {
             {/* แก้ตรงนี้: ใช้สูตร bottom-0 (เกาะขอบล่าง) + translate-y-1/2 (ขยับลงครึ่งตัว) */}
             {/* ผลลัพธ์: ปุ่มจะอยู่กึ่งกลางเส้นขอบล่างพอดีเป๊ะ ทั้งมือถือและคอม */}
             <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-max max-w-[90%]">
+  {/* เปลี่ยน Link เป็นของ Calendly พร้อมให้เปิด Tab ใหม่ (target="_blank") เพื่อไม่ให้คนหลุดจากเว็บเราครับ */}
+             <Link href="https://calendly.com/command-palette-th/45min" target="_blank" rel="noopener noreferrer">
               <Button size="lg" className="bg-background text-accent hover:bg-background/90 text-base md:text-lg font-semibold px-8 py-6 md:px-10 md:py-7 rounded-full shadow-xl w-full md:w-auto h-auto whitespace-normal text-center">
-                Schedule Free Consultation
-              </Button>
-            </div>
+              Schedule Free Consultation
+            </Button>
+        </Link>
+</div>
 
           </div>
         </div>
