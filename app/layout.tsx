@@ -13,8 +13,17 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Command & Palette | High-Performance Websites & AI Automation",
-  description: "We don't just build websites. We engineer digital assets. Stop renting and start owning your high-performance platform with AI automation.",
+  title: "Command & Palette | High-Performance Digital Agency",
+  description: "We engineer digital assets that work for you while you sleep. Specialized in Next.js, AI Automation, and Data-Driven Design.",
+  keywords: ["Digital Agency", "Web Development", "Next.js", "AI Automation", "Thailand", "Software House"],
+  openGraph: {
+    title: "Command & Palette | Stop Renting, Start Owning",
+    description: "Building high-performance websites and AI automation for modern businesses.",
+    url: "https://www.command-palette.co",
+    siteName: "Command & Palette",
+    locale: "en_US",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
