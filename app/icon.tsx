@@ -11,10 +11,9 @@ export const contentType = 'image/png'
 export default function Icon() {
   return new ImageResponse(
     (
-      // ImageResponse JSX element
       <div
         style={{
-          fontSize: 20,
+          fontSize: 18, // ปรับขนาดให้พอดี
           background: 'black',
           width: '100%',
           height: '100%',
@@ -22,15 +21,16 @@ export default function Icon() {
           alignItems: 'center',
           justifyContent: 'center',
           color: 'white',
-          borderRadius: '8px', // Rounded corners
-          fontWeight: 'bold',
+          borderRadius: '8px',
+          fontWeight: 900, // ตัวหนาพิเศษ
           border: '1px solid #333',
+          fontFamily: 'sans-serif', // ใช้ฟอนต์มาตรฐานที่ทุกเครื่องมี
+          letterSpacing: '-1px' // บีบตัวอักษรให้ชิดกันเท่ๆ
         }}
       >
-        ⌘
+        CP
       </div>
     ),
-    // ImageResponse options
     {
       ...size,
     }
