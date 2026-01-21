@@ -24,6 +24,9 @@ export const metadata: Metadata = {
     siteName: "Command & Palette",
     locale: "en_US",
     type: "website",
+    verification: {
+      google: "ZpDC40aeaVvnFoMIrQS_jWJoi0ClcZiqJEU2A8KYPH0",
+    },
   },
 };
 
