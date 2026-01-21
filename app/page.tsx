@@ -14,9 +14,11 @@ export default function Home() {
             </div>
             <span className="text-xl font-semibold text-foreground tracking-tight">Command & Palette</span>
           </div>
-          <Button variant="ghost" className="text-foreground hover:bg-secondary font-medium">
-            Get Started
-          </Button>
+          <Link href="https://calendly.com/command-palette-th/45min" target="_blank">
+  <Button variant="ghost" className="text-sm font-medium hover:text-purple-400 transition-colors">
+    Get Started
+  </Button>
+</Link>
         </nav>
       </header>
 
@@ -33,14 +35,19 @@ export default function Home() {
               Stop renting your website. Start owning your digital asset.
             </p>
           </div>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-6">
-            <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 text-base font-semibold px-10 py-7 rounded-full shadow-lg hover:shadow-xl transition-all">
-              Consult for Free
-            </Button>
-            <Button size="lg" variant="ghost" className="text-foreground hover:bg-secondary text-base font-semibold px-10 py-7 rounded-full">
-              View Our Work
-            </Button>
-          </div>
+          <div className="flex flex-col sm:flex-row items-center gap-4 mt-8">
+  <Link href="https://calendly.com/command-palette-th/45min" target="_blank">
+    <Button size="lg" className="rounded-full bg-purple-600 hover:bg-purple-700 text-white px-8 h-12 text-lg font-medium shadow-lg shadow-purple-900/20">
+      Consult for Free
+    </Button>
+  </Link>
+
+  <Link href="/ourwork">
+    <Button variant="ghost" size="lg" className="rounded-full text-zinc-900 dark:text-white hover:bg-zinc-100 dark:hover:bg-zinc-900 px-8 h-12 text-lg font-medium">
+      View Our Work
+    </Button>
+  </Link>
+</div>
         </div>
       </section>
 
