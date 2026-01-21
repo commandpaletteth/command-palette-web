@@ -1,10 +1,6 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google"; // ✅ ใช้ Google Font แทน (กันเหนียว)
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
-
-// เรียกใช้ฟอนต์ Inter
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Command & Palette | High-Performance Digital Agency",
@@ -18,9 +14,9 @@ export const metadata: Metadata = {
     locale: "en_US",
     type: "website",
   },
-  // 👇 จุดใส่รหัส Google (อย่าลืมแก้ตรงนี้นะครับ!)
+  // 👇 อย่าลืมแก้รหัส Google ตรงนี้อีกรอบนะครับ
   verification: {
-    google: "ZpDC40aeaVvnFoMIrQS_jWJoi0ClcZiqJEU2A8KYPH0", 
+    google: "ZpDC40aeaVvnFoMIrQS_jWJoi0ClcZiqJEU2A8KYPH0",
   },
 };
 
@@ -31,7 +27,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} antialiased`}>
+      {/* ใช้ font-sans มาตรฐาน ปลอดภัยไร้บั๊ก */}
+      <body className="antialiased font-sans">
         {children}
         <Analytics />
       </body>
