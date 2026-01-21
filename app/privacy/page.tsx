@@ -1,115 +1,58 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
+export const metadata: Metadata = {
+  title: "Privacy Policy | Command & Palette",
+  description: "How we collect, use, and protect your data.",
+};
+
 export default function PrivacyPage() {
   return (
-    <div className="min-h-screen bg-slate-50/50 dark:bg-slate-950/50">
-      
-      {/* 1. Hero Header */}
-      <div className="bg-background border-b pt-20 pb-16">
-        <div className="container mx-auto px-6 max-w-4xl">
-          <Link href="/" className="inline-flex items-center text-sm text-muted-foreground hover:text-primary mb-8 transition-colors">
-             ← Back to Home
-          </Link>
-          <div className="space-y-4">
-            <h1 className="text-4xl md:text-6xl font-bold tracking-tighter text-foreground">
-              Privacy <span className="text-primary">Policy</span>
-            </h1>
-            <p className="text-xl text-muted-foreground max-w-2xl leading-relaxed">
-              Transparency is our code. Here is exactly how we handle and protect your data.
+    <div className="min-h-screen bg-black text-white p-8 md:p-20 font-sans">
+      <div className="max-w-3xl mx-auto space-y-8">
+        <Link href="/">
+          <Button variant="ghost" className="pl-0 text-zinc-400 hover:text-white">
+            ← Back to Home
+          </Button>
+        </Link>
+        
+        <h1 className="text-4xl font-bold tracking-tighter">Privacy Policy</h1>
+        <p className="text-zinc-400">Last Updated: January 2026</p>
+
+        <div className="space-y-6 text-zinc-300 leading-relaxed">
+          <section>
+            <h2 className="text-2xl font-semibold text-white mb-4">1. Introduction</h2>
+            <p>
+              Welcome to <strong>Command & Palette</strong> ("we," "our," or "us"). We respect your privacy and are committed to protecting your personal data. This privacy policy will inform you as to how we look after your personal data when you visit our website.
             </p>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary text-xs font-medium text-secondary-foreground border mt-4">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-              </span>
-              Effective: January 20, 2026
-            </div>
-          </div>
-        </div>
-      </div>
+          </section>
 
-      {/* 2. Content Section */}
-      <div className="container mx-auto px-6 py-12 max-w-4xl">
-        <div className="space-y-8">
-          
-          {/* Section 1: Introduction */}
-          <div className="bg-card border rounded-2xl p-8 md:p-10 shadow-sm hover:shadow-md transition-shadow">
-            <h2 className="text-2xl font-bold mb-4 flex items-center gap-3">
-              <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400 text-sm">1</span>
-              Introduction
-            </h2>
-            <p className="text-muted-foreground leading-relaxed">
-              Welcome to <strong>Command & Palette</strong>. We believe that trust is the foundation of any digital partnership. This policy outlines our commitment to protecting the personal information you share with us via <strong>command-palette.co</strong>.
+          <section>
+            <h2 className="text-2xl font-semibold text-white mb-4">2. Data We Collect</h2>
+            <p>
+              We may collect, use, store and transfer different kinds of personal data about you which we have grouped together follows:
             </p>
-          </div>
+            <ul className="list-disc pl-6 mt-2 space-y-2">
+              <li><strong>Technical Data:</strong> Includes internet protocol (IP) address, browser type and version, time zone setting and location, browser plug-in types and versions, operating system and platform, and other technology on the devices you use to access this website.</li>
+              <li><strong>Usage Data:</strong> Includes information about how you use our website, products, and services.</li>
+              <li><strong>Analytics Data:</strong> We use <strong>Vercel Analytics</strong> to understand how our website is used. This service collects technical data such as IP addresses, browser types, and device information to help us improve performance. This data is processed anonymously.</li>
+            </ul>
+          </section>
 
-          {/* Section 2: Data Collection */}
-          <div className="bg-card border rounded-2xl p-8 md:p-10 shadow-sm hover:shadow-md transition-shadow">
-            <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
-              <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-purple-100 text-purple-600 dark:bg-purple-900/30 dark:text-purple-400 text-sm">2</span>
-              Information We Collect
-            </h2>
-            <div className="grid md:grid-cols-2 gap-6">
-              <div className="p-6 rounded-xl bg-secondary/50 border border-border/50">
-                <div className="text-2xl mb-3">✍️</div>
-                <h3 className="font-semibold text-foreground mb-2">You Provide</h3>
-                <ul className="text-sm text-muted-foreground space-y-2 list-disc list-inside">
-                  <li>Name & Contact Info</li>
-                  <li>Business Details</li>
-                  <li>Project Requirements</li>
-                </ul>
-              </div>
-              <div className="p-6 rounded-xl bg-secondary/50 border border-border/50">
-                <div className="text-2xl mb-3">🤖</div>
-                <h3 className="font-semibold text-foreground mb-2">Auto-Collected</h3>
-                <ul className="text-sm text-muted-foreground space-y-2 list-disc list-inside">
-                  <li>IP Address & Device Type</li>
-                  <li>Browser Information</li>
-                  <li>Usage Analytics (Cookies)</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          {/* Section 3: Usage & Sharing */}
-          <div className="bg-card border rounded-2xl p-8 md:p-10 shadow-sm hover:shadow-md transition-shadow">
-             <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
-              <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-orange-100 text-orange-600 dark:bg-orange-900/30 dark:text-orange-400 text-sm">3</span>
-              How We Use Data
-            </h2>
-            
-            <div className="space-y-4">
-                <div className="flex gap-4 items-start">
-                    <div className="mt-1 h-5 w-5 rounded-full bg-green-100 text-green-600 flex items-center justify-center shrink-0 text-xs">✓</div>
-                    <p className="text-muted-foreground text-sm leading-relaxed">To provide consultation and deliver your digital assets.</p>
-                </div>
-                <div className="flex gap-4 items-start">
-                    <div className="mt-1 h-5 w-5 rounded-full bg-green-100 text-green-600 flex items-center justify-center shrink-0 text-xs">✓</div>
-                    <p className="text-muted-foreground text-sm leading-relaxed">To improve our website performance through analytics.</p>
-                </div>
-            </div>
-
-            <div className="mt-8 p-6 bg-primary/5 rounded-xl border border-primary/10">
-                <h3 className="font-bold text-foreground mb-2 flex items-center gap-2">
-                    🚫 We Do Not Sell Data
-                </h3>
-                <p className="text-sm text-muted-foreground">
-                    Your personal information is never sold. We only share data with trusted infrastructure partners (like Vercel & Google) necessary to keep our services running.
-                </p>
-            </div>
-          </div>
-
-          {/* Footer Note (แก้ไขอีเมลแล้ว) */}
-          <div className="text-center pt-8 pb-12">
-            <p className="text-sm text-muted-foreground mb-8">
-              Questions about your data? Email us at <a href="mailto:command.palette.th@gmail.com" className="text-primary hover:underline">command.palette.th@gmail.com</a>
+          <section>
+            <h2 className="text-2xl font-semibold text-white mb-4">3. How We Use Your Data</h2>
+            <p>
+              We will only use your personal data when the law allows us to. Most commonly, we use your personal data to improve our website performance, analyze user behavior via Vercel Analytics, and enhance user experience.
             </p>
-            <Link href="/">
-              <Button variant="outline" className="rounded-full px-8">Back to Home</Button>
-            </Link>
-          </div>
+          </section>
 
+          <section>
+            <h2 className="text-2xl font-semibold text-white mb-4">4. Contact Us</h2>
+            <p>
+              If you have any questions about this privacy policy or our privacy practices, please contact us at: <a href="mailto:command.palette.th@gmail.com" className="text-blue-400 hover:underline">command.palette.th@gmail.com</a>
+            </p>
+          </section>
         </div>
       </div>
     </div>
