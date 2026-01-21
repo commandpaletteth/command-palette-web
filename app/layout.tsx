@@ -1,18 +1,10 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
+import { Inter } from "next/font/google"; // ✅ ใช้ Google Font แทน (กันเหนียว)
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+// เรียกใช้ฟอนต์ Inter
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Command & Palette | High-Performance Digital Agency",
@@ -26,9 +18,9 @@ export const metadata: Metadata = {
     locale: "en_US",
     type: "website",
   },
-  // 👇 จุดสำคัญ! เอาโค้ดจาก Google มาวางแทนข้อความในฟันหนูข้างล่างนี้ครับ
+  // 👇 จุดใส่รหัส Google (อย่าลืมแก้ตรงนี้นะครับ!)
   verification: {
-    google: "ZpDC40aeaVvnFoMIrQS_jWJoi0ClcZiqJEU2A8KYPH0",
+    google: "ZpDC40aeaVvnFoMIrQS_jWJoi0ClcZiqJEU2A8KYPH0", 
   },
 };
 
@@ -39,9 +31,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${inter.className} antialiased`}>
         {children}
         <Analytics />
       </body>
