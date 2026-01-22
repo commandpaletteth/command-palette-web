@@ -62,27 +62,27 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* === 4. Mission & Values (Glass Tiles) === */}
-      <section className="relative z-10 py-24 px-6 max-w-5xl mx-auto text-center">
+    {/* === 4. Mission & Values (Glass Tiles - Fixed Visibility) === */}
+    <section className="relative z-10 py-24 px-6 max-w-5xl mx-auto text-center">
         <h2 className="text-3xl md:text-5xl font-bold mb-16 text-slate-900">Our Mission: Stop Renting, Start Owning.</h2>
         
         <div className="grid md:grid-cols-3 gap-8 text-left">
           {/* Value 1 */}
-          <div className="bg-white/30 backdrop-blur-md border border-white/40 p-8 rounded-3xl hover:-translate-y-2 transition-transform duration-300">
+          <div className="bg-white/60 backdrop-blur-xl border border-white/80 p-8 rounded-3xl shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
             <div className="mb-4 text-blue-600"><Zap className="w-8 h-8" /></div>
             <h3 className="font-bold text-xl text-slate-900 mb-3">Obsessed with Performance</h3>
             <p className="text-slate-600">We don&apos;t tolerate slow. Every line of code is optimized for speed and SEO.</p>
           </div>
 
           {/* Value 2 */}
-          <div className="bg-white/30 backdrop-blur-md border border-white/40 p-8 rounded-3xl hover:-translate-y-2 transition-transform duration-300">
+          <div className="bg-white/60 backdrop-blur-xl border border-white/80 p-8 rounded-3xl shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
              <div className="mb-4 text-purple-600"><Database className="w-8 h-8" /></div>
             <h3 className="font-bold text-xl text-slate-900 mb-3">Data-Driven Design</h3>
             <p className="text-slate-600">We don&apos;t guess. We use logic and user data to drive every pixel.</p>
           </div>
 
           {/* Value 3 */}
-          <div className="bg-white/30 backdrop-blur-md border border-white/40 p-8 rounded-3xl hover:-translate-y-2 transition-transform duration-300">
+          <div className="bg-white/60 backdrop-blur-xl border border-white/80 p-8 rounded-3xl shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
              <div className="mb-4 text-pink-600"><Bot className="w-8 h-8" /></div>
             <h3 className="font-bold text-xl text-slate-900 mb-3">AI-First Approach</h3>
             <p className="text-slate-600">We integrate AI to automate the mundane, so you can focus on the extraordinary.</p>
