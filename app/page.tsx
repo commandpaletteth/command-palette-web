@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Zap, Database, Bot, ArrowRight, Menu, Sparkles, Mail, Calendar } from "lucide-react";
+import { Zap, Database, Bot, ArrowRight, Menu, Sparkles, Mail, Calendar, XCircle, CheckCircle2, ShieldCheck, Cpu } from "lucide-react";
 
 export default function Home() {
   return (
@@ -58,25 +58,26 @@ export default function Home() {
         </div>
       </header>
 
-      {/* === 3. Hero Section (เนื้อหาเก่า ในดีไซน์ใหม่) === */}
-      <section className="relative z-10 flex-grow flex flex-col items-center justify-center px-6 pt-32 pb-20">
+      {/* === 3. Hero Section === */}
+      <section className="relative z-10 flex-grow flex flex-col items-center justify-center px-6 pt-32 pb-16">
         
-        <div className="text-center max-w-5xl mx-auto mb-16">
+        <div className="text-center max-w-5xl mx-auto mb-12">
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/60 backdrop-blur-md border border-white/60 shadow-sm mb-8 animate-fade-in-up">
             <Sparkles className="w-4 h-4 text-purple-600" />
             <span className="text-sm font-medium text-slate-700">Digital Asset & Automation Agency</span>
           </div>
           
-          {/* Headline (Content เดิม) */}
+          {/* Headline (Updated) */}
           <h1 className="text-5xl md:text-7xl font-bold text-slate-900 tracking-tight mb-8 leading-tight text-balance">
-            We build <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-indigo-600">High-Performance</span> <br/>
-            Websites & AI Automation
+            Don&apos;t Just Build a Website. <br/>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-600">Engineer a Digital Asset.</span>
           </h1>
           
-          {/* Subheadline (Content เดิม) */}
+          {/* Subheadline (Updated) */}
           <p className="text-xl md:text-2xl text-slate-600 max-w-3xl mx-auto leading-relaxed font-normal mb-10 text-balance">
-            Stop renting your website. Start owning your digital asset.
+            Stop renting platforms. Stop losing customers to slow loading. <br className="hidden md:block"/>
+            Start owning a system that actually grows your business.
           </p>
 
           {/* Buttons */}
@@ -94,48 +95,128 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Feature Cards (แทนที่สีดำเดิม ด้วยกระจกใส) */}
-        <div className="container mx-auto max-w-6xl mt-8">
-            <div className="grid md:grid-cols-3 gap-8">
-                
-                {/* Feature 1: Lightning Speed (Content เดิม) */}
-                <div className="p-8 rounded-[2rem] bg-white/30 backdrop-blur-xl border border-white/50 shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
-                    <div className="w-14 h-14 rounded-2xl bg-white/80 flex items-center justify-center text-purple-600 shadow-sm mb-6">
-                        <Zap className="w-7 h-7" />
-                    </div>
-                    <h3 className="text-2xl font-bold text-slate-900 mb-3">Lightning Speed</h3>
-                    <p className="text-slate-600 leading-relaxed">
-                        Built with Next.js for unparalleled performance. Your site loads instantly, keeping visitors engaged.
-                    </p>
+        {/* === 4. Trusted Tech Strip (New) === */}
+        <div className="w-full max-w-4xl mx-auto border-t border-white/40 pt-8 pb-4">
+            <p className="text-center text-sm font-medium text-slate-500 mb-6 uppercase tracking-wider">
+                Trusted Technology. Zero Headache.
+            </p>
+            <div className="flex flex-wrap justify-center gap-8 md:gap-16 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+                {/* Tech Labels (Simple text or icons) */}
+                <div className="flex items-center gap-2">
+                    <Zap className="w-5 h-5" /> <span className="font-semibold text-slate-800">Next.js</span>
                 </div>
-
-                 {/* Feature 2: Digital Ownership (จาก copy: Stop renting) */}
-                 <div className="p-8 rounded-[2rem] bg-white/30 backdrop-blur-xl border border-white/50 shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
-                    <div className="w-14 h-14 rounded-2xl bg-white/80 flex items-center justify-center text-blue-600 shadow-sm mb-6">
-                        <Database className="w-7 h-7" />
-                    </div>
-                    <h3 className="text-2xl font-bold text-slate-900 mb-3">100% Ownership</h3>
-                    <p className="text-slate-600 leading-relaxed">
-                         No monthly platform fees. You own the code, the data, and the asset. Stop renting, start owning.
-                    </p>
+                <div className="flex items-center gap-2">
+                    <ShieldCheck className="w-5 h-5" /> <span className="font-semibold text-slate-800">Vercel</span>
                 </div>
-
-                 {/* Feature 3: AI Automation (จาก Headline) */}
-                 <div className="p-8 rounded-[2rem] bg-white/30 backdrop-blur-xl border border-white/50 shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
-                    <div className="w-14 h-14 rounded-2xl bg-white/80 flex items-center justify-center text-pink-600 shadow-sm mb-6">
-                        <Bot className="w-7 h-7" />
-                    </div>
-                    <h3 className="text-2xl font-bold text-slate-900 mb-3">AI Automation</h3>
-                    <p className="text-slate-600 leading-relaxed">
-                        Integrate AI to automate workflows. Save time and scale your business without adding headcount.
-                    </p>
+                <div className="flex items-center gap-2">
+                    <Bot className="w-5 h-5" /> <span className="font-semibold text-slate-800">OpenAI</span>
                 </div>
             </div>
         </div>
-
       </section>
 
-      {/* === 4. Footer === */}
+      {/* === 5. "We Build It Differently" Comparison Section (New) === */}
+      <section className="relative z-10 py-20 px-6 bg-white/20 backdrop-blur-sm border-y border-white/40">
+        <div className="container mx-auto max-w-5xl">
+            <div className="text-center mb-16">
+                <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-6">We Build It Differently.</h2>
+                <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+                    Most websites are liabilities—slow, rented, and hard to fix. <br/>
+                    We build assets that you own 100%.
+                </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-8 items-center">
+                
+                {/* Left: The Old Way (Generic) */}
+                <div className="p-8 rounded-[2.5rem] bg-red-50/50 border border-red-100/50 backdrop-blur-md opacity-80 hover:opacity-100 transition-opacity">
+                    <h3 className="text-xl font-bold text-red-900/70 mb-6 flex items-center gap-2">
+                        <XCircle className="w-6 h-6" /> Generic Templates
+                    </h3>
+                    <ul className="space-y-4">
+                        <li className="flex gap-3 text-red-900/60">
+                            <XCircle className="w-5 h-5 shrink-0 mt-0.5" />
+                            <span><strong>Slow Loading:</strong> Bloated code that drives customers away.</span>
+                        </li>
+                        <li className="flex gap-3 text-red-900/60">
+                            <XCircle className="w-5 h-5 shrink-0 mt-0.5" />
+                            <span><strong>Rented Platform:</strong> You pay monthly fees forever. You don&apos;t own it.</span>
+                        </li>
+                        <li className="flex gap-3 text-red-900/60">
+                            <XCircle className="w-5 h-5 shrink-0 mt-0.5" />
+                            <span><strong>Hard to Customize:</strong> Stuck with limited features and templates.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                {/* Right: The CP Way (Asset) */}
+                <div className="relative p-10 rounded-[2.5rem] bg-white/60 border border-white/80 shadow-2xl backdrop-blur-xl scale-105 md:scale-110 z-10">
+                    <div className="absolute top-0 right-0 -mt-4 -mr-4 bg-blue-600 text-white text-xs font-bold px-4 py-2 rounded-full shadow-lg">
+                        RECOMMENDED
+                    </div>
+                    <h3 className="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-2">
+                        <CheckCircle2 className="w-7 h-7 text-blue-600" /> Engineer & Own
+                    </h3>
+                    <ul className="space-y-5">
+                         <li className="flex gap-3 text-slate-700">
+                            <CheckCircle2 className="w-6 h-6 shrink-0 text-blue-600 mt-0.5" />
+                            <span><strong>Lightning Speed:</strong> Custom-coded for instant loading & better SEO.</span>
+                        </li>
+                        <li className="flex gap-3 text-slate-700">
+                            <CheckCircle2 className="w-6 h-6 shrink-0 text-blue-600 mt-0.5" />
+                            <span><strong>100% Ownership:</strong> No platform fees. You own the code and the data.</span>
+                        </li>
+                        <li className="flex gap-3 text-slate-700">
+                            <CheckCircle2 className="w-6 h-6 shrink-0 text-blue-600 mt-0.5" />
+                            <span><strong>Tailored for You:</strong> Designed specifically for your brand&apos;s goals.</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+      </section>
+
+      {/* === 6. Feature Cards (Core Pillars) === */}
+      <section className="relative z-10 py-24 px-6 container mx-auto max-w-6xl">
+        <div className="grid md:grid-cols-3 gap-8">
+            
+            {/* Feature 1: Speed */}
+            <div className="p-8 rounded-[2rem] bg-white/30 backdrop-blur-xl border border-white/50 shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+                <div className="w-14 h-14 rounded-2xl bg-white/80 flex items-center justify-center text-purple-600 shadow-sm mb-6">
+                    <Zap className="w-7 h-7" />
+                </div>
+                <h3 className="text-2xl font-bold text-slate-900 mb-3">Lightning Speed</h3>
+                <p className="text-slate-600 leading-relaxed">
+                    We obsess over milliseconds. A faster website means more Google love and more sales.
+                </p>
+            </div>
+
+             {/* Feature 2: Ownership */}
+             <div className="p-8 rounded-[2rem] bg-white/30 backdrop-blur-xl border border-white/50 shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+                <div className="w-14 h-14 rounded-2xl bg-white/80 flex items-center justify-center text-blue-600 shadow-sm mb-6">
+                    <Database className="w-7 h-7" />
+                </div>
+                <h3 className="text-2xl font-bold text-slate-900 mb-3">100% Ownership</h3>
+                <p className="text-slate-600 leading-relaxed">
+                     Your digital asset is yours. We hand over the keys, the code, and the control. No lock-in.
+                </p>
+            </div>
+
+             {/* Feature 3: AI Automation */}
+             <div className="p-8 rounded-[2rem] bg-white/30 backdrop-blur-xl border border-white/50 shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+                <div className="w-14 h-14 rounded-2xl bg-white/80 flex items-center justify-center text-pink-600 shadow-sm mb-6">
+                    <Bot className="w-7 h-7" />
+                </div>
+                <h3 className="text-2xl font-bold text-slate-900 mb-3">AI Automation</h3>
+                <p className="text-slate-600 leading-relaxed">
+                    Don&apos;t just build a brochure. Build a machine. Integrate AI to automate tasks and save costs.
+                </p>
+            </div>
+        </div>
+      </section>
+
+      {/* === 7. Footer === */}
       <footer className="relative z-10 mt-auto border-t border-white/20 bg-white/20 backdrop-blur-lg mt-20">
         <div className="container mx-auto px-6 py-12">
             <div className="flex flex-col md:flex-row justify-between items-center gap-6">
