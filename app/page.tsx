@@ -28,7 +28,7 @@ export default function Home() {
             </span>
           </Link>
 
-          {/* Menu Links (Added Process) */}
+          {/* Menu Links (มี Process แล้ว!) */}
           <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
             <Link href="/about" className="hover:text-slate-900 transition-colors">About</Link>
             <Link href="/process" className="hover:text-slate-900 transition-colors">Process</Link>
@@ -158,10 +158,19 @@ export default function Home() {
                     </ul>
                 </div>
             </div>
+            
+            {/* NEW Button added here */}
+            <div className="mt-12 text-center">
+                <Link href="/process">
+                    <Button variant="ghost" className="text-slate-600 hover:text-purple-600 hover:bg-purple-50 rounded-full gap-2 px-6 h-12 text-base">
+                        See how we work <ArrowRight className="w-4 h-4" />
+                    </Button>
+                </Link>
+            </div>
         </div>
       </section>
 
-      {/* === 5. NEW: Practical AI Use Cases (Concrete Examples) === */}
+      {/* === 5. Practical AI Use Cases === */}
       <section className="relative z-10 py-24 px-6 container mx-auto max-w-6xl">
         <div className="text-center mb-16">
              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-100 text-purple-700 text-sm font-bold mb-4">
@@ -175,7 +184,6 @@ export default function Home() {
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
-            {/* Case 1 */}
             <div className="p-8 rounded-[2rem] bg-white/40 backdrop-blur-xl border border-white/50 shadow-lg hover:border-purple-200 transition-colors">
                 <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center text-purple-600 mb-6">
                     <MessageSquare className="w-6 h-6" />
@@ -186,7 +194,6 @@ export default function Home() {
                 </p>
             </div>
 
-            {/* Case 2 */}
             <div className="p-8 rounded-[2rem] bg-white/40 backdrop-blur-xl border border-white/50 shadow-lg hover:border-blue-200 transition-colors">
                 <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center text-blue-600 mb-6">
                     <Workflow className="w-6 h-6" />
@@ -197,7 +204,6 @@ export default function Home() {
                 </p>
             </div>
 
-            {/* Case 3 */}
             <div className="p-8 rounded-[2rem] bg-white/40 backdrop-blur-xl border border-white/50 shadow-lg hover:border-pink-200 transition-colors">
                 <div className="w-12 h-12 bg-pink-100 rounded-xl flex items-center justify-center text-pink-600 mb-6">
                     <PenTool className="w-6 h-6" />
