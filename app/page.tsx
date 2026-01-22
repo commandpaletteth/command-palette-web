@@ -1,12 +1,12 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Zap, Database, Bot, ArrowRight, Menu, Sparkles, Mail, Calendar, XCircle, CheckCircle2, ShieldCheck, Cpu } from "lucide-react";
+import { Zap, Database, Bot, ArrowRight, Menu, Sparkles, Mail, Calendar, XCircle, CheckCircle2, ShieldCheck, MessageSquare, Workflow, PenTool } from "lucide-react";
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-slate-50 font-sans selection:bg-purple-100/50 overflow-hidden relative flex flex-col">
       
-      {/* === 1. Ambient Background (พื้นหลังกระจก Fluid) === */}
+      {/* === 1. Ambient Background === */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         <div className="absolute top-[-20%] left-[-20%] w-[70vw] h-[70vw] rounded-full bg-blue-200/30 blur-[120px] animate-pulse-slow mix-blend-multiply" />
         <div className="absolute bottom-[-20%] right-[-20%] w-[60vw] h-[60vw] rounded-full bg-purple-200/30 blur-[120px] animate-pulse-slow delay-700 mix-blend-multiply" />
@@ -28,9 +28,10 @@ export default function Home() {
             </span>
           </Link>
 
-          {/* Menu Links */}
+          {/* Menu Links (Added Process) */}
           <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
             <Link href="/about" className="hover:text-slate-900 transition-colors">About</Link>
+            <Link href="/process" className="hover:text-slate-900 transition-colors">Process</Link>
             <Link href="/works" className="hover:text-slate-900 transition-colors">Our Work</Link>
             <Link href="/services" className="hover:text-slate-900 transition-colors">Services</Link>
           </nav>
@@ -41,14 +42,12 @@ export default function Home() {
                 <Menu className="w-5 h-5 text-slate-700" />
              </Button>
             
-            {/* Mailto */}
             <a href="mailto:command.palette.th@gmail.com">
                 <Button variant="ghost" size="icon" className="hidden md:inline-flex text-slate-600 hover:bg-white/50 rounded-full">
                     <Mail className="w-5 h-5" />
                 </Button>
             </a>
 
-            {/* Calendly */}
             <a href="https://calendly.com/command-palette-th/45min" target="_blank" rel="noopener noreferrer">
                 <Button className="bg-slate-900/90 hover:bg-slate-800 text-white rounded-full px-6 shadow-lg shadow-slate-900/10 backdrop-blur-sm border border-slate-800/50 flex items-center gap-2">
                   <Calendar className="w-4 h-4" /> Consult for Free
@@ -60,27 +59,19 @@ export default function Home() {
 
       {/* === 3. Hero Section === */}
       <section className="relative z-10 flex-grow flex flex-col items-center justify-center px-6 pt-32 pb-16">
-        
         <div className="text-center max-w-5xl mx-auto mb-12">
-          {/* Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/60 backdrop-blur-md border border-white/60 shadow-sm mb-8 animate-fade-in-up">
             <Sparkles className="w-4 h-4 text-purple-600" />
             <span className="text-sm font-medium text-slate-700">Digital Asset & Automation Agency</span>
           </div>
-          
-          {/* Headline (Updated) */}
           <h1 className="text-5xl md:text-7xl font-bold text-slate-900 tracking-tight mb-8 leading-tight text-balance">
             Don&apos;t Just Build a Website. <br/>
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-600">Engineer a Digital Asset.</span>
           </h1>
-          
-          {/* Subheadline (Updated) */}
           <p className="text-xl md:text-2xl text-slate-600 max-w-3xl mx-auto leading-relaxed font-normal mb-10 text-balance">
             Stop renting platforms. Stop losing customers to slow loading. <br className="hidden md:block"/>
             Start owning a system that actually grows your business.
           </p>
-
-          {/* Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
              <a href="https://calendly.com/command-palette-th/45min" target="_blank" rel="noopener noreferrer">
                 <Button size="lg" className="h-14 px-8 rounded-full text-lg bg-slate-900 text-white hover:bg-slate-800 shadow-xl shadow-slate-900/20">
@@ -95,13 +86,12 @@ export default function Home() {
           </div>
         </div>
 
-        {/* === 4. Trusted Tech Strip (New) === */}
+        {/* Tech Strip */}
         <div className="w-full max-w-4xl mx-auto border-t border-white/40 pt-8 pb-4">
             <p className="text-center text-sm font-medium text-slate-500 mb-6 uppercase tracking-wider">
                 Trusted Technology. Zero Headache.
             </p>
             <div className="flex flex-wrap justify-center gap-8 md:gap-16 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
-                {/* Tech Labels (Simple text or icons) */}
                 <div className="flex items-center gap-2">
                     <Zap className="w-5 h-5" /> <span className="font-semibold text-slate-800">Next.js</span>
                 </div>
@@ -115,7 +105,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* === 5. "We Build It Differently" Comparison Section (New) === */}
+      {/* === 4. Comparison Section === */}
       <section className="relative z-10 py-20 px-6 bg-white/20 backdrop-blur-sm border-y border-white/40">
         <div className="container mx-auto max-w-5xl">
             <div className="text-center mb-16">
@@ -125,10 +115,7 @@ export default function Home() {
                     We build assets that you own 100%.
                 </p>
             </div>
-
             <div className="grid md:grid-cols-2 gap-8 items-center">
-                
-                {/* Left: The Old Way (Generic) */}
                 <div className="p-8 rounded-[2.5rem] bg-red-50/50 border border-red-100/50 backdrop-blur-md opacity-80 hover:opacity-100 transition-opacity">
                     <h3 className="text-xl font-bold text-red-900/70 mb-6 flex items-center gap-2">
                         <XCircle className="w-6 h-6" /> Generic Templates
@@ -148,8 +135,6 @@ export default function Home() {
                         </li>
                     </ul>
                 </div>
-
-                {/* Right: The CP Way (Asset) */}
                 <div className="relative p-10 rounded-[2.5rem] bg-white/60 border border-white/80 shadow-2xl backdrop-blur-xl scale-105 md:scale-110 z-10">
                     <div className="absolute top-0 right-0 -mt-4 -mr-4 bg-blue-600 text-white text-xs font-bold px-4 py-2 rounded-full shadow-lg">
                         RECOMMENDED
@@ -172,51 +157,60 @@ export default function Home() {
                         </li>
                     </ul>
                 </div>
-
             </div>
         </div>
       </section>
 
-      {/* === 6. Feature Cards (Core Pillars) === */}
+      {/* === 5. NEW: Practical AI Use Cases (Concrete Examples) === */}
       <section className="relative z-10 py-24 px-6 container mx-auto max-w-6xl">
+        <div className="text-center mb-16">
+             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-100 text-purple-700 text-sm font-bold mb-4">
+                POWERED BY AI
+            </div>
+            <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-6">Beyond the Website:<br/> Practical Automation</h2>
+            <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+                We don&apos;t just make it look good. We make it work for you. <br/>
+                Here are 3 concrete ways we can upgrade your business.
+            </p>
+        </div>
+
         <div className="grid md:grid-cols-3 gap-8">
-            
-            {/* Feature 1: Speed */}
-            <div className="p-8 rounded-[2rem] bg-white/30 backdrop-blur-xl border border-white/50 shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
-                <div className="w-14 h-14 rounded-2xl bg-white/80 flex items-center justify-center text-purple-600 shadow-sm mb-6">
-                    <Zap className="w-7 h-7" />
+            {/* Case 1 */}
+            <div className="p-8 rounded-[2rem] bg-white/40 backdrop-blur-xl border border-white/50 shadow-lg hover:border-purple-200 transition-colors">
+                <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center text-purple-600 mb-6">
+                    <MessageSquare className="w-6 h-6" />
                 </div>
-                <h3 className="text-2xl font-bold text-slate-900 mb-3">Lightning Speed</h3>
-                <p className="text-slate-600 leading-relaxed">
-                    We obsess over milliseconds. A faster website means more Google love and more sales.
+                <h3 className="text-xl font-bold text-slate-900 mb-3">24/7 Smart Concierge</h3>
+                <p className="text-slate-600 text-sm leading-relaxed">
+                    An AI chat agent trained on your specific business data. It answers customer questions instantly, 24/7, without you lifting a finger.
                 </p>
             </div>
 
-             {/* Feature 2: Ownership */}
-             <div className="p-8 rounded-[2rem] bg-white/30 backdrop-blur-xl border border-white/50 shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
-                <div className="w-14 h-14 rounded-2xl bg-white/80 flex items-center justify-center text-blue-600 shadow-sm mb-6">
-                    <Database className="w-7 h-7" />
+            {/* Case 2 */}
+            <div className="p-8 rounded-[2rem] bg-white/40 backdrop-blur-xl border border-white/50 shadow-lg hover:border-blue-200 transition-colors">
+                <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center text-blue-600 mb-6">
+                    <Workflow className="w-6 h-6" />
                 </div>
-                <h3 className="text-2xl font-bold text-slate-900 mb-3">100% Ownership</h3>
-                <p className="text-slate-600 leading-relaxed">
-                     Your digital asset is yours. We hand over the keys, the code, and the control. No lock-in.
+                <h3 className="text-xl font-bold text-slate-900 mb-3">Workflow Automation</h3>
+                <p className="text-slate-600 text-sm leading-relaxed">
+                    Capture leads from your website and automatically send them to your CRM, Google Sheets, or Line Notify. No more copy-pasting data.
                 </p>
             </div>
 
-             {/* Feature 3: AI Automation */}
-             <div className="p-8 rounded-[2rem] bg-white/30 backdrop-blur-xl border border-white/50 shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
-                <div className="w-14 h-14 rounded-2xl bg-white/80 flex items-center justify-center text-pink-600 shadow-sm mb-6">
-                    <Bot className="w-7 h-7" />
+            {/* Case 3 */}
+            <div className="p-8 rounded-[2rem] bg-white/40 backdrop-blur-xl border border-white/50 shadow-lg hover:border-pink-200 transition-colors">
+                <div className="w-12 h-12 bg-pink-100 rounded-xl flex items-center justify-center text-pink-600 mb-6">
+                    <PenTool className="w-6 h-6" />
                 </div>
-                <h3 className="text-2xl font-bold text-slate-900 mb-3">AI Automation</h3>
-                <p className="text-slate-600 leading-relaxed">
-                    Don&apos;t just build a brochure. Build a machine. Integrate AI to automate tasks and save costs.
+                <h3 className="text-xl font-bold text-slate-900 mb-3">Content Engine</h3>
+                <p className="text-slate-600 text-sm leading-relaxed">
+                    Use AI to help generate SEO-friendly blog drafts or social media captions based on your industry trends, helping you rank higher on Google.
                 </p>
             </div>
         </div>
       </section>
 
-      {/* === 7. Footer === */}
+      {/* === 6. Footer === */}
       <footer className="relative z-10 mt-auto border-t border-white/20 bg-white/20 backdrop-blur-lg mt-20">
         <div className="container mx-auto px-6 py-12">
             <div className="flex flex-col md:flex-row justify-between items-center gap-6">
