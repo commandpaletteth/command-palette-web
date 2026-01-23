@@ -9,6 +9,12 @@ const config: Config = {
   ],
   theme: {
     extend: {
+        // ✅ แก้ตรงนี้: เปลี่ยน --font-inter เป็น --font-manrope
+        fontFamily: {
+            sans: ["var(--font-manrope)", "var(--font-ibm-thai)", "sans-serif"],
+        },
+        // -----------------------------------------------------
+
         colors: {
             background: 'hsl(var(--background))',
             foreground: 'hsl(var(--foreground))',
