@@ -4,12 +4,12 @@ import { useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { Menu, Mail, Calendar, ArrowLeft } from "lucide-react";
-import { useTranslations, useLocale } from "next-intl"; // ✅ 1. เพิ่ม useLocale
+import { Menu, Calendar, ArrowLeft } from "lucide-react"; // ลบ Mail icon ออก
+import { useTranslations, useLocale } from "next-intl";
 
 export default function Navbar() {
   const t = useTranslations("Navbar");
-  const locale = useLocale(); // ✅ 2. ใช้ Hook ดึงภาษาที่ถูกต้อง (จะได้ค่า 'en' หรือ 'th' เสมอ)
+  const locale = useLocale(); 
   
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
@@ -17,7 +17,7 @@ export default function Navbar() {
 
   const switchLanguage = () => {
     const newLocale = locale === "en" ? "th" : "en";
-    // Logic ใหม่: แทนที่ภาษาใน URL ให้ถูกต้องแม่นยำกว่าเดิม
+    // Logic สลับภาษาใน URL
     const newPath = pathname.replace(`/${locale}`, `/${newLocale}`);
     router.push(newPath);
   };
@@ -37,12 +37,14 @@ export default function Navbar() {
             </span>
           </Link>
 
-          {/* Desktop Menu: ใช้ค่า locale ที่ถูกต้องแล้ว ลิงก์จะไม่เพี้ยนครับ */}
+          {/* Desktop Menu */}
           <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
             <Link href={`/${locale}/about`} className="hover:text-slate-900 transition-colors">{t("about")}</Link>
             <Link href={`/${locale}/process`} className="hover:text-slate-900 transition-colors">{t("process")}</Link>
             <Link href={`/${locale}/works`} className="hover:text-slate-900 transition-colors">{t("works")}</Link>
             <Link href={`/${locale}/services`} className="hover:text-slate-900 transition-colors">{t("services")}</Link>
+            {/* ✅ เพิ่มลิงก์ไปหน้า Contact ใหม่ */}
+            <Link href={`/${locale}/contact`} className="hover:text-slate-900 transition-colors">Contact</Link>
           </nav>
 
           {/* Actions */}
@@ -56,11 +58,7 @@ export default function Navbar() {
               <Menu className="w-5 h-5 text-slate-700" />
             </Button>
 
-            <a href="mailto:command.palette.th@gmail.com">
-              <Button variant="ghost" size="icon" className="hidden md:inline-flex text-slate-600 hover:bg-white/50 rounded-full">
-                <Mail className="w-5 h-5" />
-              </Button>
-            </a>
+        
 
             <a href="https://calendly.com/command-palette-th/45min" target="_blank" rel="noopener noreferrer">
               <Button className="bg-slate-900/90 hover:bg-slate-800 text-white rounded-full px-6 shadow-lg shadow-slate-900/10 backdrop-blur-sm border border-slate-800/50 flex items-center gap-2">
@@ -104,10 +102,9 @@ export default function Navbar() {
                 <Link href={`/${locale}/process`} onClick={() => setIsMobileMenuOpen(false)} className="text-3xl font-bold text-slate-800 tracking-tight hover:text-purple-600 transition-colors">{t("process")}</Link>
                 <Link href={`/${locale}/works`} onClick={() => setIsMobileMenuOpen(false)} className="text-3xl font-bold text-slate-800 tracking-tight hover:text-purple-600 transition-colors">{t("works")}</Link>
                 <Link href={`/${locale}/services`} onClick={() => setIsMobileMenuOpen(false)} className="text-3xl font-bold text-slate-800 tracking-tight hover:text-purple-600 transition-colors">{t("services")}</Link>
-                <hr className="border-slate-200 my-4" />
-                <a href="mailto:command.palette.th@gmail.com" className="text-lg font-medium text-slate-500 flex items-center gap-3 hover:text-slate-800">
-                    <Mail className="w-5 h-5" /> command.palette.th@gmail.com
-                </a>
+                
+                {/* ✅ เพิ่มลิงก์ไปหน้า Contact ใหม่ ใน Mobile ด้วย */}
+                <Link href={`/${locale}/contact`} onClick={() => setIsMobileMenuOpen(false)} className="text-3xl font-bold text-slate-800 tracking-tight hover:text-purple-600 transition-colors">Contact Us</Link>
             </nav>
         </div>
       )}

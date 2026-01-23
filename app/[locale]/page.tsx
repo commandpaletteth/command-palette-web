@@ -1,11 +1,11 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Zap, Bot, ArrowRight, Sparkles, XCircle, CheckCircle2, ShieldCheck, MessageSquare, Workflow, PenTool } from "lucide-react";
-import { useTranslations, useLocale } from 'next-intl'; // ✅ เพิ่ม useLocale
+import { useTranslations, useLocale } from 'next-intl';
 
 export default function Home() {
   const t = useTranslations();
-  const locale = useLocale(); // ✅ ดึงภาษาปัจจุบันมาใช้ (th หรือ en)
+  const locale = useLocale();
 
   return (
     <div className="min-h-screen bg-slate-50 font-sans selection:bg-purple-100/50 overflow-hidden relative flex flex-col">
@@ -17,7 +17,7 @@ export default function Home() {
         <div className="absolute top-[30%] left-[30%] w-[40vw] h-[40vw] rounded-full bg-pink-200/20 blur-[100px] animate-pulse-slow delay-1000 mix-blend-multiply" />
       </div>
 
-      {/* Navbar อยู่ใน Layout แล้ว ไม่ต้องใส่ตรงนี้ */}
+      {/* Navbar ไม่ต้องใส่ เพราะ Layout จัดการแล้ว */}
 
       {/* === 3. Hero Section === */}
       <section className="relative z-10 flex-grow flex flex-col items-center justify-center px-6 pt-32 pb-16">
@@ -39,7 +39,6 @@ export default function Home() {
                     {t('Hero.cta_consult')}
                 </Button>
              </a>
-             {/* ✅ แก้ลิงก์ Works ให้มี locale */}
              <Link href={`/${locale}/works`}>
                 <Button size="lg" variant="outline" className="h-14 px-8 rounded-full text-lg border-slate-300 bg-white/40 hover:bg-white/60 text-slate-700 backdrop-blur-sm group">
                     {t('Hero.cta_work')} <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform"/>
@@ -124,7 +123,6 @@ export default function Home() {
             </div>
             
             <div className="mt-12 text-center">
-                {/* ✅ แก้ลิงก์ Process ให้มี locale */}
                 <Link href={`/${locale}/process`}>
                     <Button variant="ghost" className="text-slate-600 hover:text-purple-600 hover:bg-purple-50 rounded-full gap-2 px-6 h-12 text-base">
                         {t('Difference.see_process_btn')} <ArrowRight className="w-4 h-4" />
@@ -180,26 +178,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* === 6. Footer === */}
-      <footer className="relative z-10 mt-auto border-t border-white/20 bg-white/20 backdrop-blur-lg mt-20">
-        <div className="container mx-auto px-6 py-12">
-            <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-                <div className="text-center md:text-left">
-                    <span className="font-bold text-slate-800 text-lg">Command & Palette</span>
-                    <p className="text-sm text-slate-500 mt-1">
-                        {t('Footer.description')}
-                    </p>
-                </div>
-                <div className="flex gap-8 text-sm font-medium text-slate-600">
-                    {/* ✅ แก้ลิงก์ Privacy และ Terms ให้มี locale */}
-                    <Link href={`/${locale}/privacy`} className="hover:text-slate-900 transition-colors">{t('Footer.privacy')}</Link>
-                    <Link href={`/${locale}/terms`} className="hover:text-slate-900 transition-colors">{t('Footer.terms')}</Link>
-                    <a href="mailto:command.palette.th@gmail.com" className="hover:text-slate-900 transition-colors">Contact</a>
-                </div>
-            </div>
-        </div>
-      </footer>
-
+      {/* Footer เอาออกแล้ว เพราะใส่ใน Layout แทน */}
+      
     </div>
   );
 }
