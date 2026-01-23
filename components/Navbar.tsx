@@ -1,30 +1,73 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { Menu, Calendar, ArrowLeft } from "lucide-react"; // ลบ Mail icon ออก
+import { Menu, Calendar, ArrowLeft } from "lucide-react";
 import { useTranslations, useLocale } from "next-intl";
 
 export default function Navbar() {
   const t = useTranslations("Navbar");
-  const locale = useLocale(); 
+  const locale = useLocale();
   
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  
+  // State สำหรับจัดการการซ่อน/แสดง Navbar
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
   const pathname = usePathname();
   const router = useRouter();
 
   const switchLanguage = () => {
     const newLocale = locale === "en" ? "th" : "en";
-    // Logic สลับภาษาใน URL
     const newPath = pathname.replace(`/${locale}`, `/${newLocale}`);
     router.push(newPath);
   };
 
+  // ✅ Logic: Smart Navbar (Hide on scroll down, Show on scroll up)
+  useEffect(() => {
+    const controlNavbar = () => {
+      if (typeof window !== 'undefined') {
+        const currentScrollY = window.scrollY;
+
+        // ถ้าเปิดเมนูมือถืออยู่ ไม่ต้องซ่อน
+        if (isMobileMenuOpen) return;
+
+        if (currentScrollY < 10) {
+          // ถ้าอยู่บนสุด ให้โชว์เสมอ
+          setIsVisible(true);
+        } else if (currentScrollY > lastScrollY && currentScrollY > 50) {
+          // ถ้าเลื่อนลง และไม่ใช่การเด้งที่ขอบบน -> ซ่อน
+          setIsVisible(false);
+        } else {
+          // ถ้าเลื่อนขึ้น -> โชว์
+          setIsVisible(true);
+        }
+
+        setLastScrollY(currentScrollY);
+      }
+    };
+
+    window.addEventListener('scroll', controlNavbar);
+
+    // Cleanup function
+    return () => {
+      window.removeEventListener('scroll', controlNavbar);
+    };
+  }, [lastScrollY, isMobileMenuOpen]);
+
   return (
     <>
-      <header className="fixed top-6 inset-x-6 z-50">
+      {/* ✅ เพิ่ม className: transition-transform duration-300 
+         ✅ เพิ่ม Logic: translate-y-0 (โชว์) vs -translate-y-32 (ซ่อนโดยการดันขึ้นไปข้างบน)
+      */}
+      <header 
+        className={`fixed top-6 inset-x-6 z-50 transition-transform duration-300 ${
+          isVisible || isMobileMenuOpen ? 'translate-y-0' : '-translate-y-32'
+        }`}
+      >
         <div className={`max-w-6xl mx-auto h-16 px-6 flex items-center justify-between rounded-full bg-white/40 backdrop-blur-xl border border-white/50 shadow-sm transition-opacity duration-300 ${isMobileMenuOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
           
           {/* Logo */}
@@ -43,7 +86,6 @@ export default function Navbar() {
             <Link href={`/${locale}/process`} className="hover:text-slate-900 transition-colors">{t("process")}</Link>
             <Link href={`/${locale}/works`} className="hover:text-slate-900 transition-colors">{t("works")}</Link>
             <Link href={`/${locale}/services`} className="hover:text-slate-900 transition-colors">{t("services")}</Link>
-            {/* ✅ เพิ่มลิงก์ไปหน้า Contact ใหม่ */}
             <Link href={`/${locale}/contact`} className="hover:text-slate-900 transition-colors">Contact</Link>
           </nav>
 
@@ -57,8 +99,6 @@ export default function Navbar() {
             >
               <Menu className="w-5 h-5 text-slate-700" />
             </Button>
-
-        
 
             <a href="https://calendly.com/command-palette-th/45min" target="_blank" rel="noopener noreferrer">
               <Button className="bg-slate-900/90 hover:bg-slate-800 text-white rounded-full px-6 shadow-lg shadow-slate-900/10 backdrop-blur-sm border border-slate-800/50 flex items-center gap-2">
@@ -102,7 +142,6 @@ export default function Navbar() {
                 <Link href={`/${locale}/process`} onClick={() => setIsMobileMenuOpen(false)} className="text-3xl font-bold text-slate-800 tracking-tight hover:text-purple-600 transition-colors">{t("process")}</Link>
                 <Link href={`/${locale}/works`} onClick={() => setIsMobileMenuOpen(false)} className="text-3xl font-bold text-slate-800 tracking-tight hover:text-purple-600 transition-colors">{t("works")}</Link>
                 <Link href={`/${locale}/services`} onClick={() => setIsMobileMenuOpen(false)} className="text-3xl font-bold text-slate-800 tracking-tight hover:text-purple-600 transition-colors">{t("services")}</Link>
-                
                 <Link href={`/${locale}/contact`} onClick={() => setIsMobileMenuOpen(false)} className="text-3xl font-bold text-slate-800 tracking-tight hover:text-purple-600 transition-colors">Contact Us</Link>
             </nav>
         </div>
