@@ -20,19 +20,22 @@ export default function AboutPage() {
      {/* === 2. Hero Section === */}
      <section className="relative z-10 py-32 px-6 md:px-12 lg:px-24 text-center md:text-left pt-40">
         <div className="max-w-4xl mx-auto text-center">
-          {/* ✅ แก้ไข:
-             1. เปลี่ยน leading-tight -> leading-snug (เพิ่มความสูงบรรทัด)
-             2. เพิ่ม pb-2 (เว้นขอบล่างนิดนึง กันหางตัว y แหว่ง)
-          */}
-          <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-8 text-slate-900 leading-snug pb-2">
+          {/* ✅ 1. ปรับ leading-tight เหมือนเดิมได้เลย (จะได้ดูแน่นๆ สวยๆ) */}
+          <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-8 text-slate-900 leading-tight">
             {t('hero_title_1')}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">
                 {t('hero_title_logic')}
             </span>
             {t('hero_title_2')}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-500">
+            
+            {/* ✅ 2. แก้ตรงนี้: เพิ่ม inline-block และ py-2 
+                 - inline-block: ทำให้ span มีตัวตนเป็นกล่องสี่เหลี่ยม
+                 - py-2: ขยายกล่องนี้ให้สูงขึ้น (ครอบคลุมหางตัว y) โดยไม่กระทบบรรทัดอื่น
+            */}
+            <span className="inline-block py-2 text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-500">
                 {t('hero_title_creativity')}
             </span>
+            
             {t('hero_title_3')}
           </h1>
           <p className="text-xl md:text-2xl text-slate-600 leading-relaxed max-w-3xl mx-auto">
