@@ -17,10 +17,14 @@ export default function AboutPage() {
         <div className="absolute top-[30%] left-[30%] w-[40vw] h-[40vw] rounded-full bg-pink-200/20 blur-[100px] animate-pulse-slow delay-1000 mix-blend-multiply" />
       </div>
 
-      {/* === 2. Hero Section === */}
-      <section className="relative z-10 py-32 px-6 md:px-12 lg:px-24 text-center md:text-left pt-40">
+     {/* === 2. Hero Section === */}
+     <section className="relative z-10 py-32 px-6 md:px-12 lg:px-24 text-center md:text-left pt-40">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-8 text-slate-900 leading-tight">
+          {/* ✅ แก้ไข:
+             1. เปลี่ยน leading-tight -> leading-snug (เพิ่มความสูงบรรทัด)
+             2. เพิ่ม pb-2 (เว้นขอบล่างนิดนึง กันหางตัว y แหว่ง)
+          */}
+          <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-8 text-slate-900 leading-snug pb-2">
             {t('hero_title_1')}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">
                 {t('hero_title_logic')}
