@@ -45,9 +45,9 @@ export default function WorksPage() {
                             <span className="px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 text-xs font-bold border border-blue-500/30">LATEST WORK</span>
                             <span className="px-3 py-1 rounded-full bg-white/10 text-slate-300 text-xs font-bold border border-white/10">TRAVEL PLATFORM</span>
                         </div>
-                        <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Unlocked Diving</h2>
+                        <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Unlocked Journey</h2>
                         <p className="text-slate-300 text-lg mb-8 leading-relaxed">
-                            A high-performance booking platform for diving enthusiasts.
+                            A Hand-picked Boutique Travel Curator.
                         </p>
                         <div className="flex flex-wrap gap-3 mb-10">
                             <div className="px-3 py-1 rounded-full bg-slate-800 border border-slate-700 text-slate-300 text-sm flex items-center gap-2">
