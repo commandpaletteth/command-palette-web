@@ -47,7 +47,7 @@ export default function WorksPage() {
                         </div>
                         <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Unlocked Journey</h2>
                         <p className="text-slate-300 text-lg mb-8 leading-relaxed">
-                            A Hand-picked Boutique Travel Curator.
+                            A Premium Journey Curator.
                         </p>
                         <div className="flex flex-wrap gap-3 mb-10">
                             <div className="px-3 py-1 rounded-full bg-slate-800 border border-slate-700 text-slate-300 text-sm flex items-center gap-2">
