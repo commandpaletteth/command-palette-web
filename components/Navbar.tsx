@@ -13,7 +13,6 @@ export default function Navbar() {
   
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   
-  // State สำหรับจัดการการซ่อน/แสดง Navbar
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
 
@@ -26,23 +25,18 @@ export default function Navbar() {
     router.push(newPath);
   };
 
-  // ✅ Logic: Smart Navbar (Hide on scroll down, Show on scroll up)
   useEffect(() => {
     const controlNavbar = () => {
       if (typeof window !== 'undefined') {
         const currentScrollY = window.scrollY;
 
-        // ถ้าเปิดเมนูมือถืออยู่ ไม่ต้องซ่อน
         if (isMobileMenuOpen) return;
 
         if (currentScrollY < 10) {
-          // ถ้าอยู่บนสุด ให้โชว์เสมอ
           setIsVisible(true);
         } else if (currentScrollY > lastScrollY && currentScrollY > 50) {
-          // ถ้าเลื่อนลง และไม่ใช่การเด้งที่ขอบบน -> ซ่อน
           setIsVisible(false);
         } else {
-          // ถ้าเลื่อนขึ้น -> โชว์
           setIsVisible(true);
         }
 
@@ -51,8 +45,6 @@ export default function Navbar() {
     };
 
     window.addEventListener('scroll', controlNavbar);
-
-    // Cleanup function
     return () => {
       window.removeEventListener('scroll', controlNavbar);
     };
@@ -60,9 +52,6 @@ export default function Navbar() {
 
   return (
     <>
-      {/* ✅ เพิ่ม className: transition-transform duration-300 
-         ✅ เพิ่ม Logic: translate-y-0 (โชว์) vs -translate-y-32 (ซ่อนโดยการดันขึ้นไปข้างบน)
-      */}
       <header 
         className={`fixed top-6 inset-x-6 z-50 transition-transform duration-300 ${
           isVisible || isMobileMenuOpen ? 'translate-y-0' : '-translate-y-32'
@@ -106,14 +95,19 @@ export default function Navbar() {
               </Button>
             </a>
 
+            {/* ✅ เปลี่ยนจาก Emoji เป็น Text: TH / EN 
+                 - font-bold: ตัวหนาให้ดูแน่นขึ้น
+                 - tracking-wide: ระยะห่างตัวอักษรนิดนึงให้ดูแพง
+                 - w-10: กำหนดความกว้างปุ่มให้เท่ากันทั้ง 2 ภาษา จะได้ไม่กระตุกเวลาเปลี่ยน
+            */}
             <Button
               onClick={switchLanguage}
               variant="ghost"
               size="sm"
-              className="rounded-full px-3 ml-1 hover:bg-slate-200/50 text-lg border border-transparent hover:border-slate-300/50 transition-all"
+              className="rounded-full w-10 px-0 ml-1 text-slate-700 hover:text-slate-900 hover:bg-slate-200/50 text-sm font-bold tracking-wide border border-transparent hover:border-slate-300/50 transition-all"
               title={locale === "en" ? "Switch to Thai" : "Switch to English"}
             >
-              {locale === "en" ? "🇹🇭" : "🇬🇧"}
+              {locale === "en" ? "TH" : "EN"}
             </Button>
           </div>
         </div>

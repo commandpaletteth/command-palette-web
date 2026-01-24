@@ -16,7 +16,7 @@ export default function ProcessPage() {
       </div>
 
       {/* === 2. Hero Section === */}
-      <section className="relative z-10 pt-40 pb-20 px-6 text-center">
+      <section className="relative z-10 pt-32 md:pt-40 pb-20 px-6 text-center">
         <div className="max-w-4xl mx-auto">
             <span className="inline-block py-1 px-3 rounded-full bg-blue-50 text-blue-600 text-sm font-bold tracking-wide mb-6 border border-blue-100">
                 {t('badge')}
@@ -37,11 +37,15 @@ export default function ProcessPage() {
       {/* === 3. The Timeline Process === */}
       <section className="relative z-10 pb-32 px-6 max-w-5xl mx-auto">
         <div className="relative">
+            {/* เส้น TimeLine ตรงกลาง */}
             <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-200 via-purple-200 to-transparent -translate-x-1/2 md:translate-x-0" />
 
             {/* Step 1 */}
             <div className="relative flex flex-col md:flex-row gap-8 md:gap-0 items-start md:items-center mb-20 group">
-                <div className="md:w-1/2 md:pr-12 md:text-right order-2 md:order-1">
+                {/* ✅ แก้ตรงนี้: เพิ่ม pl-24 (เว้นซ้าย) บนมือถือ เพื่อไม่ให้ทับไอคอน 
+                   แต่พอเป็นจอคอม (md:pl-0) ให้เอาเว้นซ้ายออก เพราะมันจะไปอยู่ฝั่งขวาแทน
+                */}
+                <div className="md:w-1/2 md:pr-12 md:text-right order-2 md:order-1 pl-24 md:pl-0">
                     <h3 className="text-2xl font-bold text-slate-900 mb-3">{t('step1_title')}</h3>
                     <p className="text-slate-600 leading-relaxed">{t('step1_desc')}</p>
                 </div>
@@ -57,7 +61,8 @@ export default function ProcessPage() {
                 <div className="absolute left-8 md:left-1/2 -translate-x-1/2 flex items-center justify-center w-16 h-16 rounded-2xl bg-white border border-purple-100 shadow-lg z-10 group-hover:scale-110 transition-transform duration-300">
                     <PenTool className="w-8 h-8 text-purple-600" />
                 </div>
-                <div className="md:w-1/2 md:pl-12 md:text-left pl-16">
+                {/* ✅ แก้ตรงนี้: เพิ่ม pl-24 บนมือถือ (เดิมอาจจะน้อยไป) */}
+                <div className="md:w-1/2 md:pl-12 md:text-left pl-24">
                     <h3 className="text-2xl font-bold text-slate-900 mb-3">{t('step2_title')}</h3>
                     <p className="text-slate-600 leading-relaxed">{t('step2_desc')}</p>
                 </div>
@@ -65,7 +70,8 @@ export default function ProcessPage() {
 
             {/* Step 3 */}
             <div className="relative flex flex-col md:flex-row gap-8 md:gap-0 items-start md:items-center mb-20 group">
-                <div className="md:w-1/2 md:pr-12 md:text-right order-2 md:order-1 pl-16 md:pl-0">
+                {/* ✅ แก้ตรงนี้: เพิ่ม pl-24 บนมือถือ */}
+                <div className="md:w-1/2 md:pr-12 md:text-right order-2 md:order-1 pl-24 md:pl-0">
                     <h3 className="text-2xl font-bold text-slate-900 mb-3">{t('step3_title')}</h3>
                     <p className="text-slate-600 leading-relaxed">{t('step3_desc')}</p>
                 </div>
@@ -81,7 +87,8 @@ export default function ProcessPage() {
                 <div className="absolute left-8 md:left-1/2 -translate-x-1/2 flex items-center justify-center w-16 h-16 rounded-2xl bg-slate-900 border border-slate-700 shadow-xl z-10 group-hover:scale-110 transition-transform duration-300">
                     <Rocket className="w-8 h-8 text-white" />
                 </div>
-                <div className="md:w-1/2 md:pl-12 md:text-left pl-16">
+                {/* ✅ แก้ตรงนี้: เพิ่ม pl-24 บนมือถือ */}
+                <div className="md:w-1/2 md:pl-12 md:text-left pl-24">
                     <h3 className="text-2xl font-bold text-slate-900 mb-3">{t('step4_title')}</h3>
                     <p className="text-slate-600 leading-relaxed">{t('step4_desc')}</p>
                 </div>
