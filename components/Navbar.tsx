@@ -30,17 +30,15 @@ export default function Navbar() {
       if (typeof window !== 'undefined') {
         const currentScrollY = window.scrollY;
         
-        // เช็คขนาดหน้าจอก่อน (เพิ่มใหม่)
+        // เช็คขนาดหน้าจอก่อน
         const isDesktop = window.innerWidth >= 768; 
 
         if (isMobileMenuOpen) return;
 
         // Logic การซ่อน/แสดง
         if (isDesktop) {
-          // ถ้าเป็น Desktop ให้โชว์ตลอด
           setIsVisible(true);
         } else {
-          // ถ้าเป็น Mobile ให้ใช้ logic เลื่อนขึ้นลง
           if (currentScrollY < 10) {
             setIsVisible(true);
           } else if (currentScrollY > lastScrollY && currentScrollY > 50) {
@@ -55,7 +53,7 @@ export default function Navbar() {
     };
 
     window.addEventListener('scroll', controlNavbar);
-    window.addEventListener('resize', controlNavbar); // เพิ่มดักการย่อขยายจอ
+    window.addEventListener('resize', controlNavbar);
     
     return () => {
       window.removeEventListener('scroll', controlNavbar);
@@ -70,7 +68,13 @@ export default function Navbar() {
           isVisible || isMobileMenuOpen ? 'translate-y-0' : '-translate-y-32'
         }`}
       >
-        <div className={`max-w-6xl mx-auto h-16 px-6 flex items-center justify-between rounded-full bg-white/40 backdrop-blur-xl border border-white/50 shadow-sm transition-opacity duration-300 ${isMobileMenuOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
+        {/* 🟢 แก้ตรงนี้: ปรับ Class ให้เป็น Glassmorphism แบบใสวิ้ง (iOS 26 Style) 
+            - bg-white/20: ใสขึ้นเยอะ (เห็นพื้นหลัง)
+            - backdrop-blur-md: เบลอพองาม ไม่มัวจนมองไม่รู้เรื่อง
+            - border-white/30: ขอบจางๆ เหมือนกระจก
+            - shadow-lg: ลอยมีมิติ
+        */}
+        <div className={`max-w-6xl mx-auto h-16 px-6 flex items-center justify-between rounded-full bg-white/20 backdrop-blur-md border border-white/30 shadow-lg shadow-black/5 transition-opacity duration-300 ${isMobileMenuOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
           
           {/* Logo */}
           <Link href={`/${locale}`} className="flex items-center gap-2.5 group">
@@ -83,12 +87,12 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Menu */}
-          <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
-            <Link href={`/${locale}/about`} className="hover:text-slate-900 transition-colors">{t("about")}</Link>
-            <Link href={`/${locale}/process`} className="hover:text-slate-900 transition-colors">{t("process")}</Link>
-            <Link href={`/${locale}/works`} className="hover:text-slate-900 transition-colors">{t("works")}</Link>
-            <Link href={`/${locale}/services`} className="hover:text-slate-900 transition-colors">{t("services")}</Link>
-            <Link href={`/${locale}/contact`} className="hover:text-slate-900 transition-colors">Contact</Link>
+          <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-700"> {/* ปรับสี Text ให้เข้มขึ้นนิดนึงเพราะพื้นหลังใส */}
+            <Link href={`/${locale}/about`} className="hover:text-slate-900 transition-colors drop-shadow-sm">{t("about")}</Link>
+            <Link href={`/${locale}/process`} className="hover:text-slate-900 transition-colors drop-shadow-sm">{t("process")}</Link>
+            <Link href={`/${locale}/works`} className="hover:text-slate-900 transition-colors drop-shadow-sm">{t("works")}</Link>
+            <Link href={`/${locale}/services`} className="hover:text-slate-900 transition-colors drop-shadow-sm">{t("services")}</Link>
+            <Link href={`/${locale}/contact`} className="hover:text-slate-900 transition-colors drop-shadow-sm">Contact</Link>
           </nav>
 
           {/* Actions */}
@@ -96,7 +100,7 @@ export default function Navbar() {
             <Button
               variant="ghost"
               size="icon"
-              className="md:hidden"
+              className="md:hidden hover:bg-white/20"
               onClick={() => setIsMobileMenuOpen(true)}
             >
               <Menu className="w-5 h-5 text-slate-700" />
@@ -112,7 +116,7 @@ export default function Navbar() {
               onClick={switchLanguage}
               variant="ghost"
               size="sm"
-              className="rounded-full w-10 px-0 ml-1 text-slate-700 hover:text-slate-900 hover:bg-slate-200/50 text-sm font-bold tracking-wide border border-transparent hover:border-slate-300/50 transition-all"
+              className="rounded-full w-10 px-0 ml-1 text-slate-700 hover:text-slate-900 hover:bg-white/30 text-sm font-bold tracking-wide border border-transparent hover:border-white/50 transition-all"
               title={locale === "en" ? "Switch to Thai" : "Switch to English"}
             >
               {locale === "en" ? "TH" : "EN"}
@@ -123,8 +127,8 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="fixed inset-0 z-[60] bg-white/95 backdrop-blur-2xl md:hidden animate-in slide-in-from-right-10 fade-in duration-300 flex flex-col">
-            <div className="h-24 px-6 flex items-center justify-between border-b border-slate-100">
+        <div className="fixed inset-0 z-[60] bg-white/90 backdrop-blur-xl md:hidden animate-in slide-in-from-right-10 fade-in duration-300 flex flex-col">
+            <div className="h-24 px-6 flex items-center justify-between border-b border-slate-100/50">
                 <Button 
                     variant="ghost" 
                     className="gap-2 text-slate-600 pl-2 hover:bg-slate-100 rounded-full"
