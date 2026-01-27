@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, Zap, Smartphone, Globe, Hammer } from "lucide-react";
+import { ExternalLink, Zap, Smartphone, Globe, Hammer, Heart } from "lucide-react"; // เพิ่ม Heart icon
 import { useTranslations } from 'next-intl';
 
 export default function WorksPage() {
@@ -36,7 +36,7 @@ export default function WorksPage() {
       <section className="relative z-10 container mx-auto px-6 pb-32 max-w-6xl">
         <div className="grid md:grid-cols-2 gap-8">
 
-            {/* Hero Project */}
+            {/* --- 1. Hero Project (Unlocked Journey) --- */}
             <div className="md:col-span-2 bg-slate-900 rounded-[2.5rem] p-8 md:p-12 shadow-2xl overflow-hidden relative group">
                 <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-500/20 blur-[150px] rounded-full pointer-events-none" />
                 <div className="relative z-10 flex flex-col md:flex-row gap-12 items-center">
@@ -74,14 +74,49 @@ export default function WorksPage() {
                 </div>
             </div>
 
-            {/* Work In Progress Box */}
-            <div className="group rounded-[2.5rem] bg-white/50 border border-slate-200 border-dashed border-2 overflow-hidden flex flex-col items-center justify-center text-center p-12 min-h-[300px] hover:bg-white/80 transition-colors">
+            {/* --- 2. One for the Girls (New Project) --- */}
+            <div className="group rounded-[2.5rem] bg-white border border-slate-100 shadow-xl overflow-hidden flex flex-col relative h-full">
+                {/* Image Section */}
+                <div className="relative h-64 overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10" />
+                    <img 
+                        src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=1932&auto=format&fit=crop" // รูปกลุ่มผู้หญิง Picnic (เหมือนในเว็บจริง)
+                        alt="One for the Girls" 
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                    />
+                    <div className="absolute bottom-4 left-6 z-20">
+                        <span className="px-3 py-1 rounded-full bg-[#B85C5C] text-white text-[10px] font-bold tracking-wide mb-2 inline-block shadow-sm">
+                            COMMUNITY PLATFORM
+                        </span>
+                        <h3 className="text-2xl font-bold text-white drop-shadow-md">One for the Girls</h3>
+                    </div>
+                </div>
+
+                {/* Content Section */}
+                <div className="p-8 flex flex-col flex-grow">
+                    <p className="text-slate-600 mb-6 flex-grow">
+                        Bangkok's Premier Community for Women. Built with modern glassmorphism design.
+                    </p>
+                    <div className="flex flex-wrap gap-2 mb-6">
+                         <span className="text-xs font-semibold px-2 py-1 bg-rose-50 text-rose-600 rounded-md border border-rose-100">Tailwind CSS</span>
+                         <span className="text-xs font-semibold px-2 py-1 bg-rose-50 text-rose-600 rounded-md border border-rose-100">Glassmorphism</span>
+                    </div>
+                    <a href="https://one-for-the-girls.vercel.app/" target="_blank" rel="noopener noreferrer">
+                        <Button variant="outline" className="w-full rounded-full border-slate-200 hover:bg-[#B85C5C] hover:text-white hover:border-[#B85C5C] transition-all group-hover:shadow-lg">
+                            {t('btn_visit')} <ExternalLink className="w-3 h-3 ml-2" />
+                        </Button>
+                    </a>
+                </div>
+            </div>
+
+            {/* --- 3. Work In Progress Box --- */}
+            <div className="group rounded-[2.5rem] bg-white/50 border border-slate-200 border-dashed border-2 overflow-hidden flex flex-col items-center justify-center text-center p-12 min-h-[400px] hover:bg-white/80 transition-colors h-full">
                 <div className="w-20 h-20 bg-slate-100 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                     <Hammer className="w-8 h-8 text-slate-400" />
                 </div>
                 <h4 className="text-2xl font-bold text-slate-400 mb-2 whitespace-pre-line">{t('coming_soon_title')}</h4>
-                <p className="text-slate-500 max-w-xs mx-auto whitespace-pre-line">{t('coming_soon_desc')}</p>
-                <div className="mt-8">
+                <p className="text-slate-500 max-w-xs mx-auto whitespace-pre-line mb-8">{t('coming_soon_desc')}</p>
+                <div>
                      <a href="https://calendly.com/command-palette-th/45min" target="_blank" rel="noopener noreferrer">
                         <Button variant="outline" className="rounded-full border-slate-300 text-slate-600 hover:text-slate-900">{t('coming_soon_btn')}</Button>
                      </a>
