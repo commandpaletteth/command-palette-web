@@ -14,6 +14,7 @@ export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   
   const [isVisible, setIsVisible] = useState(true);
+  const [isScrolled, setIsScrolled] = useState(false); // 🟢 เพิ่ม State เช็คว่าเลื่อนลงมาหรือยัง
   const [lastScrollY, setLastScrollY] = useState(0);
 
   const pathname = usePathname();
@@ -29,13 +30,18 @@ export default function Navbar() {
     const controlNavbar = () => {
       if (typeof window !== 'undefined') {
         const currentScrollY = window.scrollY;
-        
-        // เช็คขนาดหน้าจอก่อน
         const isDesktop = window.innerWidth >= 768; 
 
         if (isMobileMenuOpen) return;
 
-        // Logic การซ่อน/แสดง
+        // 🟢 Logic 1: เช็คว่าเลื่อนลงมาเกิน 20px หรือยัง (เพื่อปรับความใสของกระจก)
+        if (currentScrollY > 20) {
+            setIsScrolled(true);
+        } else {
+            setIsScrolled(false);
+        }
+
+        // Logic 2: ซ่อน/แสดง Navbar (เหมือนเดิม)
         if (isDesktop) {
           setIsVisible(true);
         } else {
@@ -64,35 +70,46 @@ export default function Navbar() {
   return (
     <>
       <header 
-        className={`fixed top-6 inset-x-6 z-50 transition-transform duration-300 ${
+        className={`fixed top-6 inset-x-6 z-50 transition-transform duration-500 ${
           isVisible || isMobileMenuOpen ? 'translate-y-0' : '-translate-y-32'
         }`}
       >
-        {/* 🟢 แก้ตรงนี้: ปรับ Class ให้เป็น Glassmorphism แบบใสวิ้ง (iOS 26 Style) 
-            - bg-white/20: ใสขึ้นเยอะ (เห็นพื้นหลัง)
-            - backdrop-blur-md: เบลอพองาม ไม่มัวจนมองไม่รู้เรื่อง
-            - border-white/30: ขอบจางๆ เหมือนกระจก
-            - shadow-lg: ลอยมีมิติ
-        */}
-        <div className={`max-w-6xl mx-auto h-16 px-6 flex items-center justify-between rounded-full bg-white/20 backdrop-blur-md border border-white/30 shadow-lg shadow-black/5 transition-opacity duration-300 ${isMobileMenuOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
+        <div 
+            className={`
+                max-w-6xl mx-auto h-16 px-6 flex items-center justify-between rounded-full 
+                transition-all duration-500
+                ${isScrolled 
+                    ? 'bg-white/70 backdrop-blur-xl border border-white/40 shadow-xl shadow-black/5' // ตอนเลื่อนลง: ขุ่นขึ้นให้อ่านง่าย
+                    : 'bg-transparent backdrop-blur-none border border-transparent shadow-none' // ตอนอยู่บนสุด: ใสวิ้ง 100%
+                }
+                ${isMobileMenuOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'}
+            `}
+        >
           
           {/* Logo */}
           <Link href={`/${locale}`} className="flex items-center gap-2.5 group">
-            <div className="w-9 h-9 bg-gradient-to-br from-slate-800 to-black rounded-xl flex items-center justify-center shadow-inner border border-white/20 group-hover:scale-105 transition-transform">
+            <div className="w-9 h-9 bg-slate-900 rounded-xl flex items-center justify-center shadow-inner border border-white/10 group-hover:scale-105 transition-transform">
               <span className="text-white font-bold text-lg">CP</span>
             </div>
-            <span className="text-lg font-semibold text-slate-800 tracking-tight">
+            {/* 🟢 ใช้ mix-blend-difference กับ Logo Text */}
+            <span className={`text-lg font-bold tracking-tight transition-colors duration-300 ${isScrolled ? 'text-slate-800' : 'text-slate-800 mix-blend-difference text-white'}`}>
               Command & Palette
             </span>
           </Link>
 
           {/* Desktop Menu */}
-          <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-700"> {/* ปรับสี Text ให้เข้มขึ้นนิดนึงเพราะพื้นหลังใส */}
-            <Link href={`/${locale}/about`} className="hover:text-slate-900 transition-colors drop-shadow-sm">{t("about")}</Link>
-            <Link href={`/${locale}/process`} className="hover:text-slate-900 transition-colors drop-shadow-sm">{t("process")}</Link>
-            <Link href={`/${locale}/works`} className="hover:text-slate-900 transition-colors drop-shadow-sm">{t("works")}</Link>
-            <Link href={`/${locale}/services`} className="hover:text-slate-900 transition-colors drop-shadow-sm">{t("services")}</Link>
-            <Link href={`/${locale}/contact`} className="hover:text-slate-900 transition-colors drop-shadow-sm">Contact</Link>
+          {/* 🟢 Menu: ใช้ Logic สลับสี
+              - ถ้ายังไม่ Scrolled (อยู่บนสุด): ใช้ mix-blend-difference (กลับสีตามพื้นหลัง)
+              - ถ้า Scrolled แล้ว (พื้นหลังขุ่น): ใช้สีดำปกติ (slate-700)
+          */}
+          <nav className={`hidden md:flex items-center gap-8 text-sm font-medium transition-colors duration-300 ${
+              isScrolled ? 'text-slate-700' : 'text-white mix-blend-difference'
+          }`}> 
+            <Link href={`/${locale}/about`} className="hover:opacity-70 transition-opacity">{t("about")}</Link>
+            <Link href={`/${locale}/process`} className="hover:opacity-70 transition-opacity">{t("process")}</Link>
+            <Link href={`/${locale}/works`} className="hover:opacity-70 transition-opacity">{t("works")}</Link>
+            <Link href={`/${locale}/services`} className="hover:opacity-70 transition-opacity">{t("services")}</Link>
+            <Link href={`/${locale}/contact`} className="hover:opacity-70 transition-opacity">Contact</Link>
           </nav>
 
           {/* Actions */}
@@ -103,11 +120,11 @@ export default function Navbar() {
               className="md:hidden hover:bg-white/20"
               onClick={() => setIsMobileMenuOpen(true)}
             >
-              <Menu className="w-5 h-5 text-slate-700" />
+              <Menu className={`w-5 h-5 ${isScrolled ? 'text-slate-700' : 'text-white mix-blend-difference'}`} />
             </Button>
 
             <a href="https://calendly.com/command-palette-th/45min" target="_blank" rel="noopener noreferrer">
-              <Button className="bg-slate-900/90 hover:bg-slate-800 text-white rounded-full px-6 shadow-lg shadow-slate-900/10 backdrop-blur-sm border border-slate-800/50 flex items-center gap-2">
+              <Button className="bg-slate-900 hover:bg-slate-800 text-white rounded-full px-6 shadow-lg border border-slate-800/50 flex items-center gap-2">
                 <Calendar className="w-4 h-4" /> {t("consult")}
               </Button>
             </a>
@@ -116,7 +133,10 @@ export default function Navbar() {
               onClick={switchLanguage}
               variant="ghost"
               size="sm"
-              className="rounded-full w-10 px-0 ml-1 text-slate-700 hover:text-slate-900 hover:bg-white/30 text-sm font-bold tracking-wide border border-transparent hover:border-white/50 transition-all"
+              className={`
+                rounded-full w-10 px-0 ml-1 text-sm font-bold tracking-wide transition-all
+                ${isScrolled ? 'text-slate-700 hover:bg-slate-100' : 'text-white mix-blend-difference hover:bg-white/20'}
+              `}
               title={locale === "en" ? "Switch to Thai" : "Switch to English"}
             >
               {locale === "en" ? "TH" : "EN"}
@@ -125,9 +145,9 @@ export default function Navbar() {
         </div>
       </header>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu (เหมือนเดิม) */}
       {isMobileMenuOpen && (
-        <div className="fixed inset-0 z-[60] bg-white/90 backdrop-blur-xl md:hidden animate-in slide-in-from-right-10 fade-in duration-300 flex flex-col">
+        <div className="fixed inset-0 z-[60] bg-white/95 backdrop-blur-2xl md:hidden animate-in slide-in-from-right-10 fade-in duration-300 flex flex-col">
             <div className="h-24 px-6 flex items-center justify-between border-b border-slate-100/50">
                 <Button 
                     variant="ghost" 
