@@ -34,14 +34,14 @@ export default function Navbar() {
 
         if (isMobileMenuOpen) return;
 
-        // Logic 1: เช็คการเลื่อนเพื่อปรับพื้นหลัง (Glass Effect)
+        // Logic 1: Scrolled check
         if (currentScrollY > 20) {
             setIsScrolled(true);
         } else {
             setIsScrolled(false);
         }
 
-        // Logic 2: การซ่อน/แสดง Navbar
+        // Logic 2: Visibility check
         if (isDesktop) {
           setIsVisible(true);
         } else {
@@ -79,8 +79,10 @@ export default function Navbar() {
                 max-w-6xl mx-auto h-16 px-6 flex items-center justify-between rounded-full 
                 transition-all duration-500
                 ${isScrolled 
-                    ? 'bg-white/59 backdrop-blur-md border border-white/40 shadow-xl shadow-black/5' // ตอนเลื่อน: กระจกฝ้า + ขอบจางๆ
-                    : 'bg-transparent backdrop-blur-none border border-transparent shadow-none' // ตอนอยู่บนสุด: ใส 100% ไม่มีขอบ
+                    // 🟢 Scrolled: ขาว 60% (ใสกว่าเดิมเยอะ) แต่เบลอจัดๆ (xl) + เงาช่วยดันให้ลอย
+                    ? 'bg-white/60 backdrop-blur-xl border border-white/40 shadow-lg shadow-black/5' 
+                    // 🟢 Top: ขาว 30% (ใสวิ้ง) + เบลอ xl (เพื่อให้ตัวหนังสือไม่จมไปกับ Blob)
+                    : 'bg-white/30 backdrop-blur-xl border border-white/30 shadow-sm' 
                 }
                 ${isMobileMenuOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'}
             `}
@@ -88,24 +90,23 @@ export default function Navbar() {
           
           {/* Logo */}
           <Link href={`/${locale}`} className="flex items-center gap-2.5 group">
-            {/* กล่อง Logo สีเข้มตลอดเวลา */}
             <div className="w-9 h-9 bg-slate-900 rounded-xl flex items-center justify-center shadow-inner border border-white/10 group-hover:scale-105 transition-transform">
               <span className="text-white font-bold text-lg">CP</span>
             </div>
-            {/* ชื่อแบรนด์ สีเข้มตลอดเวลา */}
-            <span className="text-lg font-bold text-slate-800 tracking-tight">
+            {/* เพิ่ม Drop Shadow สีขาวบางๆ ให้ตัวหนังสือ (Technical Trick: ทำให้อ่านออกแม้พื้นหลังดำ) */}
+            <span className="text-lg font-bold text-slate-800 tracking-tight drop-shadow-[0_1px_1px_rgba(255,255,255,0.8)]">
               Command & Palette
             </span>
           </Link>
 
           {/* Desktop Menu */}
-          {/* เมนู สีเข้มตลอดเวลา (Slate-700) เพื่อให้อ่านออกบนพื้นขาว Hero */}
           <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-700"> 
-            <Link href={`/${locale}/about`} className="hover:text-slate-900 transition-colors">{t("about")}</Link>
-            <Link href={`/${locale}/process`} className="hover:text-slate-900 transition-colors">{t("process")}</Link>
-            <Link href={`/${locale}/works`} className="hover:text-slate-900 transition-colors">{t("works")}</Link>
-            <Link href={`/${locale}/services`} className="hover:text-slate-900 transition-colors">{t("services")}</Link>
-            <Link href={`/${locale}/contact`} className="hover:text-slate-900 transition-colors">Contact</Link>
+            {/* ใส่ drop-shadow ให้เมนูด้วย */}
+            <Link href={`/${locale}/about`} className="hover:text-slate-900 transition-colors drop-shadow-[0_1px_1px_rgba(255,255,255,0.5)]">{t("about")}</Link>
+            <Link href={`/${locale}/process`} className="hover:text-slate-900 transition-colors drop-shadow-[0_1px_1px_rgba(255,255,255,0.5)]">{t("process")}</Link>
+            <Link href={`/${locale}/works`} className="hover:text-slate-900 transition-colors drop-shadow-[0_1px_1px_rgba(255,255,255,0.5)]">{t("works")}</Link>
+            <Link href={`/${locale}/services`} className="hover:text-slate-900 transition-colors drop-shadow-[0_1px_1px_rgba(255,255,255,0.5)]">{t("services")}</Link>
+            <Link href={`/${locale}/contact`} className="hover:text-slate-900 transition-colors drop-shadow-[0_1px_1px_rgba(255,255,255,0.5)]">Contact</Link>
           </nav>
 
           {/* Actions */}
@@ -113,14 +114,14 @@ export default function Navbar() {
             <Button
               variant="ghost"
               size="icon"
-              className="md:hidden hover:bg-slate-100" // ปรับ Hover ให้เข้ากับ Theme ขาว
+              className="md:hidden hover:bg-white/40"
               onClick={() => setIsMobileMenuOpen(true)}
             >
-              <Menu className="w-5 h-5 text-slate-800" /> {/* Icon สีเข้ม */}
+              <Menu className="w-5 h-5 text-slate-800" />
             </Button>
 
             <a href="https://calendly.com/command-palette-th/45min" target="_blank" rel="noopener noreferrer">
-              <Button className="bg-slate-900 hover:bg-slate-800 text-white rounded-full px-6 shadow-lg border border-slate-800/50 flex items-center gap-2">
+              <Button className="bg-slate-900/90 hover:bg-slate-800 text-white rounded-full px-6 shadow-lg shadow-slate-900/10 backdrop-blur-sm border border-slate-800/50 flex items-center gap-2">
                 <Calendar className="w-4 h-4" /> {t("consult")}
               </Button>
             </a>
@@ -129,7 +130,7 @@ export default function Navbar() {
               onClick={switchLanguage}
               variant="ghost"
               size="sm"
-              className="rounded-full w-10 px-0 ml-1 text-sm font-bold tracking-wide text-slate-700 hover:bg-slate-100 transition-all"
+              className="rounded-full w-10 px-0 ml-1 text-slate-700 hover:text-slate-900 hover:bg-white/40 text-sm font-bold tracking-wide border border-transparent hover:border-white/50 transition-all drop-shadow-[0_1px_1px_rgba(255,255,255,0.5)]"
               title={locale === "en" ? "Switch to Thai" : "Switch to English"}
             >
               {locale === "en" ? "TH" : "EN"}
@@ -138,7 +139,7 @@ export default function Navbar() {
         </div>
       </header>
 
-      {/* Mobile Menu (คงเดิม) */}
+      {/* Mobile Menu (เหมือนเดิม) */}
       {isMobileMenuOpen && (
         <div className="fixed inset-0 z-[60] bg-white/95 backdrop-blur-2xl md:hidden animate-in slide-in-from-right-10 fade-in duration-300 flex flex-col">
             <div className="h-24 px-6 flex items-center justify-between border-b border-slate-100/50">
