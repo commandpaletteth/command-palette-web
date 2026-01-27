@@ -14,7 +14,7 @@ export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   
   const [isVisible, setIsVisible] = useState(true);
-  const [isScrolled, setIsScrolled] = useState(false); // 🟢 เพิ่ม State เช็คว่าเลื่อนลงมาหรือยัง
+  const [isScrolled, setIsScrolled] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
 
   const pathname = usePathname();
@@ -34,14 +34,14 @@ export default function Navbar() {
 
         if (isMobileMenuOpen) return;
 
-        // 🟢 Logic 1: เช็คว่าเลื่อนลงมาเกิน 20px หรือยัง (เพื่อปรับความใสของกระจก)
+        // Logic 1: เช็คการเลื่อนเพื่อปรับพื้นหลัง (Glass Effect)
         if (currentScrollY > 20) {
             setIsScrolled(true);
         } else {
             setIsScrolled(false);
         }
 
-        // Logic 2: ซ่อน/แสดง Navbar (เหมือนเดิม)
+        // Logic 2: การซ่อน/แสดง Navbar
         if (isDesktop) {
           setIsVisible(true);
         } else {
@@ -79,8 +79,8 @@ export default function Navbar() {
                 max-w-6xl mx-auto h-16 px-6 flex items-center justify-between rounded-full 
                 transition-all duration-500
                 ${isScrolled 
-                    ? 'bg-white/70 backdrop-blur-xl border border-white/40 shadow-xl shadow-black/5' // ตอนเลื่อนลง: ขุ่นขึ้นให้อ่านง่าย
-                    : 'bg-transparent backdrop-blur-none border border-transparent shadow-none' // ตอนอยู่บนสุด: ใสวิ้ง 100%
+                    ? 'bg-white/60 backdrop-blur-md border border-white/40 shadow-xl shadow-black/5' // ตอนเลื่อน: กระจกฝ้า + ขอบจางๆ
+                    : 'bg-transparent backdrop-blur-none border border-transparent shadow-none' // ตอนอยู่บนสุด: ใส 100% ไม่มีขอบ
                 }
                 ${isMobileMenuOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'}
             `}
@@ -88,28 +88,24 @@ export default function Navbar() {
           
           {/* Logo */}
           <Link href={`/${locale}`} className="flex items-center gap-2.5 group">
+            {/* กล่อง Logo สีเข้มตลอดเวลา */}
             <div className="w-9 h-9 bg-slate-900 rounded-xl flex items-center justify-center shadow-inner border border-white/10 group-hover:scale-105 transition-transform">
               <span className="text-white font-bold text-lg">CP</span>
             </div>
-            {/* 🟢 ใช้ mix-blend-difference กับ Logo Text */}
-            <span className={`text-lg font-bold tracking-tight transition-colors duration-300 ${isScrolled ? 'text-slate-800' : 'text-slate-800 mix-blend-difference text-white'}`}>
+            {/* ชื่อแบรนด์ สีเข้มตลอดเวลา */}
+            <span className="text-lg font-bold text-slate-800 tracking-tight">
               Command & Palette
             </span>
           </Link>
 
           {/* Desktop Menu */}
-          {/* 🟢 Menu: ใช้ Logic สลับสี
-              - ถ้ายังไม่ Scrolled (อยู่บนสุด): ใช้ mix-blend-difference (กลับสีตามพื้นหลัง)
-              - ถ้า Scrolled แล้ว (พื้นหลังขุ่น): ใช้สีดำปกติ (slate-700)
-          */}
-          <nav className={`hidden md:flex items-center gap-8 text-sm font-medium transition-colors duration-300 ${
-              isScrolled ? 'text-slate-700' : 'text-white mix-blend-difference'
-          }`}> 
-            <Link href={`/${locale}/about`} className="hover:opacity-70 transition-opacity">{t("about")}</Link>
-            <Link href={`/${locale}/process`} className="hover:opacity-70 transition-opacity">{t("process")}</Link>
-            <Link href={`/${locale}/works`} className="hover:opacity-70 transition-opacity">{t("works")}</Link>
-            <Link href={`/${locale}/services`} className="hover:opacity-70 transition-opacity">{t("services")}</Link>
-            <Link href={`/${locale}/contact`} className="hover:opacity-70 transition-opacity">Contact</Link>
+          {/* เมนู สีเข้มตลอดเวลา (Slate-700) เพื่อให้อ่านออกบนพื้นขาว Hero */}
+          <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-700"> 
+            <Link href={`/${locale}/about`} className="hover:text-slate-900 transition-colors">{t("about")}</Link>
+            <Link href={`/${locale}/process`} className="hover:text-slate-900 transition-colors">{t("process")}</Link>
+            <Link href={`/${locale}/works`} className="hover:text-slate-900 transition-colors">{t("works")}</Link>
+            <Link href={`/${locale}/services`} className="hover:text-slate-900 transition-colors">{t("services")}</Link>
+            <Link href={`/${locale}/contact`} className="hover:text-slate-900 transition-colors">Contact</Link>
           </nav>
 
           {/* Actions */}
@@ -117,10 +113,10 @@ export default function Navbar() {
             <Button
               variant="ghost"
               size="icon"
-              className="md:hidden hover:bg-white/20"
+              className="md:hidden hover:bg-slate-100" // ปรับ Hover ให้เข้ากับ Theme ขาว
               onClick={() => setIsMobileMenuOpen(true)}
             >
-              <Menu className={`w-5 h-5 ${isScrolled ? 'text-slate-700' : 'text-white mix-blend-difference'}`} />
+              <Menu className="w-5 h-5 text-slate-800" /> {/* Icon สีเข้ม */}
             </Button>
 
             <a href="https://calendly.com/command-palette-th/45min" target="_blank" rel="noopener noreferrer">
@@ -133,10 +129,7 @@ export default function Navbar() {
               onClick={switchLanguage}
               variant="ghost"
               size="sm"
-              className={`
-                rounded-full w-10 px-0 ml-1 text-sm font-bold tracking-wide transition-all
-                ${isScrolled ? 'text-slate-700 hover:bg-slate-100' : 'text-white mix-blend-difference hover:bg-white/20'}
-              `}
+              className="rounded-full w-10 px-0 ml-1 text-sm font-bold tracking-wide text-slate-700 hover:bg-slate-100 transition-all"
               title={locale === "en" ? "Switch to Thai" : "Switch to English"}
             >
               {locale === "en" ? "TH" : "EN"}
@@ -145,7 +138,7 @@ export default function Navbar() {
         </div>
       </header>
 
-      {/* Mobile Menu (เหมือนเดิม) */}
+      {/* Mobile Menu (คงเดิม) */}
       {isMobileMenuOpen && (
         <div className="fixed inset-0 z-[60] bg-white/95 backdrop-blur-2xl md:hidden animate-in slide-in-from-right-10 fade-in duration-300 flex flex-col">
             <div className="h-24 px-6 flex items-center justify-between border-b border-slate-100/50">
