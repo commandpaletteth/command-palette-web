@@ -79,7 +79,7 @@ export default function Navbar() {
                 max-w-6xl mx-auto h-16 px-6 flex items-center justify-between rounded-full 
                 transition-all duration-500
                 ${isScrolled 
-                    ? 'bg-white/60 backdrop-blur-md border border-white/40 shadow-xl shadow-black/5' // ตอนเลื่อน: กระจกฝ้า + ขอบจางๆ
+                    ? 'bg-white/59 backdrop-blur-md border border-white/40 shadow-xl shadow-black/5' // ตอนเลื่อน: กระจกฝ้า + ขอบจางๆ
                     : 'bg-transparent backdrop-blur-none border border-transparent shadow-none' // ตอนอยู่บนสุด: ใส 100% ไม่มีขอบ
                 }
                 ${isMobileMenuOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'}
