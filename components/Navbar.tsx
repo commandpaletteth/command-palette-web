@@ -29,15 +29,25 @@ export default function Navbar() {
     const controlNavbar = () => {
       if (typeof window !== 'undefined') {
         const currentScrollY = window.scrollY;
+        
+        // เช็คขนาดหน้าจอก่อน (เพิ่มใหม่)
+        const isDesktop = window.innerWidth >= 768; 
 
         if (isMobileMenuOpen) return;
 
-        if (currentScrollY < 10) {
+        // Logic การซ่อน/แสดง
+        if (isDesktop) {
+          // ถ้าเป็น Desktop ให้โชว์ตลอด
           setIsVisible(true);
-        } else if (currentScrollY > lastScrollY && currentScrollY > 50) {
-          setIsVisible(false);
         } else {
-          setIsVisible(true);
+          // ถ้าเป็น Mobile ให้ใช้ logic เลื่อนขึ้นลง
+          if (currentScrollY < 10) {
+            setIsVisible(true);
+          } else if (currentScrollY > lastScrollY && currentScrollY > 50) {
+            setIsVisible(false);
+          } else {
+            setIsVisible(true);
+          }
         }
 
         setLastScrollY(currentScrollY);
@@ -45,8 +55,11 @@ export default function Navbar() {
     };
 
     window.addEventListener('scroll', controlNavbar);
+    window.addEventListener('resize', controlNavbar); // เพิ่มดักการย่อขยายจอ
+    
     return () => {
       window.removeEventListener('scroll', controlNavbar);
+      window.removeEventListener('resize', controlNavbar);
     };
   }, [lastScrollY, isMobileMenuOpen]);
 
@@ -95,11 +108,6 @@ export default function Navbar() {
               </Button>
             </a>
 
-            {/* ✅ เปลี่ยนจาก Emoji เป็น Text: TH / EN 
-                 - font-bold: ตัวหนาให้ดูแน่นขึ้น
-                 - tracking-wide: ระยะห่างตัวอักษรนิดนึงให้ดูแพง
-                 - w-10: กำหนดความกว้างปุ่มให้เท่ากันทั้ง 2 ภาษา จะได้ไม่กระตุกเวลาเปลี่ยน
-            */}
             <Button
               onClick={switchLanguage}
               variant="ghost"
