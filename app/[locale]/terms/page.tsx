@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { FileText } from "lucide-react";
+import { FileText, ShieldAlert } from "lucide-react"; // เพิ่ม ShieldAlert icon
 import { useTranslations } from 'next-intl';
 
 export const metadata: Metadata = {
@@ -80,6 +80,38 @@ export default function TermsPage() {
                 <li>{t('sec3_li2')}</li>
                 <li>{t('sec3_li3')}</li>
             </ul>
+          </div>
+
+          {/* === Section 4: Acceptable Use Policy (NEW) === */}
+          <div className="bg-white/80 backdrop-blur-xl border border-rose-100 rounded-[2.5rem] p-8 md:p-10 shadow-xl ring-1 ring-rose-200/50">
+            <h2 className="text-2xl font-bold mb-4 flex items-center gap-4 text-slate-900">
+              <span className="flex items-center justify-center w-10 h-10 rounded-xl bg-rose-100 text-rose-600 text-sm font-bold shadow-sm">4</span>
+              {t('sec4_title')}
+            </h2>
+            <p className="text-slate-700 leading-relaxed mb-6 text-lg font-medium">
+              {t('sec4_desc')}
+            </p>
+            <div className="bg-rose-50/50 rounded-2xl p-6 border border-rose-100">
+                <ul className="space-y-4">
+                    <li className="flex items-start gap-3">
+                        <ShieldAlert className="w-6 h-6 text-rose-500 shrink-0 mt-0.5" />
+                        <span className="text-slate-700 text-lg">{t('sec4_li1')}</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                        <ShieldAlert className="w-6 h-6 text-rose-500 shrink-0 mt-0.5" />
+                        <span className="text-slate-700 text-lg">{t('sec4_li2')}</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                        <ShieldAlert className="w-6 h-6 text-rose-500 shrink-0 mt-0.5" />
+                        <span className="text-slate-700 text-lg">{t('sec4_li3')}</span>
+                    </li>
+                </ul>
+                <div className="mt-6 pt-4 border-t border-rose-200/60">
+                    <p className="text-rose-700/80 text-sm italic font-medium">
+                        {t('sec4_note')}
+                    </p>
+                </div>
+            </div>
           </div>
 
           {/* Footer Note */}
