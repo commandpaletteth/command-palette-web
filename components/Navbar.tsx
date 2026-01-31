@@ -88,17 +88,28 @@ export default function Navbar() {
         >
           
           {/* ✅ Logo ใหม่ (ใช้ Image component) */}
-          <Link href={`/${locale}`} className="flex items-center gap-2 group">
-          <Image
-  src="/logo.svg"
-  alt="Command & Palette"
-  width={150}   // ลด width ลงนิดหน่อย (เพื่อให้ Next.js คำนวณ aspect ratio ได้คร่าวๆ)
-  height={32}   
-  priority
-  // ✅ สูตรใหม่: Mobile h-7 (28px) / Desktop h-8 (32px)
-  // จะเหลือที่ว่างบน-ล่างเยอะขึ้น ดูโปร่งสบายตาครับ
-  className="w-auto h-7 md:h-8 transition-transform group-hover:scale-105" 
-/>
+          <Link href={`/${locale}`} className="flex items-center gap-2 md:gap-3 group">
+  
+  {/* 1. ส่วนไอคอน (ใช้ Favicon.svg) */}
+  <div className="relative">
+    <Image
+      src="/favicon.svg"
+      alt="Command & Palette Logo"
+      width={40}
+      height={40}
+      priority
+      // Mobile: 32px (h-8) | Desktop: 40px (h-10)
+      className="w-8 h-8 md:w-10 md:h-10 transition-transform duration-300 group-hover:rotate-12"
+    />
+  </div>
+
+  {/* 2. ส่วนตัวหนังสือ (เขียนด้วย Code) */}
+  <div className="flex flex-col justify-center">
+    <span className="font-extrabold text-slate-800 tracking-tight leading-none text-lg md:text-xl">
+      Command <span className="text-indigo-600">&</span> Palette
+    </span>
+  </div>
+
 </Link>
 
           {/* Desktop Menu */}
