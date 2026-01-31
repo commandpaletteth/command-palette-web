@@ -22,25 +22,41 @@ export default function Home() {
       {/* === 3. Hero Section === */}
       <section className="relative z-10 flex-grow flex flex-col items-center justify-center px-6 pt-32 pb-16">
         <div className="text-center max-w-5xl mx-auto mb-12">
+          
+          {/* Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/60 backdrop-blur-md border border-white/60 shadow-sm mb-8 animate-fade-in-up">
             <Sparkles className="w-4 h-4 text-purple-600" />
             <span className="text-sm font-medium text-slate-700">{t('Hero.badge')}</span>
           </div>
+
+          {/* Headline */}
           <h1 className="text-5xl md:text-7xl font-bold text-slate-900 tracking-tight mb-8 leading-tight text-balance">
             {t('Hero.title_part1')} <br/>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-600">{t('Hero.title_part2')}</span>
+            {/* Gradient สูตรใหม่: ม่วง -> บานเย็น -> ชมพู (ดูแพงกว่าเดิม) */}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-fuchsia-500 to-pink-500 drop-shadow-[0_2px_10px_rgba(192,38,211,0.2)]">
+              {t('Hero.title_part2')}
+            </span>
           </h1>
-          <p className="text-xl md:text-2xl text-slate-600 max-w-3xl mx-auto leading-relaxed font-normal mb-10 text-balance">
+
+          {/* Subtitle (หัวข้อรอง) */}
+          <p className="text-xl md:text-2xl text-slate-800 font-semibold max-w-3xl mx-auto leading-relaxed mb-4 text-balance">
             {t('Hero.subtitle')}
           </p>
+
+          {/* ✅ Description (เนื้อหาขยาย: Code & Craft) - เพิ่มมาให้แล้ว! */}
+          <p className="text-lg md:text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed font-normal mb-10 text-balance opacity-90">
+            {t('Hero.description')}
+          </p>
+
+          {/* Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
              <a href="https://calendly.com/command-palette-th/45min" target="_blank" rel="noopener noreferrer">
-                <Button size="lg" className="h-14 px-8 rounded-full text-lg bg-slate-900 text-white hover:bg-slate-800 shadow-xl shadow-slate-900/20">
+                <Button size="lg" className="h-14 px-8 rounded-full text-lg bg-slate-900 text-white hover:bg-slate-800 shadow-xl shadow-slate-900/20 transition-all hover:scale-105">
                     {t('Hero.cta_consult')}
                 </Button>
              </a>
              <Link href={`/${locale}/works`}>
-                <Button size="lg" variant="outline" className="h-14 px-8 rounded-full text-lg border-slate-300 bg-white/40 hover:bg-white/60 text-slate-700 backdrop-blur-sm group">
+                <Button size="lg" variant="outline" className="h-14 px-8 rounded-full text-lg border-slate-300 bg-white/40 hover:bg-white/60 text-slate-700 backdrop-blur-sm group transition-all">
                     {t('Hero.cta_work')} <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform"/>
                 </Button>
              </Link>
@@ -66,7 +82,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* === 4. Comparison Section === */}
+      {/* === 4. Comparison Section (เหมือนเดิม) === */}
       <section className="relative z-10 py-20 px-6 bg-white/20 backdrop-blur-sm border-y border-white/40">
         <div className="container mx-auto max-w-5xl">
             <div className="text-center mb-16">
@@ -132,7 +148,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* === 5. Practical AI Use Cases === */}
+      {/* === 5. Practical AI Use Cases (เหมือนเดิม) === */}
       <section className="relative z-10 py-24 px-6 container mx-auto max-w-6xl">
         <div className="text-center mb-16">
              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-100 text-purple-700 text-sm font-bold mb-4">
