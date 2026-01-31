@@ -2,12 +2,11 @@
 
 import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
-import { Instagram, Facebook, Linkedin } from "lucide-react"; // สมมติว่ามี icon
+// ❌ ลบ import icon ที่ไม่ได้ใช้ออกแล้วครับ
 
 export default function Footer() {
-  // 🟢 1. เรียกใช้ Translation 2 หมวด
-  const t = useTranslations("Footer"); // สำหรับคำที่อยู่ใน Footer โดยเฉพาะ (Privacy, Terms)
-  const navT = useTranslations("Navbar"); // สำหรับเมนู (About, Process, Works) จะได้ตรงกับข้างบนเป๊ะๆ
+  const t = useTranslations("Footer");
+  const navT = useTranslations("Navbar");
   
   const locale = useLocale();
 
@@ -31,34 +30,34 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Column 2: Sitemap (แก้ตรงนี้ให้ใช้ navT) */}
+          {/* Column 2: Sitemap */}
           <div>
             <h3 className="font-bold text-slate-800 mb-6 tracking-wide">Sitemap</h3>
             <ul className="space-y-4 text-sm font-medium text-slate-600">
               <li>
                 <Link href={`/${locale}/about`} className="hover:text-purple-600 transition-colors">
-                  {navT("about")} {/* 🟢 ใช้คำแปลจากหมวด Navbar */}
+                  {navT("about")}
                 </Link>
               </li>
               <li>
                 <Link href={`/${locale}/process`} className="hover:text-purple-600 transition-colors">
-                  {navT("process")} {/* 🟢 ใช้คำแปลจากหมวด Navbar */}
+                  {navT("process")}
                 </Link>
               </li>
               <li>
                 <Link href={`/${locale}/works`} className="hover:text-purple-600 transition-colors">
-                  {navT("works")} {/* 🟢 ใช้คำแปลจากหมวด Navbar */}
+                  {navT("works")}
                 </Link>
               </li>
               <li>
                 <Link href={`/${locale}/services`} className="hover:text-purple-600 transition-colors">
-                  {navT("services")} {/* 🟢 ใช้คำแปลจากหมวด Navbar */}
+                  {navT("services")}
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Column 3: Legal (ใช้อันเดิมจาก Footer) */}
+          {/* Column 3: Legal */}
           <div>
             <h3 className="font-bold text-slate-800 mb-6 tracking-wide">Legal</h3>
             <ul className="space-y-4 text-sm font-medium text-slate-600">
@@ -76,17 +75,13 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom Bar */}
+        {/* Bottom Bar: เอา icon ออก เหลือแค่ Copyright */}
         <div className="pt-8 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-xs text-slate-400 font-medium">
             © 2026 Command & Palette Agency. All rights reserved.
           </p>
           
-          <div className="flex items-center gap-6">
-            <a href="#" className="text-slate-400 hover:text-slate-800 transition-colors"><Instagram className="w-4 h-4" /></a>
-            <a href="#" className="text-slate-400 hover:text-slate-800 transition-colors"><Facebook className="w-4 h-4" /></a>
-            <a href="#" className="text-slate-400 hover:text-slate-800 transition-colors"><Linkedin className="w-4 h-4" /></a>
-          </div>
+          {/* ✅ ลบ Social Icons ออกเรียบร้อยครับ */}
         </div>
       </div>
     </footer>
