@@ -6,21 +6,23 @@ export async function POST(req: Request) {
     const data = await req.json();
     const { name, company, email, tel, size, inquiry } = data;
 
-    // 1. ตั้งค่าคนส่ง (ใช้ Gmail ของคุณ)
+    // 1. ตั้งค่าคนส่ง (ใช้เมลใหม่ warut.c@...)
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: process.env.EMAIL_USER, 
-        pass: process.env.EMAIL_PASS, 
+        user: process.env.EMAIL_USER, // ต้องตรงกับใน .env (warut.c@...)
+        pass: process.env.EMAIL_PASS, // App Password 16 หลัก
       },
     });
 
-    // 2. จัดระเบียบเนื้อหาอีเมล (HTML Format)
+    // 2. จัดระเบียบเนื้อหาอีเมล (HTML Format เดิมที่นายทำไว้ สวยแล้ว)
     const mailOptions = {
-      from: `"${name}" <${process.env.EMAIL_USER}>`, // ชื่อผู้ส่ง
-      to: 'command.palette.th@gmail.com', // ส่งหาตัวคุณเอง
+      // ปรับ from ให้ดูเป็นระบบ: "ชื่อลูกค้า (via Web)"
+      from: `"${name} (via Website)" <${process.env.EMAIL_USER}>`, 
+      to: 'warut.c@command-palette.co', // ส่งหา Boss Warut
+      cc: 'info@command-palette.co',    // (Optional) ส่งสำเนาเข้า info ไว้เป็นหลักฐาน
       replyTo: email, // เวลากด Reply ให้ตอบกลับไปหาลูกค้า
-      subject: `[New Inquiry] ลูกค้าใหม่: ${name} (${company || 'No Company'})`,
+      subject: `[New Inquiry] ${name} (${company || 'No Company'})`, // หัวข้อเมลชัดเจน
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #e0e0e0; border-radius: 10px; overflow: hidden;">
           <div style="background-color: #0f172a; padding: 20px; text-align: center;">
