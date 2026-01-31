@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image"; // ✅ 1. เพิ่ม import Image
 import { usePathname, useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Menu, Calendar, ArrowLeft } from "lucide-react";
@@ -79,29 +80,29 @@ export default function Navbar() {
                 max-w-6xl mx-auto h-16 px-6 flex items-center justify-between rounded-full 
                 transition-all duration-500
                 ${isScrolled 
-                    // 🟢 Scrolled: ขาว 60% (ใสกว่าเดิมเยอะ) แต่เบลอจัดๆ (xl) + เงาช่วยดันให้ลอย
                     ? 'bg-white/60 backdrop-blur-xl border border-white/40 shadow-lg shadow-black/5' 
-                    // 🟢 Top: ขาว 30% (ใสวิ้ง) + เบลอ xl (เพื่อให้ตัวหนังสือไม่จมไปกับ Blob)
                     : 'bg-white/30 backdrop-blur-xl border border-white/30 shadow-sm' 
                 }
                 ${isMobileMenuOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'}
             `}
         >
           
-          {/* Logo */}
-          <Link href={`/${locale}`} className="flex items-center gap-2.5 group">
-            <div className="w-9 h-9 bg-slate-900 rounded-xl flex items-center justify-center shadow-inner border border-white/10 group-hover:scale-105 transition-transform">
-              <span className="text-white font-bold text-lg">CP</span>
-            </div>
-            {/* เพิ่ม Drop Shadow สีขาวบางๆ ให้ตัวหนังสือ (Technical Trick: ทำให้อ่านออกแม้พื้นหลังดำ) */}
-            <span className="text-lg font-bold text-slate-800 tracking-tight drop-shadow-[0_1px_1px_rgba(255,255,255,0.8)]">
-              Command & Palette
-            </span>
-          </Link>
+          {/* ✅ Logo ใหม่ (ใช้ Image component) */}
+          <Link href={`/${locale}`} className="flex items-center gap-2 group">
+          <Image
+  src="/logo.svg"
+  alt="Command & Palette"
+  width={150}   // ลด width ลงนิดหน่อย (เพื่อให้ Next.js คำนวณ aspect ratio ได้คร่าวๆ)
+  height={32}   
+  priority
+  // ✅ สูตรใหม่: Mobile h-7 (28px) / Desktop h-8 (32px)
+  // จะเหลือที่ว่างบน-ล่างเยอะขึ้น ดูโปร่งสบายตาครับ
+  className="w-auto h-7 md:h-8 transition-transform group-hover:scale-105" 
+/>
+</Link>
 
           {/* Desktop Menu */}
           <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-700"> 
-            {/* ใส่ drop-shadow ให้เมนูด้วย */}
             <Link href={`/${locale}/about`} className="hover:text-slate-900 transition-colors drop-shadow-[0_1px_1px_rgba(255,255,255,0.5)]">{t("about")}</Link>
             <Link href={`/${locale}/process`} className="hover:text-slate-900 transition-colors drop-shadow-[0_1px_1px_rgba(255,255,255,0.5)]">{t("process")}</Link>
             <Link href={`/${locale}/works`} className="hover:text-slate-900 transition-colors drop-shadow-[0_1px_1px_rgba(255,255,255,0.5)]">{t("works")}</Link>
@@ -139,7 +140,7 @@ export default function Navbar() {
         </div>
       </header>
 
-      {/* Mobile Menu (เหมือนเดิม) */}
+      {/* Mobile Menu */}
       {isMobileMenuOpen && (
         <div className="fixed inset-0 z-[60] bg-white/95 backdrop-blur-2xl md:hidden animate-in slide-in-from-right-10 fade-in duration-300 flex flex-col">
             <div className="h-24 px-6 flex items-center justify-between border-b border-slate-100/50">
@@ -151,9 +152,14 @@ export default function Navbar() {
                     <ArrowLeft className="w-5 h-5" /> Back
                 </Button>
                 <div className="flex items-center gap-2 opacity-50 grayscale">
-                     <div className="w-8 h-8 bg-slate-200 rounded-lg flex items-center justify-center">
-                        <span className="text-slate-500 font-bold text-sm">CP</span>
-                     </div>
+                     {/* ✅ ใช้ Favicon เป็นลายน้ำตรงมุมขวาเมนูมือถือ */}
+                     <Image 
+                        src="/favicon.svg" 
+                        alt="CP Logo" 
+                        width={32} 
+                        height={32} 
+                        className="w-8 h-8"
+                     />
                 </div>
             </div>
 

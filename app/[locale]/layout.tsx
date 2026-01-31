@@ -23,6 +23,10 @@ const ibmThai = IBM_Plex_Sans_Thai({
 export const metadata: Metadata = {
   title: "Command & Palette | Digital Asset Agency",
   description: "High-Performance Web & AI Automation Agency based in Bangkok.",
+  // ✅ เพิ่มส่วนนี้ครับ: ชี้เป้าไปที่ไฟล์ใน public/favicon.svg
+  icons: {
+    icon: '/favicon.svg',
+  },
   verification: {
     google: "ZpDC40aeaVvnFoMIrQS_jWJoi0ClcZiqJEU2A8KYPH0", 
   },
@@ -43,6 +47,8 @@ export default async function RootLayout({
     <html lang={locale}>
       <body className={`${manrope.variable} ${ibmThai.variable} font-sans antialiased flex flex-col min-h-screen`}>
         <NextIntlClientProvider messages={messages}>
+          
+          {/* Navbar ถูกเรียกใช้ตรงนี้ แปลว่าต้องไปแก้โลโก้ในไฟล์ components/Navbar.tsx ครับ */}
           <Navbar /> 
           
           <main className="flex-grow">
@@ -51,8 +57,7 @@ export default async function RootLayout({
 
           <Footer />
 
-          {/* ✅ ส่วนที่เพิ่มใหม่: Logic กัน Data Pollution */}
-          {/* ทำงานเฉพาะตอนขึ้น Production เท่านั้น (Localhost จะไม่โหลดเลย) */}
+          {/* ✅ Logic กัน Data Pollution เดิมของนาย */}
           {process.env.NODE_ENV === 'production' && (
             <>
               <Script
@@ -64,8 +69,6 @@ export default async function RootLayout({
                 strategy="afterInteractive"
               >
                 {`
-                  // Secret Key Check: เช็คว่ามีกุญแจลับชื่อ 'CP_DEV_MODE' ไหม?
-                  // ถ้าเจอกุญแจนี้ ให้บล็อก GA ทันที แม้จะอยู่บนเว็บจริง
                   const isDevMode = localStorage.getItem('CP_DEV_MODE') === 'true';
 
                   if (!isDevMode) {
