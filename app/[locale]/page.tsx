@@ -43,7 +43,7 @@ export default function Home() {
             {t('Hero.subtitle')}
           </p>
 
-          {/* ✅ Description (เนื้อหาขยาย: Code & Craft) - เพิ่มมาให้แล้ว! */}
+          {/* ✅ Description (เนื้อหาขยาย: Code & Craft) */}
           <p className="text-lg md:text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed font-normal mb-10 text-balance opacity-90">
             {t('Hero.description')}
           </p>
@@ -68,15 +68,16 @@ export default function Home() {
             <p className="text-center text-sm font-medium text-slate-500 mb-6 uppercase tracking-wider">
                 {t('Hero.tech_trust')}
             </p>
+            {/* 🟢 แก้ไข: ใส่ text-slate-800 ให้ Icon ชัดเจนขึ้น (จากเดิมมันจม) */}
             <div className="flex flex-wrap justify-center gap-8 md:gap-16 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
                 <div className="flex items-center gap-2">
-                    <Zap className="w-5 h-5" /> <span className="font-semibold text-slate-800">Next.js</span>
+                    <Zap className="w-5 h-5 text-slate-800" /> <span className="font-semibold text-slate-800">Next.js</span>
                 </div>
                 <div className="flex items-center gap-2">
-                    <ShieldCheck className="w-5 h-5" /> <span className="font-semibold text-slate-800">Vercel</span>
+                    <ShieldCheck className="w-5 h-5 text-slate-800" /> <span className="font-semibold text-slate-800">Vercel</span>
                 </div>
                 <div className="flex items-center gap-2">
-                    <Bot className="w-5 h-5" /> <span className="font-semibold text-slate-800">OpenAI</span>
+                    <Bot className="w-5 h-5 text-slate-800" /> <span className="font-semibold text-slate-800">OpenAI</span>
                 </div>
             </div>
         </div>
