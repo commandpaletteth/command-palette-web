@@ -22,10 +22,10 @@ export default function ServicesPage() {
             {t('badge')}
         </div>
         
-        {/* 🟢 แก้รอบที่ 2: ใส่ leading-normal และ py-4 เพื่อถางบรรทัดให้กว้างขึ้น */}
-        <h1 className="text-4xl md:text-6xl font-bold text-slate-900 mb-6 py-4 leading-normal text-balance">
+        {/* 🟢 แก้รอบสุดท้าย: ใช้ leading-relaxed (ห่างเยอะหน่อย) และ py-2 ใน span */}
+        <h1 className="text-4xl md:text-6xl font-bold text-slate-900 mb-6 leading-relaxed text-balance">
              {t('hero_title_1')}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 inline-block pb-1">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 inline-block py-2">
                 {t('hero_title_highlight')}
             </span>
             {t('hero_title_2')}
@@ -36,7 +36,7 @@ export default function ServicesPage() {
         </p>
       </section>
 
-      {/* === 3. Services Grid (ส่วนนี้เหมือนเดิม) === */}
+      {/* === 3. Services Grid === */}
       <section className="relative z-10 container mx-auto px-6 pb-32 max-w-6xl">
         <div className="grid md:grid-cols-3 gap-8 items-stretch">
             
@@ -76,7 +76,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* === 4. CTA (ส่วนนี้เหมือนเดิม) === */}
+      {/* === 4. CTA === */}
       <section className="relative z-10 py-24 px-6 text-center">
         <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">{t('cta_title')}</h2>
         <p className="text-slate-600 mb-8 max-w-xl mx-auto text-lg text-balance">{t('cta_subtitle')}</p>
