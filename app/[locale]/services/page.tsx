@@ -22,10 +22,10 @@ export default function ServicesPage() {
             {t('badge')}
         </div>
         
-        {/* 🟢 แก้รอบสุดท้าย: ใช้ leading-relaxed (ห่างเยอะหน่อย) และ py-2 ใน span */}
-        <h1 className="text-4xl md:text-6xl font-bold text-slate-900 mb-6 leading-relaxed text-balance">
+        {/* 🟢 แก้ไข: ใช้ leading-[1.5] + inline-block py-6 (เผื่อเยอะๆ เลย) */}
+        <h1 className="text-4xl md:text-6xl font-bold text-slate-900 mb-6 leading-[1.5] text-balance">
              {t('hero_title_1')}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 inline-block py-2">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 inline-block py-6 px-1 -my-6">
                 {t('hero_title_highlight')}
             </span>
             {t('hero_title_2')}
@@ -39,7 +39,6 @@ export default function ServicesPage() {
       {/* === 3. Services Grid === */}
       <section className="relative z-10 container mx-auto px-6 pb-32 max-w-6xl">
         <div className="grid md:grid-cols-3 gap-8 items-stretch">
-            
             {/* Card 1 */}
             <div className="bg-white/60 backdrop-blur-xl border border-white/80 p-8 rounded-[2rem] shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group flex flex-col">
                 <div className="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center text-blue-600 mb-6 group-hover:scale-110 transition-transform">
@@ -50,7 +49,6 @@ export default function ServicesPage() {
                     {t('card1_desc')}
                 </p>
             </div>
-
             {/* Card 2 */}
             <div className="bg-slate-900 p-8 rounded-[2rem] shadow-2xl hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group relative overflow-hidden flex flex-col border border-slate-800">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/20 blur-3xl rounded-full" />
@@ -62,7 +60,6 @@ export default function ServicesPage() {
                     {t('card2_desc')}
                 </p>
             </div>
-
             {/* Card 3 */}
             <div className="bg-white/60 backdrop-blur-xl border border-white/80 p-8 rounded-[2rem] shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group flex flex-col">
                 <div className="w-14 h-14 bg-pink-100 rounded-2xl flex items-center justify-center text-pink-600 mb-6 group-hover:scale-110 transition-transform">
