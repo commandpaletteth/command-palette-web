@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useTranslations, useLocale } from "next-intl";
-// ❌ ลบ import icon ที่ไม่ได้ใช้ออกแล้วครับ
 
 export default function Footer() {
   const t = useTranslations("Footer");
@@ -17,22 +17,32 @@ export default function Footer() {
           
           {/* Column 1: Brand */}
           <div className="col-span-1 md:col-span-2">
-            <Link href={`/${locale}`} className="flex items-center gap-2.5 mb-6">
-              <div className="w-8 h-8 bg-gradient-to-br from-slate-800 to-black rounded-lg flex items-center justify-center shadow-inner text-white font-bold text-sm">
-                CP
+            <Link href={`/${locale}`} className="inline-flex items-center gap-3 mb-6 group">
+              {/* 1. Logo Icon: ใช้ favicon.svg */}
+              <div className="relative w-10 h-10 transition-transform group-hover:scale-110 duration-300">
+                 <Image 
+                    src="/favicon.svg" 
+                    alt="Command & Palette Logo" 
+                    width={40}
+                    height={40}
+                    className="object-contain"
+                 />
               </div>
-              <span className="text-lg font-bold text-slate-800 tracking-tight">
-                Command & Palette
+
+              {/* 2. Text: ปรับสี & ให้เป็น text-indigo-600 (เหมือน Navbar) */}
+              <span className="text-xl font-bold text-slate-900 tracking-tight whitespace-nowrap">
+                Command <span className="text-indigo-600">&</span> Palette
               </span>
             </Link>
-            <p className="text-slate-500 max-w-sm font-light">
+            
+            <p className="text-slate-500 max-w-sm font-light leading-relaxed">
               {t("description")}
             </p>
           </div>
 
           {/* Column 2: Sitemap */}
           <div>
-            <h3 className="font-bold text-slate-800 mb-6 tracking-wide">Sitemap</h3>
+            <h3 className="font-bold text-slate-800 mb-6 tracking-wide text-sm uppercase">Sitemap</h3>
             <ul className="space-y-4 text-sm font-medium text-slate-600">
               <li>
                 <Link href={`/${locale}/about`} className="hover:text-purple-600 transition-colors">
@@ -59,7 +69,7 @@ export default function Footer() {
 
           {/* Column 3: Legal */}
           <div>
-            <h3 className="font-bold text-slate-800 mb-6 tracking-wide">Legal</h3>
+            <h3 className="font-bold text-slate-800 mb-6 tracking-wide text-sm uppercase">Legal</h3>
             <ul className="space-y-4 text-sm font-medium text-slate-600">
               <li>
                 <Link href={`/${locale}/privacy`} className="hover:text-purple-600 transition-colors">
@@ -75,13 +85,11 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom Bar: เอา icon ออก เหลือแค่ Copyright */}
+        {/* Bottom Bar */}
         <div className="pt-8 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-xs text-slate-400 font-medium">
             © 2026 Command & Palette Agency. All rights reserved.
           </p>
-          
-          {/* ✅ ลบ Social Icons ออกเรียบร้อยครับ */}
         </div>
       </div>
     </footer>
