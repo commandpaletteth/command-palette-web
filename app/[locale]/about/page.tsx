@@ -20,25 +20,20 @@ export default function AboutPage() {
      {/* === 2. Hero Section === */}
      <section className="relative z-10 py-32 px-6 md:px-12 lg:px-24 text-center md:text-left pt-40">
         <div className="max-w-4xl mx-auto text-center">
-          {/* ✅ 1. ปรับ leading-tight เหมือนเดิมได้เลย (จะได้ดูแน่นๆ สวยๆ) */}
-          <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-8 text-slate-900 leading-tight">
+          <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-8 text-slate-900 leading-tight text-balance">
             {t('hero_title_1')}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-500">
                 {t('hero_title_logic')}
             </span>
             {t('hero_title_2')}
             
-            {/* ✅ 2. แก้ตรงนี้: เพิ่ม inline-block และ py-2 
-                 - inline-block: ทำให้ span มีตัวตนเป็นกล่องสี่เหลี่ยม
-                 - py-2: ขยายกล่องนี้ให้สูงขึ้น (ครอบคลุมหางตัว y) โดยไม่กระทบบรรทัดอื่น
-            */}
-            <span className="inline-block py-2 text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-500">
+            <span className="inline-block py-2 text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-fuchsia-500 to-pink-500">
                 {t('hero_title_creativity')}
             </span>
             
             {t('hero_title_3')}
           </h1>
-          <p className="text-xl md:text-2xl text-slate-600 leading-relaxed max-w-3xl mx-auto">
+          <p className="text-xl md:text-2xl text-slate-600 leading-relaxed max-w-3xl mx-auto text-balance">
             {t('hero_subtitle')}
           </p>
         </div>
@@ -47,9 +42,8 @@ export default function AboutPage() {
       {/* === 3. The Philosophy Section === */}
       <section className="relative z-10 py-10 px-6">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 lg:gap-12 items-stretch">
-          
           {/* Command Side */}
-          <div className="bg-white/40 backdrop-blur-xl border border-white/50 p-10 rounded-[2.5rem] shadow-xl hover:shadow-2xl transition-all duration-500 group">
+          <div className="bg-white/40 backdrop-blur-xl border border-white/50 p-10 rounded-[2.5rem] shadow-xl hover:shadow-2xl transition-all duration-500 group hover:border-blue-200">
             <div className="w-16 h-16 bg-blue-100/80 rounded-2xl flex items-center justify-center text-blue-600 mb-6 shadow-sm group-hover:scale-110 transition-transform">
                 <Command className="w-8 h-8" />
             </div>
@@ -60,7 +54,7 @@ export default function AboutPage() {
           </div>
 
           {/* Palette Side */}
-          <div className="bg-white/40 backdrop-blur-xl border border-white/50 p-10 rounded-[2.5rem] shadow-xl hover:shadow-2xl transition-all duration-500 group">
+          <div className="bg-white/40 backdrop-blur-xl border border-white/50 p-10 rounded-[2.5rem] shadow-xl hover:shadow-2xl transition-all duration-500 group hover:border-purple-200">
             <div className="w-16 h-16 bg-purple-100/80 rounded-2xl flex items-center justify-center text-purple-600 mb-6 shadow-sm group-hover:scale-110 transition-transform">
                 <Palette className="w-8 h-8" />
             </div>
@@ -74,10 +68,20 @@ export default function AboutPage() {
 
     {/* === 4. Mission & Values === */}
     <section className="relative z-10 py-24 px-6 max-w-5xl mx-auto text-center">
-        {/* ✅ เพิ่ม whitespace-pre-line ตรงนี้ครับ */}
-        <h2 className="text-3xl md:text-5xl font-bold mb-16 text-slate-900 whitespace-pre-line leading-tight">
-            {t('mission_title')}
-        </h2>
+        
+        {/* 🟢 แก้ไขตรงนี้: แยก Header กับ Slogan */}
+        <div className="mb-16">
+            {/* ส่วนที่ 1: Header (Our Mission) สี Gradient ม่วง-ชมพู */}
+            <h3 className="text-2xl md:text-3xl font-bold mb-4 uppercase tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-fuchsia-500 to-pink-500 drop-shadow-sm">
+                {t('mission_header')}
+            </h3>
+            
+            {/* ส่วนที่ 2: Slogan (Stop Renting...) สีดำเข้ม */}
+            {/* 💡 เพิ่ม 'pb-2' หรือ 'pb-4' ตรงนี้ เพื่อกันหางตัว g ขาด */}
+            <h2 className="text-3xl md:text-5xl font-bold text-slate-900 whitespace-pre-line leading-tight text-balance pb-2">
+                {t('mission_slogan')}
+            </h2>
+        </div>
         
         <div className="grid md:grid-cols-3 gap-8 text-left">
           {/* Value 1 */}
@@ -110,11 +114,11 @@ export default function AboutPage() {
             
             <h2 className="text-3xl md:text-5xl font-bold mb-6 text-slate-900">{t('cta_title')}</h2>
             <p className="text-xl mb-10 text-slate-600">{t('cta_subtitle')}</p>
-            <Link href={`/${locale}`}>
+            <a href="https://calendly.com/command-palette-th/45min" target="_blank" rel="noopener noreferrer">
                 <Button size="lg" className="h-14 px-10 rounded-full text-lg bg-slate-900 text-white hover:bg-slate-800 shadow-xl shadow-slate-900/20">
                     {t('cta_btn')}
                 </Button>
-            </Link>
+            </a>
         </div>
       </section>
       
