@@ -22,10 +22,10 @@ export default function ServicesPage() {
             {t('badge')}
         </div>
         
-        {/* 🟢 แก้ไขตรงนี้: เอา leading-tight ออก และเพิ่ม py-2 */}
-        <h1 className="text-4xl md:text-6xl font-bold text-slate-900 mb-6 py-2 text-balance">
+        {/* 🟢 แก้รอบที่ 2: ใส่ leading-normal และ py-4 เพื่อถางบรรทัดให้กว้างขึ้น */}
+        <h1 className="text-4xl md:text-6xl font-bold text-slate-900 mb-6 py-4 leading-normal text-balance">
              {t('hero_title_1')}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 inline-block pb-1">
                 {t('hero_title_highlight')}
             </span>
             {t('hero_title_2')}
@@ -36,11 +36,11 @@ export default function ServicesPage() {
         </p>
       </section>
 
-      {/* === 3. Services Grid === */}
+      {/* === 3. Services Grid (ส่วนนี้เหมือนเดิม) === */}
       <section className="relative z-10 container mx-auto px-6 pb-32 max-w-6xl">
         <div className="grid md:grid-cols-3 gap-8 items-stretch">
             
-            {/* Card 1: Web Engineering */}
+            {/* Card 1 */}
             <div className="bg-white/60 backdrop-blur-xl border border-white/80 p-8 rounded-[2rem] shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group flex flex-col">
                 <div className="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center text-blue-600 mb-6 group-hover:scale-110 transition-transform">
                     <Code2 className="w-7 h-7" />
@@ -51,7 +51,7 @@ export default function ServicesPage() {
                 </p>
             </div>
 
-            {/* Card 2: AI Automation */}
+            {/* Card 2 */}
             <div className="bg-slate-900 p-8 rounded-[2rem] shadow-2xl hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group relative overflow-hidden flex flex-col border border-slate-800">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/20 blur-3xl rounded-full" />
                 <div className="w-14 h-14 bg-slate-800 rounded-2xl flex items-center justify-center text-purple-400 mb-6 group-hover:scale-110 transition-transform relative z-10 border border-slate-700">
@@ -63,7 +63,7 @@ export default function ServicesPage() {
                 </p>
             </div>
 
-            {/* Card 3: Experience Design */}
+            {/* Card 3 */}
             <div className="bg-white/60 backdrop-blur-xl border border-white/80 p-8 rounded-[2rem] shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group flex flex-col">
                 <div className="w-14 h-14 bg-pink-100 rounded-2xl flex items-center justify-center text-pink-600 mb-6 group-hover:scale-110 transition-transform">
                     <Palette className="w-7 h-7" />
@@ -76,7 +76,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* === 4. CTA === */}
+      {/* === 4. CTA (ส่วนนี้เหมือนเดิม) === */}
       <section className="relative z-10 py-24 px-6 text-center">
         <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">{t('cta_title')}</h2>
         <p className="text-slate-600 mb-8 max-w-xl mx-auto text-lg text-balance">{t('cta_subtitle')}</p>
