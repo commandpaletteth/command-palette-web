@@ -9,8 +9,7 @@ export default function ServicesPage() {
   return (
     <div className="min-h-screen bg-slate-50 font-sans selection:bg-purple-100/50 overflow-hidden relative flex flex-col">
        
-       {/* === 1. Ambient Background (Standardized) === */}
-       {/* 🟢 ปรับตำแหน่ง Blob ให้เหมือนหน้า Home/About เพื่อความ Consistent */}
+       {/* === 1. Ambient Background === */}
        <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         <div className="absolute top-[-20%] left-[-20%] w-[70vw] h-[70vw] rounded-full bg-blue-200/30 blur-[120px] animate-pulse-slow mix-blend-multiply" />
         <div className="absolute bottom-[-20%] right-[-20%] w-[60vw] h-[60vw] rounded-full bg-purple-200/30 blur-[120px] animate-pulse-slow delay-700 mix-blend-multiply" />
@@ -23,8 +22,8 @@ export default function ServicesPage() {
             {t('badge')}
         </div>
         
-        {/* 🟢 เพิ่ม text-balance และ whitespace-pre-line */}
-        <h1 className="text-4xl md:text-6xl font-bold text-slate-900 mb-6 leading-tight text-balance">
+        {/* 🟢 แก้ไขตรงนี้: เอา leading-tight ออก และเพิ่ม py-2 */}
+        <h1 className="text-4xl md:text-6xl font-bold text-slate-900 mb-6 py-2 text-balance">
              {t('hero_title_1')}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
                 {t('hero_title_highlight')}
@@ -52,7 +51,7 @@ export default function ServicesPage() {
                 </p>
             </div>
 
-            {/* Card 2: AI Automation (Highlight Dark Mode) */}
+            {/* Card 2: AI Automation */}
             <div className="bg-slate-900 p-8 rounded-[2rem] shadow-2xl hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group relative overflow-hidden flex flex-col border border-slate-800">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/20 blur-3xl rounded-full" />
                 <div className="w-14 h-14 bg-slate-800 rounded-2xl flex items-center justify-center text-purple-400 mb-6 group-hover:scale-110 transition-transform relative z-10 border border-slate-700">
