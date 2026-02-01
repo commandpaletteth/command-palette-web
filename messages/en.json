@@ -186,5 +186,26 @@
       "description": "High-Performance Digital Asset Agency.",
       "privacy": "Privacy Policy",
       "terms": "Terms of Service"
-    }
+    },
+    "Contact": {
+    "title_1": "Contact ",
+    "title_highlight": "Us",
+    "subtitle": "Please fill in the form below to get in touch.",
+    "label_name": "Contact Name",
+    "holder_name": "Mr. John Doe",
+    "label_company": "Company Name",
+    "holder_company": "Command & Palette Co., Ltd.",
+    "label_email": "Email",
+    "holder_email": "john@example.com",
+    "label_tel": "Tel",
+    "holder_tel": "081-234-5678",
+    "label_size": "Company Size",
+    "select_size": "Select size...",
+    "label_inquiry": "Inquiry / Details",
+    "holder_inquiry": "Tell us about your project...",
+    "btn_submit": "Send Inquiry",
+    "btn_sending": "Sending...",
+    "alert_success": "Sent Successfully! We will contact you back shortly.",
+    "alert_error": "Failed to send. Please try again."
+  }
   }

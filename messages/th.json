@@ -186,5 +186,26 @@
     "description": "High-Performance Digital Asset Agency.",
     "privacy": "นโยบายความเป็นส่วนตัว",
     "terms": "ข้อตกลงการใช้บริการ"
+  },
+  "Contact": {
+    "title_1": "ติดต่อ",
+    "title_highlight": "เรา",
+    "subtitle": "กรอกข้อมูลเพื่อให้เราติดต่อกลับ",
+    "label_name": "ชื่อผู้ติดต่อ",
+    "holder_name": "คุณสมชาย ใจดี",
+    "label_company": "ชื่อบริษัท",
+    "holder_company": "บริษัท คอมมานด์ แอนด์ พาเลท จำกัด",
+    "label_email": "อีเมล",
+    "holder_email": "somchai@example.com",
+    "label_tel": "เบอร์โทรศัพท์",
+    "holder_tel": "081-234-5678",
+    "label_size": "ขนาดบริษัท",
+    "select_size": "เลือกขนาด...",
+    "label_inquiry": "รายละเอียดที่ต้องการปรึกษา",
+    "holder_inquiry": "รายละเอียดโปรเจกต์...",
+    "btn_submit": "ส่งข้อความ",
+    "btn_sending": "กำลังส่ง...",
+    "alert_success": "ส่งข้อความเรียบร้อยแล้วครับ เราจะติดต่อกลับโดยเร็วที่สุด",
+    "alert_error": "เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง"
   }
 }
