@@ -117,7 +117,7 @@ export default function TermsPage() {
           {/* Footer Note */}
           <div className="text-center pt-8">
             <p className="text-slate-500 mb-8 font-medium">
-              {t('footer_note')} <a href="mailto:command.palette.th@gmail.com" className="text-blue-600 hover:underline font-bold">command.palette.th@gmail.com</a>
+              {t('footer_note')} <a href="mailto:info@command-palette.co" className="text-blue-600 hover:underline font-bold">info@command-palette.co</a>
             </p>
           </div>
 

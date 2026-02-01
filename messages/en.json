@@ -55,7 +55,13 @@
       "step3_desc": "High-performance engineering using Next.js. We build for speed, SEO, and scalability. This isn't a template; it's a custom-built asset owned 100% by you.",
       "step4_title": "04. Launch & Handover",
       "step4_desc": "We deploy to Vercel's global edge network. Then, we hand over the keys. Source code, credentials, everything. It's your asset, not a rental.",
-      "checklist_title": "What You Get in the Box",
+     "checklist_title": "What You Get in the Box",
+    "checklist_item_1": "Next.js Source Code Ownership",
+    "checklist_item_2": "Responsive Design",
+    "checklist_item_3": "SEO Optimization",
+    "checklist_item_4": "Vercel Hosting Setup",
+    "checklist_item_5": "Google Analytics Setup",
+    "checklist_item_6": "1-Month Support",
       "cta_title": "Start Your Process Today",
       "cta_btn": "Book a Free Strategy Session"
     },
@@ -76,20 +82,29 @@
       "cta_btn": "Book a Free Consultation"
     },
     "Works": {
-      "badge": "PORTFOLIO",
-      "hero_title_1": "Selected ",
-      "hero_title_highlight": "Masterpieces",
-      "hero_title_2": "",
-      "hero_subtitle": "We don't just make websites. We build digital assets that generate revenue and engagement.",
-      "btn_visit": "Visit Website",
-      "btn_case_study": "View Case Study",
-      "coming_soon_title": "Work In Progress",
-      "coming_soon_desc": "We are currently crafting the next big thing.\nMaybe it's your project?",
-      "coming_soon_btn": "Start Your Project",
-      "cta_title": "Ready to build your asset?",
-      "cta_subtitle": "Join the list of forward-thinking businesses owning their digital future.",
-      "cta_btn": "Book Strategy Call"
-    },
+    "badge": "PORTFOLIO",
+    "hero_title_1": "Selected ",
+    "hero_title_highlight": "Masterpieces",
+    "hero_title_2": "",
+    "hero_subtitle": "We don't just make websites. We build digital assets that generate revenue and engagement.",
+    
+    "project_1_tag": "TRAVEL PLATFORM",
+    "project_1_title": "Unlocked Journey",
+    "project_1_desc": "A Premium Journey Curator platform built for high-end travelers. Featuring dynamic itinerary planning and booking systems.",
+    
+    "project_2_tag": "COMMUNITY",
+    "project_2_title": "One for the Girls",
+    "project_2_desc": "Bangkok's Premier Community for Women. A safe space platform built with modern Glassmorphism design aesthetics.",
+
+    "btn_visit": "Visit Website",
+    "btn_case_study": "View Case Study",
+    "coming_soon_title": "Work In Progress",
+    "coming_soon_desc": "We are currently crafting the next big thing.\nMaybe it's your project?",
+    "coming_soon_btn": "Start Your Project",
+    "cta_title": "Ready to build your asset?",
+    "cta_subtitle": "Join the list of forward-thinking businesses owning their digital future.",
+    "cta_btn": "Book Strategy Call"
+  },
     "Privacy": {
       "hero_title_1": "Privacy ",
       "hero_title_highlight": "Policy",

@@ -1,110 +1,134 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Search, PenTool, Code2, Rocket, CheckCircle2, ChevronRight } from "lucide-react";
-import { useTranslations } from 'next-intl';
+// ✅ ใช้แค่ icon ที่จำเป็น (ตัดพวกไอคอนเยอะๆ ออก)
+import { Search, Palette, Code2, Rocket, CheckCircle2, ArrowRight } from "lucide-react";
+import { useTranslations, useLocale } from 'next-intl';
 
 export default function ProcessPage() {
   const t = useTranslations('Process');
+  const locale = useLocale();
+
+  // สร้าง Array สำหรับวนลูป Checklist 6 ข้อ
+  const checklistItems = [1, 2, 3, 4, 5, 6];
 
   return (
     <div className="min-h-screen bg-slate-50 font-sans selection:bg-purple-100/50 overflow-hidden relative flex flex-col">
       
       {/* === 1. Ambient Background === */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-[-10%] right-[-10%] w-[80vw] h-[80vw] rounded-full bg-blue-100/40 blur-[120px] mix-blend-multiply" />
-        <div className="absolute bottom-[-10%] left-[-10%] w-[70vw] h-[70vw] rounded-full bg-purple-100/40 blur-[120px] mix-blend-multiply delay-1000" />
+        <div className="absolute top-[-20%] left-[-20%] w-[70vw] h-[70vw] rounded-full bg-blue-200/30 blur-[120px] animate-pulse-slow mix-blend-multiply" />
+        <div className="absolute bottom-[-20%] right-[-20%] w-[60vw] h-[60vw] rounded-full bg-purple-200/30 blur-[120px] animate-pulse-slow delay-700 mix-blend-multiply" />
       </div>
 
       {/* === 2. Hero Section === */}
-      <section className="relative z-10 pt-32 md:pt-40 pb-20 px-6 text-center">
+      <section className="relative z-10 py-32 px-6 md:px-12 lg:px-24 text-center pt-40">
         <div className="max-w-4xl mx-auto">
-            <span className="inline-block py-1 px-3 rounded-full bg-blue-50 text-blue-600 text-sm font-bold tracking-wide mb-6 border border-blue-100">
-                {t('badge')}
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-xs md:text-sm font-bold tracking-wider mb-6 uppercase border border-blue-100">
+            {t('badge')}
+          </div>
+          <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-8 text-slate-900 leading-tight whitespace-pre-line text-balance">
+            {t('hero_title_1')}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
+                {t('hero_title_highlight')}
             </span>
-            <h1 className="text-4xl md:text-6xl font-bold text-slate-900 mb-6 leading-tight whitespace-pre-line">
-                {t('hero_title_1')}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
-                    {t('hero_title_highlight')}
-                </span>
-                {t('hero_title_2')}
-            </h1>
-            <p className="text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
-                {t('hero_subtitle')}
-            </p>
+            {t('hero_title_2')}
+          </h1>
+          <p className="text-xl md:text-2xl text-slate-600 leading-relaxed max-w-2xl mx-auto text-balance">
+            {t('hero_subtitle')}
+          </p>
         </div>
       </section>
 
-      {/* === 3. The Timeline Process === */}
-      <section className="relative z-10 pb-32 px-6 max-w-5xl mx-auto">
-        <div className="relative">
-            {/* เส้น TimeLine ตรงกลาง */}
-            <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-200 via-purple-200 to-transparent -translate-x-1/2 md:translate-x-0" />
+      {/* === 3. Timeline Section (Zig-Zag) === */}
+      <section className="relative z-10 py-12 px-6">
+        <div className="max-w-6xl mx-auto relative">
+            
+            {/* เส้น Timeline ตรงกลาง (Desktop) / ซ้าย (Mobile) */}
+            <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-200 via-purple-200 to-emerald-200 md:-translate-x-1/2 hidden md:block" />
+            <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-slate-200 md:hidden" />
 
-            {/* Step 1 */}
-            <div className="relative flex flex-col md:flex-row gap-8 md:gap-0 items-start md:items-center mb-20 group">
-                {/* ✅ แก้ตรงนี้: เพิ่ม pl-24 (เว้นซ้าย) บนมือถือ เพื่อไม่ให้ทับไอคอน 
-                   แต่พอเป็นจอคอม (md:pl-0) ให้เอาเว้นซ้ายออก เพราะมันจะไปอยู่ฝั่งขวาแทน
-                */}
-                <div className="md:w-1/2 md:pr-12 md:text-right order-2 md:order-1 pl-24 md:pl-0">
-                    <h3 className="text-2xl font-bold text-slate-900 mb-3">{t('step1_title')}</h3>
-                    <p className="text-slate-600 leading-relaxed">{t('step1_desc')}</p>
+            <div className="space-y-12 md:space-y-24 relative">
+                
+                {/* Step 1: Discovery */}
+                <div className="relative flex flex-col md:flex-row items-center justify-between group">
+                    <div className="hidden md:block w-5/12" />
+                    <div className="absolute left-8 md:left-1/2 -translate-x-1/2 w-16 h-16 rounded-full bg-white border-4 border-blue-100 flex items-center justify-center z-10 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                        <Search className="w-6 h-6 text-blue-600" />
+                    </div>
+                    <div className="w-full md:w-5/12 pl-24 md:pl-0 md:text-left">
+                        {/* ❌ เอาเลข 01 พื้นหลังออกแล้ว */}
+                        <div className="bg-white/60 backdrop-blur-xl border border-white/80 p-8 rounded-[2rem] shadow-sm hover:shadow-xl transition-all duration-300 relative overflow-hidden group-hover:border-blue-200">
+                            <h3 className="text-2xl font-bold text-slate-900 mb-3">{t('step1_title')}</h3>
+                            <p className="text-slate-600 leading-relaxed">{t('step1_desc')}</p>
+                        </div>
+                    </div>
                 </div>
-                <div className="absolute left-8 md:left-1/2 -translate-x-1/2 flex items-center justify-center w-16 h-16 rounded-2xl bg-white border border-blue-100 shadow-lg z-10 order-1 md:order-2 group-hover:scale-110 transition-transform duration-300">
-                    <Search className="w-8 h-8 text-blue-600" />
-                </div>
-                <div className="md:w-1/2 md:pl-12 order-3 hidden md:block"></div> 
-            </div>
 
-            {/* Step 2 */}
-            <div className="relative flex flex-col md:flex-row gap-8 md:gap-0 items-start md:items-center mb-20 group">
-                <div className="md:w-1/2 md:pr-12 hidden md:block"></div> 
-                <div className="absolute left-8 md:left-1/2 -translate-x-1/2 flex items-center justify-center w-16 h-16 rounded-2xl bg-white border border-purple-100 shadow-lg z-10 group-hover:scale-110 transition-transform duration-300">
-                    <PenTool className="w-8 h-8 text-purple-600" />
+                {/* Step 2: The Palette */}
+                <div className="relative flex flex-col md:flex-row-reverse items-center justify-between group">
+                    <div className="hidden md:block w-5/12" />
+                    <div className="absolute left-8 md:left-1/2 -translate-x-1/2 w-16 h-16 rounded-full bg-white border-4 border-purple-100 flex items-center justify-center z-10 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                        <Palette className="w-6 h-6 text-purple-600" />
+                    </div>
+                    <div className="w-full md:w-5/12 pl-24 md:pl-0 md:pr-0 text-left md:text-right">
+                        {/* ❌ เอาเลข 02 พื้นหลังออกแล้ว */}
+                        <div className="bg-white/60 backdrop-blur-xl border border-white/80 p-8 rounded-[2rem] shadow-sm hover:shadow-xl transition-all duration-300 relative overflow-hidden group-hover:border-purple-200">
+                            <h3 className="text-2xl font-bold text-slate-900 mb-3">{t('step2_title')}</h3>
+                            <p className="text-slate-600 leading-relaxed">{t('step2_desc')}</p>
+                        </div>
+                    </div>
                 </div>
-                {/* ✅ แก้ตรงนี้: เพิ่ม pl-24 บนมือถือ (เดิมอาจจะน้อยไป) */}
-                <div className="md:w-1/2 md:pl-12 md:text-left pl-24">
-                    <h3 className="text-2xl font-bold text-slate-900 mb-3">{t('step2_title')}</h3>
-                    <p className="text-slate-600 leading-relaxed">{t('step2_desc')}</p>
-                </div>
-            </div>
 
-            {/* Step 3 */}
-            <div className="relative flex flex-col md:flex-row gap-8 md:gap-0 items-start md:items-center mb-20 group">
-                {/* ✅ แก้ตรงนี้: เพิ่ม pl-24 บนมือถือ */}
-                <div className="md:w-1/2 md:pr-12 md:text-right order-2 md:order-1 pl-24 md:pl-0">
-                    <h3 className="text-2xl font-bold text-slate-900 mb-3">{t('step3_title')}</h3>
-                    <p className="text-slate-600 leading-relaxed">{t('step3_desc')}</p>
+                {/* Step 3: The Command */}
+                <div className="relative flex flex-col md:flex-row items-center justify-between group">
+                    <div className="hidden md:block w-5/12" />
+                    <div className="absolute left-8 md:left-1/2 -translate-x-1/2 w-16 h-16 rounded-full bg-white border-4 border-indigo-100 flex items-center justify-center z-10 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                        <Code2 className="w-6 h-6 text-indigo-600" />
+                    </div>
+                    <div className="w-full md:w-5/12 pl-24 md:pl-0 md:text-left">
+                        {/* ❌ เอาเลข 03 พื้นหลังออกแล้ว */}
+                        <div className="bg-white/60 backdrop-blur-xl border border-white/80 p-8 rounded-[2rem] shadow-sm hover:shadow-xl transition-all duration-300 relative overflow-hidden group-hover:border-indigo-200">
+                            <h3 className="text-2xl font-bold text-slate-900 mb-3">{t('step3_title')}</h3>
+                            <p className="text-slate-600 leading-relaxed">{t('step3_desc')}</p>
+                        </div>
+                    </div>
                 </div>
-                <div className="absolute left-8 md:left-1/2 -translate-x-1/2 flex items-center justify-center w-16 h-16 rounded-2xl bg-white border border-cyan-100 shadow-lg z-10 order-1 md:order-2 group-hover:scale-110 transition-transform duration-300">
-                    <Code2 className="w-8 h-8 text-cyan-600" />
-                </div>
-                <div className="md:w-1/2 md:pl-12 order-3 hidden md:block"></div> 
-            </div>
 
-            {/* Step 4 */}
-            <div className="relative flex flex-col md:flex-row gap-8 md:gap-0 items-start md:items-center mb-10 group">
-                <div className="md:w-1/2 md:pr-12 hidden md:block"></div> 
-                <div className="absolute left-8 md:left-1/2 -translate-x-1/2 flex items-center justify-center w-16 h-16 rounded-2xl bg-slate-900 border border-slate-700 shadow-xl z-10 group-hover:scale-110 transition-transform duration-300">
-                    <Rocket className="w-8 h-8 text-white" />
+                {/* Step 4: Launch (Dark Card) */}
+                <div className="relative flex flex-col md:flex-row-reverse items-center justify-between group">
+                    <div className="hidden md:block w-5/12" />
+                    <div className="absolute left-8 md:left-1/2 -translate-x-1/2 w-16 h-16 rounded-full bg-slate-900 border-4 border-emerald-400 flex items-center justify-center z-10 shadow-xl shadow-emerald-500/20 group-hover:scale-110 transition-transform duration-300">
+                        <Rocket className="w-6 h-6 text-emerald-400" />
+                    </div>
+                    <div className="w-full md:w-5/12 pl-24 md:pl-0 md:pr-0 text-left md:text-right">
+                        {/* ❌ เอาเลข 04 พื้นหลังออกแล้ว แต่ยังคง Dark Theme ไว้ให้เด่น */}
+                        <div className="bg-slate-900 p-8 rounded-[2rem] shadow-2xl hover:scale-[1.02] transition-all duration-300 relative overflow-hidden border border-slate-700">
+                            <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/10 to-blue-500/10" />
+                            <h3 className="text-2xl font-bold text-white mb-3 relative z-10">{t('step4_title')}</h3>
+                            <p className="text-slate-300 leading-relaxed relative z-10">{t('step4_desc')}</p>
+                        </div>
+                    </div>
                 </div>
-                {/* ✅ แก้ตรงนี้: เพิ่ม pl-24 บนมือถือ */}
-                <div className="md:w-1/2 md:pl-12 md:text-left pl-24">
-                    <h3 className="text-2xl font-bold text-slate-900 mb-3">{t('step4_title')}</h3>
-                    <p className="text-slate-600 leading-relaxed">{t('step4_desc')}</p>
-                </div>
+
             </div>
         </div>
       </section>
 
-      {/* === 4. Checklist === */}
-      <section className="relative z-10 py-20 px-6 bg-white/40 backdrop-blur-xl border-y border-white/50">
-        <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl font-bold text-slate-900 mb-10">{t('checklist_title')}</h2>
-            <div className="grid sm:grid-cols-2 gap-4 text-left">
-                {["Next.js Source Code Ownership", "Responsive Design", "SEO Optimization", "Vercel Hosting Setup", "Google Analytics", "1-Month Support"].map((item, index) => (
-                    <div key={index} className="flex items-center gap-3 p-4 rounded-xl bg-white/60 border border-white/60 shadow-sm">
-                        <CheckCircle2 className="w-5 h-5 text-green-500 shrink-0" />
-                        <span className="text-slate-700 font-medium">{item}</span>
+      {/* === 4. Deliverables Checklist (แบบเรียบๆ ตามรูป) === */}
+      <section className="relative z-10 py-24 px-6 bg-white/40 backdrop-blur-sm border-y border-white/50 my-12">
+        <div className="max-w-5xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-12 text-center">{t('checklist_title')}</h2>
+            
+            {/* Grid 2 Columns ตามแบบต้นฉบับ */}
+            <div className="grid md:grid-cols-2 gap-4">
+                {checklistItems.map((itemNum) => (
+                    <div key={itemNum} className="flex items-center gap-3 p-4 bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
+                        {/* ไอคอนวงกลมติ๊กถูกสีเขียว */}
+                        <CheckCircle2 className="w-6 h-6 text-green-500 shrink-0" />
+                        {/* ข้อความจาก JSON */}
+                        <span className="font-medium text-slate-700">
+                            {t(`checklist_item_${itemNum}` as any)}
+                        </span>
                     </div>
                 ))}
             </div>
@@ -112,14 +136,18 @@ export default function ProcessPage() {
       </section>
 
       {/* === 5. CTA === */}
-      <section className="relative z-10 py-24 px-6 text-center">
-        <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">{t('cta_title')}</h2>
-        <a href="https://calendly.com/command-palette-th/45min" target="_blank" rel="noopener noreferrer">
-            <Button size="lg" className="rounded-full px-8 h-12 bg-slate-900 hover:bg-slate-800 text-white shadow-xl">
-                {t('cta_btn')} <ChevronRight className="w-4 h-4 ml-2" />
-            </Button>
-        </a>
+      <section className="relative z-10 py-10 px-6 text-center">
+        <div className="max-w-3xl mx-auto">
+            <h2 className="text-3xl font-bold mb-6 text-slate-900">{t('cta_title')}</h2>
+            <a href="https://calendly.com/command-palette-th/45min" target="_blank" rel="noopener noreferrer">
+                <Button size="lg" className="h-14 px-10 rounded-full text-lg bg-slate-900 text-white hover:bg-slate-800 shadow-xl shadow-slate-900/20 group">
+                    {t('cta_btn')} <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                </Button>
+            </a>
+        </div>
       </section>
+      
+      <div className="h-20"></div>
     </div>
   );
 }
