@@ -23,7 +23,8 @@ export default function PrivacyPage() {
       <section className="relative z-10 pt-40 pb-16 px-6 text-center md:text-left">
         <div className="container mx-auto max-w-4xl">
           <div className="space-y-6">
-            <h1 className="text-4xl md:text-6xl font-bold tracking-tighter text-slate-900 leading-tight">
+            {/* 🟢 แก้ตรงนี้: เอา leading-tight ออก + เพิ่ม py-2 กันสระโดนตัด */}
+            <h1 className="text-4xl md:text-6xl font-bold tracking-tighter text-slate-900 py-2">
               {t('hero_title_1')} <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">{t('hero_title_highlight')}</span>
             </h1>
             <p className="text-xl md:text-2xl text-slate-600 max-w-2xl leading-relaxed">
