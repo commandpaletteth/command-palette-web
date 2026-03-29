@@ -12,7 +12,7 @@ export default async function WorksPage({
   const t = await getTranslations('Works');
 
   // ✅ ใช้รูปจาก Unsplash แทนไฟล์ในเครื่อง เพื่อให้ Build ผ่านแน่นอน
-  const imgUnlocked = "https://images.unsplash.com/photo-1552560229-edf0813054f1?q=80&w=2187&auto=format&fit=crop"; 
+  const imgUnlocked = "https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=2068&auto=format&fit=crop"; 
   const imgGirls = "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=1932&auto=format&fit=crop";
 
   return (
