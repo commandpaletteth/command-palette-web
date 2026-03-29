@@ -1,22 +1,19 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Zap, Smartphone, Globe, Hammer, ArrowRight } from "lucide-react";
-import { getTranslations } from 'next-intl/server'; // ✅ ใช้เวอร์ชัน Server-side
-
-// ✅ 1. Import รูปภาพแบบ Static (Best Practice เพื่อป้องกัน Path ผิด)
-import thumbUnlocked from "@/public/images/works/unlocked-thumbnail.webp";
-import thumbGirls from "@/public/images/works/girls-thumbnail.webp";
+import { getTranslations } from 'next-intl/server';
 
 export default async function WorksPage({ 
   params 
 }: { 
   params: Promise<{ locale: string }> 
 }) {
-  // ✅ 2. await params ตามกฎ Next.js 15+
   const { locale } = await params;
-  
-  // ✅ 3. ใช้ getTranslations (Server) แทน useTranslations
   const t = await getTranslations('Works');
+
+  // ✅ ใช้รูปจาก Unsplash แทนไฟล์ในเครื่อง เพื่อให้ Build ผ่านแน่นอน
+  const imgUnlocked = "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop"; 
+  const imgGirls = "https://images.unsplash.com/photo-1481487196290-c152efe083f5?q=80&w=2524&auto=format&fit=crop";
 
   return (
     <div className="min-h-screen bg-slate-50 font-sans selection:bg-purple-100/50 overflow-hidden relative flex flex-col">
@@ -76,21 +73,18 @@ export default async function WorksPage({
                         </a>
                     </div>
                     <div className="md:w-1/2 w-full order-1 md:order-2">
-                        <a href="https://unlocked-journey.vercel.app" target="_blank" rel="noopener noreferrer"
-                          className="block rounded-2xl overflow-hidden shadow-2xl border border-slate-700/50 group-hover:scale-[1.02] transition-transform duration-500 rotate-1 group-hover:rotate-0">
+                        <div className="block rounded-2xl overflow-hidden shadow-2xl border border-slate-700/50 group-hover:scale-[1.02] transition-transform duration-500 rotate-1 group-hover:rotate-0">
                             <div className="relative w-full aspect-video">
-                                {/* ✅ ใช้ Static Import (thumbUnlocked) ป้องกันรูปหาย */}
                                 <Image
-                                  src={thumbUnlocked}
+                                  src={imgUnlocked}
                                   alt={t('project_1_title')}
                                   fill
                                   className="object-cover"
                                   sizes="(max-width: 768px) 100vw, 50vw"
-                                  priority // เพิ่ม priority สำหรับรูปแรกสุดของหน้า
-                                  placeholder="blur" // เพิ่ม blur placeholder เพื่อความเนี๊ยบ
+                                  priority
                                 />
                             </div>
-                        </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -99,14 +93,12 @@ export default async function WorksPage({
             <div className="group rounded-[2.5rem] bg-white border border-white/60 shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden flex flex-col relative h-full">
                 <div className="relative h-64 overflow-hidden">
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent z-10" />
-                    {/* ✅ ใช้ Static Import (thumbGirls) ป้องกันรูปหาย */}
                     <Image
-                      src={thumbGirls}
+                      src={imgGirls}
                       alt={t('project_2_title')}
                       fill
                       className="object-cover group-hover:scale-110 transition-transform duration-700"
                       sizes="(max-width: 768px) 100vw, 50vw"
-                      placeholder="blur"
                     />
                     <div className="absolute bottom-6 left-8 z-20">
                         <span className="px-3 py-1 rounded-full bg-[#B85C5C] text-white text-[10px] font-bold tracking-wide mb-3 inline-block shadow-sm">
