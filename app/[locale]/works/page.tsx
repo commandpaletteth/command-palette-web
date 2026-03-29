@@ -1,14 +1,23 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Zap, Smartphone, Globe, Hammer, ArrowRight } from "lucide-react";
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server'; // ✅ เปลี่ยนเป็น Server-side
 
-export default function WorksPage() {
-  const t = useTranslations('Works');
+export default async function WorksPage({ 
+  params 
+}: { 
+  params: Promise<{ locale: string }> 
+}) {
+  // ✅ 1. await params ตามกฎ Next.js 15+
+  const { locale } = await params;
+  
+  // ✅ 2. ใช้ getTranslations (Server) แทน useTranslations
+  const t = await getTranslations('Works');
 
   return (
     <div className="min-h-screen bg-slate-50 font-sans selection:bg-purple-100/50 overflow-hidden relative flex flex-col">
       
+      {/* Background Decor */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         <div className="absolute top-[-20%] left-[-20%] w-[70vw] h-[70vw] rounded-full bg-blue-200/30 blur-[120px] animate-pulse-slow mix-blend-multiply" />
         <div className="absolute bottom-[-20%] right-[-20%] w-[60vw] h-[60vw] rounded-full bg-purple-200/30 blur-[120px] animate-pulse-slow delay-700 mix-blend-multiply" />
@@ -34,6 +43,7 @@ export default function WorksPage() {
       <section className="relative z-10 container mx-auto px-6 pb-32 max-w-6xl">
         <div className="grid md:grid-cols-2 gap-8 items-stretch">
 
+            {/* Project 1: Unlocked Journey */}
             <div className="md:col-span-2 bg-slate-900 rounded-[2.5rem] p-8 md:p-12 shadow-2xl overflow-hidden relative group border border-slate-800">
                 <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-500/20 blur-[150px] rounded-full pointer-events-none" />
                 <div className="relative z-10 flex flex-col md:flex-row gap-12 items-center">
@@ -65,12 +75,14 @@ export default function WorksPage() {
                         <a href="https://unlocked-journey.vercel.app" target="_blank" rel="noopener noreferrer"
                           className="block rounded-2xl overflow-hidden shadow-2xl border border-slate-700/50 group-hover:scale-[1.02] transition-transform duration-500 rotate-1 group-hover:rotate-0">
                             <div className="relative w-full aspect-video">
+                                {/* ✅ ตรวจสอบ Path และไฟล์นามสกุลในเครื่องอีกครั้ง */}
                                 <Image
                                   src="/images/works/unlocked-journey.jpg"
-                                  alt="Unlocked Journey — Next.js web project by Command & Palette"
+                                  alt={t('project_1_title')}
                                   fill
                                   className="object-cover"
                                   sizes="(max-width: 768px) 100vw, 50vw"
+                                  priority // เพิ่ม priority สำหรับรูปแรกสุดของหน้า
                                 />
                             </div>
                         </a>
@@ -78,12 +90,14 @@ export default function WorksPage() {
                 </div>
             </div>
 
+            {/* Project 2: One for the Girls */}
             <div className="group rounded-[2.5rem] bg-white border border-white/60 shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden flex flex-col relative h-full">
                 <div className="relative h-64 overflow-hidden">
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent z-10" />
+                    {/* ✅ ตรวจสอบ Path และไฟล์นามสกุลในเครื่องอีกครั้ง */}
                     <Image
                       src="/images/works/one-for-the-girls.jpg"
-                      alt="One for the Girls — web project by Command & Palette"
+                      alt={t('project_2_title')}
                       fill
                       className="object-cover group-hover:scale-110 transition-transform duration-700"
                       sizes="(max-width: 768px) 100vw, 50vw"
@@ -109,6 +123,7 @@ export default function WorksPage() {
                 </div>
             </div>
 
+            {/* Coming Soon Section */}
             <div className="group rounded-[2.5rem] bg-slate-100/50 border-2 border-dashed border-slate-200 overflow-hidden flex flex-col items-center justify-center text-center p-12 min-h-[400px] hover:bg-slate-100/80 transition-colors h-full">
                 <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mb-6 shadow-sm group-hover:scale-110 transition-transform duration-300">
                     <Hammer className="w-8 h-8 text-slate-400" />
@@ -125,6 +140,7 @@ export default function WorksPage() {
         </div>
       </section>
 
+      {/* CTA Section */}
       <section className="relative z-10 py-20 px-6 bg-slate-900 text-center">
         <div className="max-w-3xl mx-auto">
             <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 tracking-tight">{t('cta_title')}</h2>
