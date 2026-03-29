@@ -21,9 +21,12 @@ const ibmThai = IBM_Plex_Sans_Thai({
 });
 
 export const metadata: Metadata = {
+  // ✅ เติมบรรทัดนี้: ใส่ Domain จริงของ Command & Palette 
+  // (ถ้ามี Env แนะนำให้ดึงจาก process.env.NEXT_PUBLIC_BASE_URL แทนเพื่อความชัวร์ในแต่ละ Environment)
+  metadataBase: new URL('https://www.command-palette.co'), 
+  
   title: "Command & Palette | Digital Asset Agency",
   description: "High-Performance Web & AI Automation Agency based in Bangkok.",
-  // ✅ เพิ่มส่วนนี้ครับ: ชี้เป้าไปที่ไฟล์ใน public/favicon.svg
   icons: {
     icon: '/favicon.svg',
   },
@@ -57,7 +60,7 @@ export default async function RootLayout({
 
           <Footer />
 
-          {/* ✅ Logic กัน Data Pollution เดิมของนาย */}
+          {/* ✅ Logic กัน Data Pollution */}
           {process.env.NODE_ENV === 'production' && (
             <>
               <Script

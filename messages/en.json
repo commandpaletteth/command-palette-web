@@ -206,6 +206,7 @@
     "btn_submit": "Send Inquiry",
     "btn_sending": "Sending...",
     "alert_success": "Sent Successfully! We will contact you back shortly.",
-    "alert_error": "Failed to send. Please try again."
+    "alert_error": "Failed to send. Please try again.",
+    "btn_submit_again": "Send Another Message"
   }
   }
