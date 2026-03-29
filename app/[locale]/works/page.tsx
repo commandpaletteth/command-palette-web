@@ -1,17 +1,21 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Zap, Smartphone, Globe, Hammer, ArrowRight } from "lucide-react";
-import { getTranslations } from 'next-intl/server'; // ✅ เปลี่ยนเป็น Server-side
+import { getTranslations } from 'next-intl/server'; // ✅ ใช้เวอร์ชัน Server-side
+
+// ✅ 1. Import รูปภาพแบบ Static (Best Practice เพื่อป้องกัน Path ผิด)
+import thumbUnlocked from "@/public/images/works/unlocked-thumbnail.webp";
+import thumbGirls from "@/public/images/works/girls-thumbnail.webp";
 
 export default async function WorksPage({ 
   params 
 }: { 
   params: Promise<{ locale: string }> 
 }) {
-  // ✅ 1. await params ตามกฎ Next.js 15+
+  // ✅ 2. await params ตามกฎ Next.js 15+
   const { locale } = await params;
   
-  // ✅ 2. ใช้ getTranslations (Server) แทน useTranslations
+  // ✅ 3. ใช้ getTranslations (Server) แทน useTranslations
   const t = await getTranslations('Works');
 
   return (
@@ -75,14 +79,15 @@ export default async function WorksPage({
                         <a href="https://unlocked-journey.vercel.app" target="_blank" rel="noopener noreferrer"
                           className="block rounded-2xl overflow-hidden shadow-2xl border border-slate-700/50 group-hover:scale-[1.02] transition-transform duration-500 rotate-1 group-hover:rotate-0">
                             <div className="relative w-full aspect-video">
-                                {/* ✅ ตรวจสอบ Path และไฟล์นามสกุลในเครื่องอีกครั้ง */}
+                                {/* ✅ ใช้ Static Import (thumbUnlocked) ป้องกันรูปหาย */}
                                 <Image
-                                  src="/images/works/unlocked-journey.jpg"
+                                  src={thumbUnlocked}
                                   alt={t('project_1_title')}
                                   fill
                                   className="object-cover"
                                   sizes="(max-width: 768px) 100vw, 50vw"
                                   priority // เพิ่ม priority สำหรับรูปแรกสุดของหน้า
+                                  placeholder="blur" // เพิ่ม blur placeholder เพื่อความเนี๊ยบ
                                 />
                             </div>
                         </a>
@@ -94,13 +99,14 @@ export default async function WorksPage({
             <div className="group rounded-[2.5rem] bg-white border border-white/60 shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden flex flex-col relative h-full">
                 <div className="relative h-64 overflow-hidden">
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent z-10" />
-                    {/* ✅ ตรวจสอบ Path และไฟล์นามสกุลในเครื่องอีกครั้ง */}
+                    {/* ✅ ใช้ Static Import (thumbGirls) ป้องกันรูปหาย */}
                     <Image
-                      src="/images/works/one-for-the-girls.jpg"
+                      src={thumbGirls}
                       alt={t('project_2_title')}
                       fill
                       className="object-cover group-hover:scale-110 transition-transform duration-700"
                       sizes="(max-width: 768px) 100vw, 50vw"
+                      placeholder="blur"
                     />
                     <div className="absolute bottom-6 left-8 z-20">
                         <span className="px-3 py-1 rounded-full bg-[#B85C5C] text-white text-[10px] font-bold tracking-wide mb-3 inline-block shadow-sm">
