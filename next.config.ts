@@ -1,9 +1,10 @@
 import createNextIntlPlugin from 'next-intl/plugin';
+import type { NextConfig } from 'next'; // ✅ เพิ่มการ Import Type
 
 const withNextIntl = createNextIntlPlugin('./i18n.ts');
 
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+// ✅ ระบุ Type ให้ชัดเจนว่าเป็น NextConfig
+const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
@@ -12,8 +13,6 @@ const nextConfig = {
       },
     ],
   },
-  // นายสามารถเพิ่ม Config อื่นๆ ของ Next.js ตรงนี้ได้ในอนาคต
 };
 
-// ✅ ยุบรวมการ Export ไว้ที่เดียวแบบ Clean Code
 export default withNextIntl(nextConfig);
