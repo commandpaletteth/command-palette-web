@@ -11,6 +11,9 @@ export default async function WorksPage({
   await params;
   const t = await getTranslations('Works');
 
+  const imgUnlocked = "https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=2068&auto=format&fit=crop";
+  const imgGirls = "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=1932&auto=format&fit=crop";
+
   return (
     <div className="min-h-screen bg-slate-50 font-sans selection:bg-purple-100/50 overflow-hidden relative flex flex-col">
       
@@ -73,7 +76,7 @@ export default async function WorksPage({
                           className="rounded-2xl overflow-hidden shadow-2xl border border-slate-700/50 group-hover:scale-[1.02] transition-transform duration-500 rotate-1 group-hover:rotate-0 block">
                             <div className="relative w-full aspect-video">
                                 <Image
-                                  src="/images/works/project-1.jpg"
+                                  src={imgUnlocked}
                                   alt={t('project_1_title')}
                                   fill
                                   className="object-cover"
@@ -91,7 +94,7 @@ export default async function WorksPage({
                 <div className="relative h-64 overflow-hidden">
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent z-10" />
                     <Image
-                      src="/images/works/project-2.jpg"
+                      src={imgGirls}
                       alt={t('project_2_title')}
                       fill
                       className="object-cover group-hover:scale-110 transition-transform duration-700"
