@@ -3,17 +3,13 @@ import { Button } from "@/components/ui/button";
 import { ExternalLink, Zap, Smartphone, Globe, Hammer, ArrowRight } from "lucide-react";
 import { getTranslations } from 'next-intl/server';
 
-export default async function WorksPage({ 
-  params 
-}: { 
-  params: Promise<{ locale: string }> 
+export default async function WorksPage({
+  params
+}: {
+  params: Promise<{ locale: string }>
 }) {
-  const { locale } = await params;
+  await params;
   const t = await getTranslations('Works');
-
-  // ✅ ใช้รูปจาก Unsplash แทนไฟล์ในเครื่อง เพื่อให้ Build ผ่านแน่นอน
-  const imgUnlocked = "https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=2068&auto=format&fit=crop"; 
-  const imgGirls = "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=1932&auto=format&fit=crop";
 
   return (
     <div className="min-h-screen bg-slate-50 font-sans selection:bg-purple-100/50 overflow-hidden relative flex flex-col">
@@ -73,10 +69,11 @@ export default async function WorksPage({
                         </a>
                     </div>
                     <div className="md:w-1/2 w-full order-1 md:order-2">
-                        <div className="block rounded-2xl overflow-hidden shadow-2xl border border-slate-700/50 group-hover:scale-[1.02] transition-transform duration-500 rotate-1 group-hover:rotate-0">
+                        <a href="https://unlocked-journey.vercel.app" target="_blank" rel="noopener noreferrer"
+                          className="rounded-2xl overflow-hidden shadow-2xl border border-slate-700/50 group-hover:scale-[1.02] transition-transform duration-500 rotate-1 group-hover:rotate-0 block">
                             <div className="relative w-full aspect-video">
                                 <Image
-                                  src={imgUnlocked}
+                                  src="/images/works/project-1.jpg"
                                   alt={t('project_1_title')}
                                   fill
                                   className="object-cover"
@@ -84,7 +81,7 @@ export default async function WorksPage({
                                   priority
                                 />
                             </div>
-                        </div>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -94,7 +91,7 @@ export default async function WorksPage({
                 <div className="relative h-64 overflow-hidden">
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent z-10" />
                     <Image
-                      src={imgGirls}
+                      src="/images/works/project-2.jpg"
                       alt={t('project_2_title')}
                       fill
                       className="object-cover group-hover:scale-110 transition-transform duration-700"
