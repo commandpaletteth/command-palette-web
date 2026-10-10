@@ -20,6 +20,7 @@ const ROUTES: RouteConfig[] = [
   { path: '/contact',   changeFrequency: 'yearly',  priority: 0.7 },
   { path: '/privacy',   changeFrequency: 'yearly',  priority: 0.3 },
   { path: '/terms',     changeFrequency: 'yearly',  priority: 0.3 },
+  { path: '/kado/privacy', changeFrequency: 'yearly', priority: 0.3 },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
