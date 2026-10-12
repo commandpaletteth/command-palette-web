@@ -3,6 +3,9 @@ import { Button } from "@/components/ui/button";
 import { ExternalLink, Zap, Smartphone, Globe, Hammer, ArrowRight } from "lucide-react";
 import { getTranslations } from 'next-intl/server';
 
+// Kado on the Chrome Web Store
+const KADO_STORE_URL = "https://chromewebstore.google.com/detail/hlpahcjndodkppkeicpgoblnjokjkece";
+
 export default async function WorksPage({
   params
 }: {
@@ -10,6 +13,7 @@ export default async function WorksPage({
 }) {
   await params;
   const t = await getTranslations('Works');
+  const tk = await getTranslations('WorksKado');
 
   const imgUnlocked = "https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=2068&auto=format&fit=crop";
   const imgGirls = "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=1932&auto=format&fit=crop";
@@ -121,8 +125,43 @@ export default async function WorksPage({
                 </div>
             </div>
 
+            {/* Project 3: Kado (own product) */}
+            <div className="group rounded-[2.5rem] bg-white border border-white/60 shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden flex flex-col relative h-full">
+                <a href={KADO_STORE_URL} target="_blank" rel="noopener noreferrer" className="relative h-64 overflow-hidden bg-[#f4f3ef] block">
+                    <Image
+                      src="/images/works/kado.png"
+                      alt={tk('title')}
+                      fill
+                      className="object-cover object-left-top group-hover:scale-105 transition-transform duration-700"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10" />
+                    <div className="absolute bottom-6 left-8 z-20">
+                        <span className="px-3 py-1 rounded-full bg-emerald-700 text-white text-[10px] font-bold tracking-wide mb-3 inline-block shadow-sm">
+                            {tk('tag')}
+                        </span>
+                        <h3 className="text-2xl font-bold text-white drop-shadow-md tracking-tight">{tk('title')}</h3>
+                    </div>
+                </a>
+                <div className="p-8 flex flex-col flex-grow">
+                    <p className="text-slate-600 mb-6 flex-grow leading-relaxed">{tk('desc')}</p>
+                    <div className="flex flex-wrap gap-2 mb-8">
+                        <span className="text-xs font-semibold px-3 py-1 bg-emerald-50 text-emerald-700 rounded-full border border-emerald-100">{tk('chip_1')}</span>
+                        <span className="text-xs font-semibold px-3 py-1 bg-emerald-50 text-emerald-700 rounded-full border border-emerald-100">{tk('chip_2')}</span>
+                        <span className="text-xs font-semibold px-3 py-1 bg-emerald-50 text-emerald-700 rounded-full border border-emerald-100">{tk('chip_3')}</span>
+                    </div>
+                    {KADO_STORE_URL && (
+                      <a href={KADO_STORE_URL} target="_blank" rel="noopener noreferrer">
+                          <Button variant="outline" className="w-full rounded-full border-slate-200 hover:bg-emerald-700 hover:text-white hover:border-emerald-700 transition-all group-hover:shadow-lg h-12">
+                              {tk('btn')} <ExternalLink className="w-4 h-4 ml-2" />
+                          </Button>
+                      </a>
+                    )}
+                </div>
+            </div>
+
             {/* Coming Soon Section */}
-            <div className="group rounded-[2.5rem] bg-slate-100/50 border-2 border-dashed border-slate-200 overflow-hidden flex flex-col items-center justify-center text-center p-12 min-h-[400px] hover:bg-slate-100/80 transition-colors h-full">
+            <div className="md:col-span-2 group rounded-[2.5rem] bg-slate-100/50 border-2 border-dashed border-slate-200 overflow-hidden flex flex-col items-center justify-center text-center p-12 min-h-[320px] hover:bg-slate-100/80 transition-colors h-full">
                 <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mb-6 shadow-sm group-hover:scale-110 transition-transform duration-300">
                     <Hammer className="w-8 h-8 text-slate-400" />
                 </div>

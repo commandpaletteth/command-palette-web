@@ -2,6 +2,9 @@ import { Button } from "@/components/ui/button";
 import { Command, Palette, Zap, Database, Bot } from "lucide-react";
 import { getTranslations } from 'next-intl/server'; // ✅ ใช้เวอร์ชัน Server
 
+// Kept for future use. Not linked anywhere and hidden from search engines.
+export const metadata = { robots: { index: false, follow: false } };
+
 // ✅ รับ params มา await เสมอ
 export default async function AboutPage({ 
   params 

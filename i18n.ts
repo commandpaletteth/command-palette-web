@@ -15,6 +15,10 @@ export default getRequestConfig(async ({requestLocale}) => {
 
   return {
     locale, // 👈👈👈 ตัวนี้ครับที่ขาดไป! ต้องใส่คืนค่ากลับไปให้ระบบด้วย
-    messages: (await import(`./messages/${locale}.json`)).default
+    messages: {
+      ...(await import(`./messages/${locale}.json`)).default,
+      // New agency pages (clinics, pricing, founder). Kept in a separate file so they can ship independently.
+      ...(await import(`./messages/agency/${locale}.json`)).default,
+    }
   };
 });

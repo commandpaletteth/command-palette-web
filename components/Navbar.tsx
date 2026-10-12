@@ -9,7 +9,7 @@ import { Menu, Calendar, ArrowLeft } from "lucide-react";
 import { useTranslations, useLocale } from "next-intl";
 
 export default function Navbar() {
-  const t = useTranslations("Navbar");
+  const t = useTranslations("Nav");
   const locale = useLocale();
   
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -76,7 +76,7 @@ export default function Navbar() {
       >
         <div 
             className={`
-                max-w-7xl mx-auto h-16 pl-4 pr-2 md:px-6 flex items-center justify-between rounded-full 
+                relative max-w-7xl mx-auto h-16 pl-4 pr-2 md:px-6 flex items-center justify-between rounded-full 
                 transition-all duration-500
                 ${isScrolled 
                     ? 'bg-white/70 backdrop-blur-xl border border-white/40 shadow-lg shadow-black/5' 
@@ -113,12 +113,12 @@ export default function Navbar() {
           </Link>
 
           {/* ✅ Desktop Menu: เปลี่ยนจาก md:flex เป็น lg:flex (โชว์เฉพาะจอใหญ่จริงๆ Tablet ให้ใช้ Burger) */}
-          <nav className="hidden lg:flex items-center gap-6 xl:gap-8 text-sm font-medium text-slate-700"> 
-            <Link href={`/${locale}/about`} className="hover:text-slate-900 transition-colors drop-shadow-[0_1px_1px_rgba(255,255,255,0.5)]">{t("about")}</Link>
-            <Link href={`/${locale}/process`} className="hover:text-slate-900 transition-colors drop-shadow-[0_1px_1px_rgba(255,255,255,0.5)]">{t("process")}</Link>
-            <Link href={`/${locale}/works`} className="hover:text-slate-900 transition-colors drop-shadow-[0_1px_1px_rgba(255,255,255,0.5)]">{t("works")}</Link>
+          {/* Menu is centred on the bar itself, so it stays in the middle whatever the logo and buttons measure */}
+          <nav className="hidden lg:flex absolute left-1/2 -translate-x-1/2 items-center gap-8 text-sm font-medium text-slate-700"> 
+            <Link href={`/${locale}/works`} className="hover:text-slate-900 transition-colors drop-shadow-[0_1px_1px_rgba(255,255,255,0.5)]">{t("work")}</Link>
             <Link href={`/${locale}/services`} className="hover:text-slate-900 transition-colors drop-shadow-[0_1px_1px_rgba(255,255,255,0.5)]">{t("services")}</Link>
-            <Link href={`/${locale}/contact`} className="hover:text-slate-900 transition-colors drop-shadow-[0_1px_1px_rgba(255,255,255,0.5)]">Contact</Link>
+            <Link href={`/${locale}/pricing`} className="hover:text-slate-900 transition-colors drop-shadow-[0_1px_1px_rgba(255,255,255,0.5)]">{t("pricing")}</Link>
+            <Link href={`/${locale}/founder`} className="hover:text-slate-900 transition-colors drop-shadow-[0_1px_1px_rgba(255,255,255,0.5)]">{t("about")}</Link>
           </nav>
 
           {/* ✅ Right Section: รวมปุ่มต่างๆ ไว้ใน div เดียวกันเพื่อคุม layout */}
@@ -164,7 +164,7 @@ export default function Navbar() {
                     className="gap-2 text-slate-600 pl-2 hover:bg-slate-100 rounded-full"
                     onClick={() => setIsMobileMenuOpen(false)}
                 >
-                    <ArrowLeft className="w-5 h-5" /> Back
+                    <ArrowLeft className="w-5 h-5" /> {t("back")}
                 </Button>
                 <div className="flex items-center gap-2 opacity-50 grayscale">
                      <Image 
@@ -178,11 +178,10 @@ export default function Navbar() {
             </div>
 
             <nav className="flex-grow flex flex-col justify-center gap-6 md:gap-8 px-8 pb-20">
-                <Link href={`/${locale}/about`} onClick={() => setIsMobileMenuOpen(false)} className="text-3xl font-bold text-slate-800 tracking-tight hover:text-purple-600 transition-colors">{t("about")}</Link>
-                <Link href={`/${locale}/process`} onClick={() => setIsMobileMenuOpen(false)} className="text-3xl font-bold text-slate-800 tracking-tight hover:text-purple-600 transition-colors">{t("process")}</Link>
-                <Link href={`/${locale}/works`} onClick={() => setIsMobileMenuOpen(false)} className="text-3xl font-bold text-slate-800 tracking-tight hover:text-purple-600 transition-colors">{t("works")}</Link>
+                <Link href={`/${locale}/works`} onClick={() => setIsMobileMenuOpen(false)} className="text-3xl font-bold text-slate-800 tracking-tight hover:text-purple-600 transition-colors">{t("work")}</Link>
                 <Link href={`/${locale}/services`} onClick={() => setIsMobileMenuOpen(false)} className="text-3xl font-bold text-slate-800 tracking-tight hover:text-purple-600 transition-colors">{t("services")}</Link>
-                <Link href={`/${locale}/contact`} onClick={() => setIsMobileMenuOpen(false)} className="text-3xl font-bold text-slate-800 tracking-tight hover:text-purple-600 transition-colors">Contact Us</Link>
+                <Link href={`/${locale}/pricing`} onClick={() => setIsMobileMenuOpen(false)} className="text-3xl font-bold text-slate-800 tracking-tight hover:text-purple-600 transition-colors">{t("pricing")}</Link>
+                <Link href={`/${locale}/founder`} onClick={() => setIsMobileMenuOpen(false)} className="text-3xl font-bold text-slate-800 tracking-tight hover:text-purple-600 transition-colors">{t("about")}</Link>
                 
                 {/* ✅ เพิ่มปุ่ม Book a call ใน Mobile Menu (เพราะเราซ่อนจาก Navbar) */}
                 <div className="pt-4">

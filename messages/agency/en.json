@@ -1,0 +1,349 @@
+{
+  "Clinics": {
+    "meta_title": "Websites for Clinics Serving International Patients | Command & Palette",
+    "meta_description": "Bilingual, fast clinic websites for Thailand's international patients. Live in 3 weeks, from $4,500. Work directly with the person who builds it.",
+    "badge": "For clinics in Thailand serving international patients",
+    "hero_title_1": "Websites that turn international visitors into ",
+    "hero_title_highlight": "booked consultations",
+    "hero_title_2": ".",
+    "hero_subtitle": "Bilingual, fast and built around how patients from abroad choose a clinic. Live in 3 weeks. You work directly with the person who builds it.",
+    "cta_primary": "Book a call",
+    "cta_secondary": "See pricing",
+    "problem_title": "Most clinic websites lose patients before the first message",
+    "problems": [
+      {
+        "title": "Written for locals only",
+        "desc": "International patients can't find treatment details, prices or what to expect in their own language, so they keep searching."
+      },
+      {
+        "title": "No easy way to ask",
+        "desc": "Patients want to send a quick question or a few photos on WhatsApp. Most clinic sites only offer a phone number."
+      },
+      {
+        "title": "Slow on a phone",
+        "desc": "Patients research on their phone, often from overseas. Every extra second of loading costs inquiries."
+      }
+    ],
+    "features_title": "Built around how international patients decide",
+    "features": [
+      {
+        "title": "Treatment pages that answer questions",
+        "desc": "What it is, who it suits, recovery time, price range and FAQs, in a format your team can reuse for every treatment."
+      },
+      {
+        "title": "An international patient journey",
+        "desc": "One clear page from first consultation to travel, stay, procedure and aftercare, so patients know exactly what happens next."
+      },
+      {
+        "title": "Chat where patients already are",
+        "desc": "WhatsApp for international patients, LINE for Thai patients, and a consultation form that accepts photos."
+      },
+      {
+        "title": "Doctors and results, presented with care",
+        "desc": "Doctor profiles and before/after galleries with a simple record of patient consent."
+      },
+      {
+        "title": "Found on Google in more than one language",
+        "desc": "Proper language versions, medical clinic structured data and Google Business Profile setup."
+      },
+      {
+        "title": "You see what the website brings in",
+        "desc": "Form submissions and chat clicks are tracked, so you know how many inquiries came from the site each month."
+      },
+      {
+        "title": "Edit prices and treatments yourself",
+        "desc": "A simple admin so your team can update prices, promotions and treatment details without calling a developer."
+      }
+    ],
+    "process_title": "Live in 3 weeks",
+    "process": [
+      {
+        "title": "Week 1 · Plan",
+        "desc": "A call about your patients and treatments, then a page plan and content checklist. You send photos, prices and doctor details."
+      },
+      {
+        "title": "Week 2 · Design & build",
+        "desc": "Design and development on a proven foundation. You review a live preview link, not static images."
+      },
+      {
+        "title": "Week 3 · Launch",
+        "desc": "Two rounds of changes, launch on your domain and a short training session for your team."
+      }
+    ],
+    "founder_title": "You work with me, not an account manager",
+    "founder_desc": "I'm Bobby, the founder of Command & Palette. I've spent 15+ years in business development at tech platforms, including bringing 550+ beauty and wellness businesses onto a booking platform, and I build every website myself. One person, from first call to launch.",
+    "founder_link": "More about me",
+    "pricing_title": "Fixed packages from $4,500",
+    "pricing_desc": "Fixed scope, fixed price, fixed timeline. Monthly care from $150.",
+    "pricing_link": "See what's included",
+    "compliance_note": "Thailand regulates medical advertising. I design with those rules in mind and keep claims factual. Where approval of advertising content is required, it remains your clinic's responsibility.",
+    "cta_title": "Let's see if your clinic is a good fit",
+    "cta_subtitle": "A 45-minute call. No pitch deck, just your current site, your patients and what you want more of.",
+    "cta_btn": "Book a call"
+  },
+  "Pricing": {
+    "meta_title": "Pricing | Command & Palette",
+    "meta_description": "Fixed-price website packages for growing businesses. Launch from $4,500, Growth from $8,000, Care from $150/month.",
+    "badge": "Pricing",
+    "hero_title_1": "Simple, ",
+    "hero_title_highlight": "fixed",
+    "hero_title_2": " packages",
+    "hero_subtitle": "Fixed scope, fixed price, fixed timeline. All prices in USD.",
+    "from": "from",
+    "per_month": "/month",
+    "popular": "Most clients start here",
+    "launch_name": "Launch",
+    "launch_price": "$4,500",
+    "launch_time": "Live in 3 weeks",
+    "launch_desc": "A credible, bilingual website that turns visitors into customers.",
+    "launch_features": [
+      "English and Thai, up to 8 pages",
+      "Home, services, about, gallery, prices, contact",
+      "FAQ page that answers what customers ask before buying",
+      "WhatsApp and LINE chat buttons",
+      "Inquiry form (with photo upload if you need it)",
+      "SEO setup: language versions, structured data, Google Business Profile",
+      "Inquiry tracking (forms and chat clicks)",
+      "Simple admin to edit content and prices",
+      "2 rounds of changes, 30 days of support after launch"
+    ],
+    "growth_name": "Growth",
+    "growth_price": "$8,000",
+    "growth_time": "Live in 4–5 weeks",
+    "growth_desc": "For businesses ready to run ads and follow up every lead.",
+    "growth_includes": "Everything in Launch, plus:",
+    "growth_features": [
+      "A third language (for example Chinese, Arabic or Japanese)",
+      "Landing pages for up to 3 services, ready for ads",
+      "LINE Official Account setup with automated follow-up messages",
+      "One dashboard for inquiries from every channel",
+      "60 days of support after launch"
+    ],
+    "care_name": "Care",
+    "care_price": "$150",
+    "care_desc": "Keep the site fast, secure and up to date after launch.",
+    "care_features": [
+      "Hosting, security and updates",
+      "Up to 2 hours of edits each month",
+      "Monthly report: visits and inquiries",
+      "Priority support by chat or email"
+    ],
+    "cta_btn": "Book a call",
+    "addons_title": "Add-ons",
+    "addons": [
+      {
+        "name": "Additional language",
+        "price": "from $800"
+      },
+      {
+        "name": "English copywriting for all pages",
+        "price": "from $600"
+      },
+      {
+        "name": "Extra landing page",
+        "price": "from $500"
+      }
+    ],
+    "payment_title": "How payment works",
+    "payment_desc": "50% to book your slot and start, 50% before launch. Invoiced in USD.",
+    "excluded_title": "Not included",
+    "excluded_desc": "Domain registration, third-party subscriptions (booking software, WhatsApp Business API), ad spend, photography and any regulatory approval your industry requires.",
+    "faq_title": "Common questions",
+    "faq": [
+      {
+        "q": "Do we own the website?",
+        "a": "Yes. You get the source code, the domain stays in your name and all accounts are handed over at launch."
+      },
+      {
+        "q": "What do you need from us?",
+        "a": "Your services and prices, photos, logo and a few details about your customers. I send a simple checklist in week 1."
+      },
+      {
+        "q": "Can it work with our booking or shop system?",
+        "a": "Usually yes. Most booking and payment tools can be linked or embedded. I check yours on the first call."
+      },
+      {
+        "q": "Why is it a fixed price?",
+        "a": "Because the scope is fixed. You know the cost and the launch date before we start, and anything new is quoted separately first."
+      }
+    ],
+    "cta_title": "Not sure which package fits?",
+    "cta_subtitle": "Tell me about your business and I'll recommend one on the call.",
+    "cta_final_btn": "Book a call"
+  },
+  "Founder": {
+    "meta_title": "About the Founder | Command & Palette",
+    "meta_description": "Command & Palette is a one-person studio in Bangkok. Meet Bobby, who plans, designs and builds every website himself.",
+    "badge": "The founder",
+    "hero_title_1": "Hi, I'm ",
+    "hero_title_highlight": "Bobby",
+    "hero_title_2": ".",
+    "hero_subtitle": "Founder of Command & Palette, based in Bangkok. 15+ years in business development, and I write the code myself. I can talk about your customers and your numbers, then build the website.",
+    "name": "Bobby",
+    "real_name": "Warut Chaijaraspong",
+    "role": "Founder, Command & Palette",
+    "linkedin_label": "LinkedIn",
+    "story_title": "Why I started Command & Palette",
+    "story": [
+      "When I book a restaurant, a hotel or a treatment in Thailand, I do what everyone does: find the place on Google Maps, read the reviews, then tap through to the website. Very often there isn't one. And when there is, it's slow, broken on a phone, or looks like it hasn't been touched in fifteen years.",
+      "Thai businesses are great at Facebook, LINE and Instagram. But most don't own a website that brings customers to them directly, so they rely on marketplaces and give away margin and customer relationships they should keep.",
+      "I saw a clear gap: very few studios build fast, modern websites for these businesses and care whether those sites actually bring in customers. Command & Palette is how I'm closing that gap, one business at a time."
+    ],
+    "background_title": "Background",
+    "background": [
+      "15+ years in business development and partnerships across telecom, eCommerce, hospitality tech and online platforms.",
+      "Led a team of seven that brought 550+ premium beauty and wellness businesses onto a booking platform in six months.",
+      "Worked with 250+ corporate clients and ran nationwide operations handling 100,000+ orders a month.",
+      "Ran SEO and digital campaigns for luxury hospitality clients that lifted booking rates by 24%.",
+      "Designed, built and launched Kado, a Chrome extension, entirely on my own.",
+      "Engineering degree (international program) and a Junior MBA from Chulalongkorn University.",
+      "Thai (native), fluent English, conversational Japanese, basic Chinese."
+    ],
+    "how_title": "How I work",
+    "how": [
+      {
+        "title": "One point of contact",
+        "desc": "You talk to the person doing the work. No hand-offs, no account managers."
+      },
+      {
+        "title": "Fixed scope and price",
+        "desc": "You know what you get, what it costs and when it launches before we start."
+      },
+      {
+        "title": "Weekly updates",
+        "desc": "A short progress update every week, with a live preview link you can click through."
+      },
+      {
+        "title": "You own everything",
+        "desc": "Source code, domain and accounts are yours at launch."
+      }
+    ],
+    "availability_title": "When you can reach me",
+    "availability": [
+      {
+        "title": "Weekdays",
+        "desc": "Replies within 24 hours."
+      },
+      {
+        "title": "Weekends",
+        "desc": "Replies within 3 hours."
+      }
+    ],
+    "studio_note": "Command & Palette is a one-person studio. I take on a small number of projects at a time so each one gets my full attention.",
+    "cta_title": "Let's talk about your business",
+    "cta_btn": "Book a call"
+  },
+  "Nav": {
+    "work": "Work",
+    "services": "Services",
+    "pricing": "Pricing",
+    "about": "About",
+    "consult": "Book a call",
+    "back": "Back"
+  },
+  "SiteFooter": {
+    "tagline": "Fast, modern websites for growing businesses. Fixed price, live in 3 weeks, built by one person you can actually talk to.",
+    "col_company": "Company",
+    "col_services": "Services",
+    "col_legal": "Legal",
+    "about": "About",
+    "work": "Work",
+    "process": "Process",
+    "contact": "Contact",
+    "services": "Services",
+    "pricing": "Pricing",
+    "clinics": "For clinics",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "rights": "All rights reserved."
+  },
+  "Home": {
+    "meta_title": "Command & Palette | Websites that bring customers to you",
+    "meta_description": "Fast, modern websites for growing businesses. Fixed price from $4,500, live in 3 weeks, built by the founder himself.",
+    "badge": "Websites for growing businesses",
+    "hero_title_1": "Stop renting. ",
+    "hero_title_highlight": "Start owning.",
+    "hero_title_2": "",
+    "hero_subtitle": "Most businesses live on Facebook, LINE and marketplaces they don't control. I build fast, modern websites that bring customers to you directly. Fixed price, live in 3 weeks, built by the person you talk to.",
+    "cta_primary": "Book a call",
+    "cta_secondary": "See pricing",
+    "problem_title": "A social page isn't a website",
+    "problems": [
+      {
+        "title": "You're renting your customers",
+        "desc": "Platforms change their rules, fees and reach whenever they like. The customers you win there aren't really yours."
+      },
+      {
+        "title": "Google sends people to nothing",
+        "desc": "People find you on Google Maps, read the reviews, then look for a website. When there isn't a good one, they book someone else."
+      },
+      {
+        "title": "You can't see what works",
+        "desc": "Without a proper website you can't tell where customers come from, so every marketing decision is a guess."
+      }
+    ],
+    "features_title": "What you get",
+    "features": [
+      {
+        "title": "Fast on every phone",
+        "desc": "Modern engineering that loads quickly, even on a slow connection abroad."
+      },
+      {
+        "title": "In your customers' languages",
+        "desc": "English and Thai as standard, with more languages when your customers need them."
+      },
+      {
+        "title": "One tap to get in touch",
+        "desc": "WhatsApp, LINE and simple forms, so a visitor becomes a conversation."
+      },
+      {
+        "title": "Found on Google",
+        "desc": "Technical SEO, structured data and Google Business Profile set up properly from day one."
+      },
+      {
+        "title": "You see the results",
+        "desc": "Every form and chat click is tracked, so you know what the website brings in each month."
+      },
+      {
+        "title": "You own everything",
+        "desc": "Source code, domain and accounts are yours, and a simple admin lets your team edit content and prices."
+      }
+    ],
+    "work_title": "Recent work",
+    "work_desc": "Websites I've designed and built, plus my own software products.",
+    "work_link": "See the work",
+    "process_title": "Live in 3 weeks",
+    "process": [
+      {
+        "title": "Week 1 · Plan",
+        "desc": "A call about your customers and goals, then a page plan and a simple content checklist."
+      },
+      {
+        "title": "Week 2 · Design & build",
+        "desc": "Design and development on a proven foundation. You review a live preview link, not static images."
+      },
+      {
+        "title": "Week 3 · Launch",
+        "desc": "Two rounds of changes, launch on your domain and a short training session for your team."
+      }
+    ],
+    "founder_title": "You work with me, not an account manager",
+    "founder_desc": "I'm Bobby. 15+ years in business development across telecom, eCommerce, hospitality and online platforms, and I build every website myself. One person, from first call to launch.",
+    "founder_link": "More about me",
+    "pricing_title": "Fixed packages from $4,500",
+    "pricing_desc": "Fixed scope, fixed price, fixed timeline. Monthly care from $150.",
+    "pricing_link": "See what's included",
+    "cta_title": "Let's see if we're a good fit",
+    "cta_subtitle": "A 45-minute call about your business, your current website and what you want more of.",
+    "cta_btn": "Book a call"
+  },
+  "WorksKado": {
+    "tag": "OWN PRODUCT",
+    "title": "Kado",
+    "desc": "A kanban board in Chrome's side panel that turns open tabs into tasks. Designed, built, launched and sold on my own, with licensing and payments handled end to end.",
+    "chip_1": "Chrome Extension",
+    "chip_2": "Local-first",
+    "chip_3": "Payments & licensing",
+    "btn": "View on Chrome Web Store"
+  }
+}
