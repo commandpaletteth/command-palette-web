@@ -5,9 +5,8 @@ import { AmbientBackground, DarkCta, GlassCard, Hero, agencyMetadata } from "@/c
 
 type Item = { title: string; desc: string };
 
-// Put a square photo at public/images/founder.jpg and set this to "/images/founder.jpg".
-// While it is null, an initial avatar is shown instead.
-const FOUNDER_PHOTO: string | null = null;
+// Square crop of public/images/founder/founder-1.jpg. Set to null to show the initial avatar instead.
+const FOUNDER_PHOTO: string | null = "/images/founder/founder-square.jpg";
 const LINKEDIN_URL = "https://www.linkedin.com/in/warutchaijaraspong/";
 
 const AVAILABILITY_ICONS = [Clock, CalendarDays];
@@ -46,8 +45,9 @@ export default async function FounderPage({ params }: { params: Promise<{ locale
                 <Image
                   src={FOUNDER_PHOTO}
                   alt={t("real_name")}
-                  width={200}
-                  height={200}
+                  width={384}
+                  height={384}
+                  priority
                   className="w-48 h-48 rounded-[2rem] object-cover shadow-xl"
                 />
               ) : (
