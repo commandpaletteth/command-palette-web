@@ -345,5 +345,11 @@
     "chip_2": "Local-first",
     "chip_3": "Payments & licensing",
     "btn": "View on Chrome Web Store"
+  },
+  "Consent": {
+    "text": "We use cookies to understand how visitors use this site. You can accept or decline analytics cookies.",
+    "accept": "Accept",
+    "decline": "Decline",
+    "learn_more": "Privacy Policy"
   }
 }

@@ -10,16 +10,65 @@ function escapeHtml(unsafe: string): string {
     .replace(/'/g, '&#039;');
 }
 
+// ─── Spam protection ────────────────────────────────────────────────────────
+const LIMITS = { name: 100, company: 120, email: 200, tel: 40, size: 40, inquiry: 5000 };
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+const MIN_FILL_MS = 3000; // a person needs more than 3 seconds to fill the form
+
+// Best-effort rate limit per IP (per server instance): 5 messages per 10 minutes.
+const RATE_WINDOW_MS = 10 * 60 * 1000;
+const RATE_MAX = 5;
+const hits = new Map<string, number[]>();
+
+function rateLimited(ip: string): boolean {
+  const now = Date.now();
+  const recent = (hits.get(ip) || []).filter((t) => now - t < RATE_WINDOW_MS);
+  recent.push(now);
+  hits.set(ip, recent);
+  if (hits.size > 5000) hits.clear(); // keep memory bounded
+  return recent.length > RATE_MAX;
+}
+
+function clean(value: unknown, max: number): string {
+  // One line, trimmed, capped. Line breaks are only kept for the inquiry text (handled separately).
+  return String(value ?? '').replace(/[\r\n]+/g, ' ').trim().slice(0, max);
+}
+
+// Pretend success so bots get no signal that they were filtered.
+const silentOk = () => NextResponse.json({ success: true }, { status: 200 });
+
 export async function POST(req: Request) {
   try {
     const data = await req.json();
-    const { name, company, email, tel, size, inquiry } = data;
+
+    // 1. Honeypot filled → bot
+    if (data?.website) return silentOk();
+
+    // 2. Submitted too fast (or no timestamp) → bot
+    const startedAt = Number(data?.startedAt) || 0;
+    if (!startedAt || Date.now() - startedAt < MIN_FILL_MS) return silentOk();
+
+    // 3. Too many messages from the same IP
+    const ip = (req.headers.get('x-forwarded-for') || '').split(',')[0].trim() || 'unknown';
+    if (rateLimited(ip)) {
+      return NextResponse.json({ success: false, message: 'Too many requests' }, { status: 429 });
+    }
+
+    const name = clean(data?.name, LIMITS.name);
+    const company = clean(data?.company, LIMITS.company);
+    const email = clean(data?.email, LIMITS.email);
+    const tel = clean(data?.tel, LIMITS.tel);
+    const size = clean(data?.size, LIMITS.size);
+    const inquiry = String(data?.inquiry ?? '').trim().slice(0, LIMITS.inquiry);
 
     if (!name || !email || !inquiry) {
       return NextResponse.json(
         { success: false, message: 'Missing required fields' },
         { status: 400 }
       );
+    }
+    if (!EMAIL_RE.test(email)) {
+      return NextResponse.json({ success: false, message: 'Invalid email' }, { status: 400 });
     }
 
     const transporter = nodemailer.createTransport({

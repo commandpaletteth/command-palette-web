@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Send, Building2, User, Mail, Phone, Users,
@@ -12,12 +12,18 @@ type FormStatus = 'idle' | 'submitting' | 'success' | 'error';
 
 const INITIAL_FORM = {
   name: "", company: "", email: "", tel: "", size: "", inquiry: "",
+  website: "", // honeypot: hidden from people, bots fill it in
 };
 
 export default function ContactPage() {
   const t = useTranslations('Contact');
   const [status, setStatus] = useState<FormStatus>('idle');
   const [formData, setFormData] = useState(INITIAL_FORM);
+  // When the form appeared. Submissions faster than a human can type are dropped by the API.
+  const startedAt = useRef<number>(0);
+  useEffect(() => {
+    startedAt.current = Date.now();
+  }, []);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -32,7 +38,7 @@ export default function ContactPage() {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, startedAt: startedAt.current }),
       });
       const result = await res.json();
       if (res.ok && result.success) {
@@ -93,12 +99,19 @@ export default function ContactPage() {
 
           {status !== 'success' && (
             <form onSubmit={handleSubmit} className="space-y-6">
+              {/* Honeypot field: invisible to people and screen readers. Bots that fill it are ignored. */}
+              <div aria-hidden="true" className="absolute -left-[9999px] w-px h-px overflow-hidden">
+                <label>
+                  Website
+                  <input name="website" value={formData.website} onChange={handleChange} type="text" tabIndex={-1} autoComplete="off" />
+                </label>
+              </div>
               
               <div className="space-y-2">
                 <label className="text-sm font-bold text-slate-700 flex items-center gap-2">
                   <User className="w-4 h-4 text-blue-600" /> {t('label_name')} <span className="text-red-500">*</span>
                 </label>
-                <input name="name" value={formData.name} onChange={handleChange} type="text" required
+                <input name="name" value={formData.name} onChange={handleChange} type="text" required maxLength={100}
                   className="w-full h-12 px-4 rounded-xl bg-white/50 border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all"
                   placeholder={t('holder_name')} />
               </div>
@@ -107,7 +120,7 @@ export default function ContactPage() {
                 <label className="text-sm font-bold text-slate-700 flex items-center gap-2">
                   <Building2 className="w-4 h-4 text-blue-600" /> {t('label_company')}
                 </label>
-                <input name="company" value={formData.company} onChange={handleChange} type="text"
+                <input name="company" value={formData.company} onChange={handleChange} type="text" maxLength={120}
                   className="w-full h-12 px-4 rounded-xl bg-white/50 border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all"
                   placeholder={t('holder_company')} />
               </div>
@@ -117,7 +130,7 @@ export default function ContactPage() {
                   <label className="text-sm font-bold text-slate-700 flex items-center gap-2">
                     <Mail className="w-4 h-4 text-blue-600" /> {t('label_email')} <span className="text-red-500">*</span>
                   </label>
-                  <input name="email" value={formData.email} onChange={handleChange} type="email" required
+                  <input name="email" value={formData.email} onChange={handleChange} type="email" required maxLength={200}
                     className="w-full h-12 px-4 rounded-xl bg-white/50 border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all"
                     placeholder={t('holder_email')} />
                 </div>
@@ -125,7 +138,7 @@ export default function ContactPage() {
                   <label className="text-sm font-bold text-slate-700 flex items-center gap-2">
                     <Phone className="w-4 h-4 text-blue-600" /> {t('label_tel')}
                   </label>
-                  <input name="tel" value={formData.tel} onChange={handleChange} type="tel"
+                  <input name="tel" value={formData.tel} onChange={handleChange} type="tel" maxLength={40}
                     className="w-full h-12 px-4 rounded-xl bg-white/50 border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all"
                     placeholder={t('holder_tel')} />
                 </div>
@@ -152,7 +165,7 @@ export default function ContactPage() {
                 <label className="text-sm font-bold text-slate-700 flex items-center gap-2">
                   <MessageSquare className="w-4 h-4 text-blue-600" /> {t('label_inquiry')} <span className="text-red-500">*</span>
                 </label>
-                <textarea name="inquiry" value={formData.inquiry} onChange={handleChange} required rows={5}
+                <textarea name="inquiry" value={formData.inquiry} onChange={handleChange} required rows={5} maxLength={5000}
                   className="w-full p-4 rounded-xl bg-white/50 border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all resize-none"
                   placeholder={t('holder_inquiry')} />
               </div>

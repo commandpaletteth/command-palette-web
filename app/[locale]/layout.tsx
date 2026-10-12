@@ -6,6 +6,7 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import CookieConsent from "@/components/CookieConsent";
 
 const manrope = Manrope({ 
   subsets: ["latin"],
@@ -14,7 +15,8 @@ const manrope = Manrope({
 });
 
 const ibmThai = IBM_Plex_Sans_Thai({
-  weight: ['100', '200', '300', '400', '500', '600', '700'],
+  // Only the weights the site actually uses (font-light … font-bold)
+  weight: ['300', '400', '500', '600', '700'],
   subsets: ['thai', 'latin'],
   variable: '--font-ibm-thai',
   display: 'swap',
@@ -60,7 +62,8 @@ export default async function RootLayout({
 
           <Footer />
 
-          {/* ✅ Logic กัน Data Pollution */}
+          {/* Analytics: GA4 loads in production, but only starts measuring after the visitor accepts cookies (PDPA).
+              CP_DEV_MODE=true in localStorage still blocks it on our own machines. */}
           {process.env.NODE_ENV === 'production' && (
             <>
               <Script
@@ -72,20 +75,34 @@ export default async function RootLayout({
                 strategy="afterInteractive"
               >
                 {`
-                  const isDevMode = localStorage.getItem('CP_DEV_MODE') === 'true';
-
-                  if (!isDevMode) {
-                    window.dataLayer = window.dataLayer || [];
-                    function gtag(){dataLayer.push(arguments);}
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  window.gtag = gtag;
+                  gtag('consent', 'default', {
+                    analytics_storage: 'denied',
+                    ad_storage: 'denied',
+                    ad_user_data: 'denied',
+                    ad_personalization: 'denied'
+                  });
+                  window.cpStartAnalytics = function () {
+                    if (window.cpAnalyticsStarted) return;
+                    var isDevMode = false;
+                    try { isDevMode = localStorage.getItem('CP_DEV_MODE') === 'true'; } catch (e) {}
+                    if (isDevMode) { console.log('GA4 blocked by CP_DEV_MODE'); return; }
+                    window.cpAnalyticsStarted = true;
+                    gtag('consent', 'update', { analytics_storage: 'granted' });
                     gtag('js', new Date());
                     gtag('config', 'G-PH07GMS7JG');
-                  } else {
-                    console.log('🚫 GA4 blocked by CP_DEV_MODE (Command & Palette Internal)');
-                  }
+                  };
+                  var consent = null;
+                  try { consent = localStorage.getItem('cp_cookie_consent'); } catch (e) {}
+                  if (consent === 'granted') window.cpStartAnalytics();
                 `}
               </Script>
             </>
           )}
+
+          <CookieConsent />
 
         </NextIntlClientProvider>
       </body>
