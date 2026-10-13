@@ -12,8 +12,9 @@ export const CALENDLY_URL = "https://calendly.com/command-palette-th/45min";
  */
 // Share preview (LINE, Facebook, Slack...). Set explicitly because a page-level
 // openGraph object replaces the one generated from app/opengraph-image.tsx.
+// Bump ?v= whenever the image changes: LINE and Facebook cache images by URL.
 export const OG_IMAGES = [
-  { url: "/opengraph-image", width: 1200, height: 630, alt: "Command & Palette" },
+  { url: "/opengraph-image?v=3", width: 1200, height: 630, alt: "Command & Palette" },
 ];
 
 export async function agencyMetadata(locale: string, namespace: string, path: string): Promise<Metadata> {
@@ -34,7 +35,7 @@ export async function agencyMetadata(locale: string, namespace: string, path: st
       type: "website",
       images: OG_IMAGES,
     },
-    twitter: { card: "summary_large_image", title: t("meta_title"), description: t("meta_description"), images: ["/opengraph-image"] },
+    twitter: { card: "summary_large_image", title: t("meta_title"), description: t("meta_description"), images: ["/opengraph-image?v=3"] },
   };
 }
 

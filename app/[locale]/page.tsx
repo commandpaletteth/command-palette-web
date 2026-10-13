@@ -40,7 +40,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       type: "website",
       images: OG_IMAGES,
     },
-    twitter: { card: "summary_large_image", title: t("meta_title"), description: t("meta_description"), images: ["/opengraph-image"] },
+    twitter: { card: "summary_large_image", title: t("meta_title"), description: t("meta_description"), images: ["/opengraph-image?v=3"] },
   };
 }
 

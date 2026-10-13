@@ -32,9 +32,9 @@ export const metadata: Metadata = {
   openGraph: {
     siteName: "Command & Palette",
     type: "website",
-    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Command & Palette" }],
+    images: [{ url: "/opengraph-image?v=3", width: 1200, height: 630, alt: "Command & Palette" }],
   },
-  twitter: { card: "summary_large_image", images: ["/opengraph-image"] },
+  twitter: { card: "summary_large_image", images: ["/opengraph-image?v=3"] },
   icons: {
     icon: '/favicon.svg',
   },
