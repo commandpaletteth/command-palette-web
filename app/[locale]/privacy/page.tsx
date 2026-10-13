@@ -115,6 +115,15 @@ export default function PrivacyPage() {
             </div>
           </div>
 
+          {/* Section 4: Cookies */}
+          <div className="bg-white/60 backdrop-blur-xl border border-white/80 rounded-[2.5rem] p-8 md:p-12 shadow-xl">
+            <h2 className="text-2xl font-bold mb-6 flex items-center gap-4 text-slate-900">
+              <span className="flex items-center justify-center w-10 h-10 rounded-xl bg-amber-100 text-amber-600 text-sm font-bold shadow-sm">4</span>
+              {t('sec4_title')}
+            </h2>
+            <p className="text-slate-600 leading-relaxed text-lg">{t('sec4_desc')}</p>
+          </div>
+
           {/* Footer Note */}
           <div className="text-center pt-8">
             <p className="text-slate-500 mb-8 font-medium">

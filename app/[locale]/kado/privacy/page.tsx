@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { CheckCircle2, ShieldCheck, HardDrive, Globe, KeyRound, CreditCard, BarChart3 } from "lucide-react";
+import { CheckCircle2, ShieldCheck, HardDrive, KeyRound, CreditCard, BarChart3 } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 export const metadata: Metadata = {
@@ -13,7 +13,6 @@ export default function KadoPrivacyPage() {
   const t = useTranslations("KadoPrivacy");
 
   const outbound = [
-    { icon: Globe, key: "icons", color: "bg-blue-100 text-blue-600" },
     { icon: KeyRound, key: "license", color: "bg-purple-100 text-purple-600" },
     { icon: CreditCard, key: "purchase", color: "bg-pink-100 text-pink-600" },
     { icon: BarChart3, key: "stats", color: "bg-amber-100 text-amber-600" },
@@ -71,8 +70,13 @@ export default function KadoPrivacyPage() {
             </h2>
             <p className="text-slate-600 leading-relaxed mb-8">{t("sec2_intro")}</p>
             <div className="grid md:grid-cols-2 gap-6">
-              {outbound.map(({ icon: Icon, key, color }) => (
-                <div key={key} className="p-8 rounded-3xl bg-white/50 border border-white/60 hover:bg-white/70 transition-colors">
+              {outbound.map(({ icon: Icon, key, color }, i) => (
+                <div
+                  key={key}
+                  className={`p-8 rounded-3xl bg-white/50 border border-white/60 hover:bg-white/70 transition-colors ${
+                    i === outbound.length - 1 && outbound.length % 2 === 1 ? "md:col-span-2" : ""
+                  }`}
+                >
                   <span className={`inline-flex items-center justify-center w-11 h-11 rounded-2xl mb-4 ${color}`}>
                     <Icon className="w-5 h-5" />
                   </span>

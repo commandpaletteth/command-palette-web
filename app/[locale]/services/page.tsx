@@ -1,10 +1,11 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Code2, Cpu, Palette, ChevronRight } from "lucide-react";
-import { useTranslations } from 'next-intl';
+import { Code2, Cpu, Palette, ChevronRight, ArrowRight } from "lucide-react";
+import { useLocale, useTranslations } from 'next-intl';
 
 export default function ServicesPage() {
   const t = useTranslations('Services');
+  const locale = useLocale();
 
   return (
     <div className="min-h-screen bg-slate-50 font-sans selection:bg-purple-100/50 overflow-hidden relative flex flex-col">
@@ -41,8 +42,8 @@ export default function ServicesPage() {
         <div className="grid md:grid-cols-3 gap-8 items-stretch">
             {/* Card 1 */}
             <div className="bg-white/60 backdrop-blur-xl border border-white/80 p-8 rounded-[2rem] shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group flex flex-col">
-                <div className="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center text-blue-600 mb-6 group-hover:scale-110 transition-transform">
-                    <Code2 className="w-7 h-7" />
+                <div className="w-14 h-14 bg-pink-100 rounded-2xl flex items-center justify-center text-pink-600 mb-6 group-hover:scale-110 transition-transform">
+                    <Palette className="w-7 h-7" />
                 </div>
                 <h3 className="text-2xl font-bold text-slate-900 mb-4">{t('card1_title')}</h3>
                 <p className="text-slate-600 mb-8 leading-relaxed flex-grow">
@@ -52,8 +53,8 @@ export default function ServicesPage() {
             {/* Card 2 */}
             <div className="bg-slate-900 p-8 rounded-[2rem] shadow-2xl hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group relative overflow-hidden flex flex-col border border-slate-800">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/20 blur-3xl rounded-full" />
-                <div className="w-14 h-14 bg-slate-800 rounded-2xl flex items-center justify-center text-purple-400 mb-6 group-hover:scale-110 transition-transform relative z-10 border border-slate-700">
-                    <Cpu className="w-7 h-7" />
+                <div className="w-14 h-14 bg-slate-800 rounded-2xl flex items-center justify-center text-blue-300 mb-6 group-hover:scale-110 transition-transform relative z-10 border border-slate-700">
+                    <Code2 className="w-7 h-7" />
                 </div>
                 <h3 className="text-2xl font-bold text-white mb-4 relative z-10">{t('card2_title')}</h3>
                 <p className="text-slate-300 mb-8 leading-relaxed flex-grow relative z-10">
@@ -62,14 +63,19 @@ export default function ServicesPage() {
             </div>
             {/* Card 3 */}
             <div className="bg-white/60 backdrop-blur-xl border border-white/80 p-8 rounded-[2rem] shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group flex flex-col">
-                <div className="w-14 h-14 bg-pink-100 rounded-2xl flex items-center justify-center text-pink-600 mb-6 group-hover:scale-110 transition-transform">
-                    <Palette className="w-7 h-7" />
+                <div className="w-14 h-14 bg-emerald-100 rounded-2xl flex items-center justify-center text-emerald-600 mb-6 group-hover:scale-110 transition-transform">
+                    <Cpu className="w-7 h-7" />
                 </div>
                 <h3 className="text-2xl font-bold text-slate-900 mb-4">{t('card3_title')}</h3>
                 <p className="text-slate-600 mb-8 leading-relaxed flex-grow">
                     {t('card3_desc')}
                 </p>
             </div>
+        </div>
+        <div className="mt-12 text-center">
+            <Link href={`/${locale}/process`} className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-blue-50 text-blue-700 text-sm md:text-base font-bold border border-blue-100 shadow-sm hover:bg-blue-100 hover:border-blue-200 transition-colors group">
+                {t('process_link')} <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
         </div>
       </section>
 

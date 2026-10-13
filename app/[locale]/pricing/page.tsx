@@ -1,5 +1,6 @@
+import Link from "next/link";
 import { getTranslations } from "next-intl/server";
-import { Check, Plus } from "lucide-react";
+import { ArrowRight, Check, Plus } from "lucide-react";
 import { AmbientBackground, CallButton, DarkCta, GlassCard, Hero, agencyMetadata } from "@/components/agency/shared";
 
 type AddOn = { name: string; price: string };
@@ -24,7 +25,7 @@ function FeatureList({ items, dark = false }: { items: string[]; dark?: boolean 
 }
 
 export default async function PricingPage({ params }: { params: Promise<{ locale: string }> }) {
-  await params;
+  const { locale } = await params;
   const t = await getTranslations("Pricing");
   const addons = t.raw("addons") as AddOn[];
   const faq = t.raw("faq") as Faq[];
@@ -119,6 +120,11 @@ export default async function PricingPage({ params }: { params: Promise<{ locale
             <h3 className="text-lg font-bold mb-4">{t("excluded_title")}</h3>
             <p className="text-slate-600 leading-relaxed">{t("excluded_desc")}</p>
           </GlassCard>
+        </div>
+        <div className="mt-10 text-center">
+          <Link href={`/${locale}/process`} className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-blue-50 text-blue-700 text-sm md:text-base font-bold border border-blue-100 shadow-sm hover:bg-blue-100 hover:border-blue-200 transition-colors group">
+            {t("process_link")} <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          </Link>
         </div>
       </section>
 
