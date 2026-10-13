@@ -2,6 +2,12 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Code2, Cpu, Palette, ChevronRight, ArrowRight } from "lucide-react";
 import { useLocale, useTranslations } from 'next-intl';
+import { agencyMetadata } from "@/components/agency/shared";
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  return agencyMetadata(locale, "Services", "/services");
+}
 
 export default function ServicesPage() {
   const t = useTranslations('Services');

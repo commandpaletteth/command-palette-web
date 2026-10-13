@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Search, Palette, Code2, Rocket, CheckCircle2, ArrowRight } from "lucide-react";
 import { getTranslations } from 'next-intl/server'; // ✅ เปลี่ยนมาใช้ Server-side
+import { agencyMetadata } from "@/components/agency/shared";
 
 type ChecklistKey =
   | 'checklist_item_1'
@@ -20,6 +21,11 @@ const CHECKLIST_KEYS: ChecklistKey[] = [
 ];
 
 // ✅ รับ params มาเป็น Promise ตามระเบียบ Next.js 15+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  return agencyMetadata(locale, "Process", "/process");
+}
+
 export default async function ProcessPage({ 
   params 
 }: { 

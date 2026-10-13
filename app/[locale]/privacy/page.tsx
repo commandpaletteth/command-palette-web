@@ -1,11 +1,11 @@
-import type { Metadata } from "next";
 import { CheckCircle2, ShieldCheck } from "lucide-react";
 import { useTranslations } from 'next-intl';
+import { agencyMetadata } from "@/components/agency/shared";
 
-export const metadata: Metadata = {
-  title: "Privacy Policy | Command & Palette",
-  description: "How we collect, use, and protect your data.",
-};
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  return agencyMetadata(locale, "Privacy", "/privacy");
+}
 
 export default function PrivacyPage() {
   const t = useTranslations('Privacy');

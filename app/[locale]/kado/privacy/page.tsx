@@ -1,11 +1,11 @@
-import type { Metadata } from "next";
 import { CheckCircle2, ShieldCheck, HardDrive, KeyRound, CreditCard, BarChart3 } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { agencyMetadata } from "@/components/agency/shared";
 
-export const metadata: Metadata = {
-  title: "Kado Privacy Policy | Command & Palette",
-  description: "What data the Kado Chrome extension handles, and what it never collects.",
-};
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  return agencyMetadata(locale, "KadoPrivacy", "/kado/privacy");
+}
 
 const SUPPORT_EMAIL = "support@command-palette.co";
 

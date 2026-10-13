@@ -2,9 +2,15 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Zap, Smartphone, Globe, Hammer, ArrowRight } from "lucide-react";
 import { getTranslations } from 'next-intl/server';
+import { agencyMetadata } from "@/components/agency/shared";
 
 // Kado on the Chrome Web Store
 const KADO_STORE_URL = "https://chromewebstore.google.com/detail/hlpahcjndodkppkeicpgoblnjokjkece";
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  return agencyMetadata(locale, "Works", "/works");
+}
 
 export default async function WorksPage({
   params

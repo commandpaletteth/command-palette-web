@@ -42,6 +42,8 @@
     "cta_btn": "Start Your Project"
   },
     "Process": {
+      "meta_title": "Process | Command & Palette",
+      "meta_description": "From first call to launch in 3 weeks: discovery, design, build and handover, with a fixed price and clear steps.",
       "badge": "PROCESS",
       "hero_title_1": "From first call to launch ",
       "hero_title_highlight": "in 3 weeks",
@@ -66,6 +68,8 @@
       "cta_btn": "Book a call"
     },
     "Services": {
+      "meta_title": "Services | Command & Palette",
+      "meta_description": "Bilingual websites, design and automation for growing businesses. Fixed price from $4,500, live in 3 weeks.",
       "badge": "SERVICES",
       "hero_title_1": "What I ",
       "hero_title_highlight": "build",
@@ -83,6 +87,8 @@
       "process_link": "See how a project runs, week by week"
     },
     "Works": {
+    "meta_title": "Work | Command & Palette",
+    "meta_description": "Websites and products designed and built from scratch by Command & Palette, including Kado, a Kanban side panel for Chrome.",
     "badge": "WORK",
     "hero_title_1": "Selected ",
     "hero_title_highlight": "work",
@@ -107,6 +113,8 @@
     "cta_btn": "Book a call"
   },
     "Privacy": {
+      "meta_title": "Privacy Policy | Command & Palette",
+      "meta_description": "How Command & Palette collects, uses and protects your data, including cookies and Google Analytics.",
       "hero_title_1": "Privacy ",
       "hero_title_highlight": "Policy",
       "hero_subtitle": "Transparency is our code. Here is exactly how we handle and protect your data.",
@@ -134,6 +142,8 @@
       "sec4_desc": "We only use analytics cookies from Google Analytics, and only after you click Accept on the cookie banner. If you click Decline, no analytics cookies are set. To change your choice, clear this site's data in your browser and the banner will appear again."
     },
     "KadoPrivacy": {
+      "meta_title": "Kado Privacy Policy | Command & Palette",
+      "meta_description": "What data the Kado Chrome extension handles, and what it never collects.",
       "hero_title_1": "Kado Privacy",
       "hero_title_highlight": "Policy",
       "hero_subtitle": "Kado is a Chrome extension by Command & Palette. Here is exactly what it does, and doesn't do, with your data.",
@@ -165,26 +175,60 @@
       "footer_note": "Questions about privacy or Kado? Email us at"
     },
     "Terms": {
+      "meta_title": "Terms of Service | Command & Palette",
+      "meta_description": "The rules for using command-palette.co, and how project work with Command & Palette is agreed.",
       "hero_title_1": "Terms of ",
       "hero_title_highlight": "Service",
-      "hero_subtitle": "Please read these terms carefully before using our services.",
-      "badge": "Effective: January 2026",
-      "sec1_title": "Agreement to Terms",
-      "sec1_desc": "These Terms of Service constitute a legally binding agreement made between you and Command & Palette concerning your access to and use of the command-palette.co website. By accessing the Site, you agree that you have read, understood, and agreed to be bound by all of these Terms of Service.",
-      "sec2_title": "Intellectual Property Rights",
-      "sec2_desc": "Unless otherwise indicated, the Site is our proprietary property and all source code, databases, functionality, software, website designs, audio, video, text, photographs, and graphics on the Site (collectively, the \"Content\") are owned or controlled by us or licensed to us, and are protected by copyright and trademark laws.",
-      "sec3_title": "Prohibited Activities",
-      "sec3_desc": "You may not access or use the Site for any purpose other than that for which we make the Site available. The Site may not be used in connection with any commercial endeavors except those that are specifically endorsed or approved by us.",
-      "sec3_li1": "Systematically retrieve data or other content from the Site to create or compile, directly or indirectly, a collection, compilation, database, or directory without written permission from us.",
-      "sec3_li2": "Make any unauthorized use of the Site, including collecting usernames and/or email addresses of users by electronic or other means.",
-      "sec3_li3": "Use the Site to advertise or offer to sell goods and services.",
-      "sec4_title": "Acceptable Use Policy (Safety)",
-      "sec4_desc": "To ensure the highest stability and security for our infrastructure and all clients, Command & Palette strictly adheres to a 'White Business Only' policy. We strictly prohibit and will not service projects involving:",
-      "sec4_li1": "Gambling & Betting: Any form of unlawful online gambling activities.",
-      "sec4_li2": "Adult Content: Pornographic, obscene, or sexually explicit material.",
-      "sec4_li3": "High-Risk & Scams: Unregulated lending, phishing, spamming, or fraudulent schemes.",
-      "sec4_note": "Risk Management: We reserve the right to refuse or terminate service immediately to prevent IP blacklisting and protect our server integrity.",
-      "footer_note": "Questions? Email us at"
+      "hero_subtitle": "The rules for using this website, and how project work with Command & Palette is agreed.",
+      "badge": "Effective: 13 October 2026",
+      "sections": [
+        {
+          "title": "About these Terms",
+          "body": "These Terms govern your use of command-palette.co (the \"Site\"). Command & Palette is a web design and development studio operated by Warut Chaijaraspong in Thailand (\"we\", \"us\"). By using the Site, you agree to these Terms. If you don't agree, please don't use the Site."
+        },
+        {
+          "title": "Project work",
+          "body": "Websites, design, automation and care plans are provided under a separate written proposal or agreement that you accept before work starts. Prices, timelines and package details on the Site are for information and may change; the figures in your accepted proposal are the ones that apply. If your proposal and these Terms conflict, the proposal takes priority."
+        },
+        {
+          "title": "Your content",
+          "body": "You are responsible for the text, images, claims and trademarks you give us to publish, and for making sure they are accurate and lawful where you do business. This includes industry rules, such as Thai regulations on advertising medical and aesthetic services (for example before-and-after photos or promised results). We may decline to publish content we believe is unlawful."
+        },
+        {
+          "title": "Intellectual property",
+          "body": "The Site's design, code, text and graphics belong to Command & Palette or its licensors. Client work and third-party trademarks shown on the Site belong to their owners. Please don't copy or reuse any of it without written permission. Ownership of the work we build for you is set out in your project agreement."
+        },
+        {
+          "title": "Using the Site",
+          "body": "Please use the Site fairly. You may not:",
+          "items": [
+            "Scrape or systematically collect content or data from the Site without written permission.",
+            "Try to gain unauthorised access to the Site, or disrupt or overload it or its contact form.",
+            "Send spam, malicious code or false information through the contact form."
+          ]
+        },
+        {
+          "title": "Kado",
+          "body": "Kado, our Chrome extension, has its own Privacy Policy. Kado Pro purchases are processed by Polar, our merchant of record, which handles payment, tax and invoicing under its own terms."
+        },
+        {
+          "title": "Disclaimer and liability",
+          "body": "The Site is provided \"as is\". We work to keep it accurate and available, but we don't guarantee that it will be error-free or uninterrupted. To the extent the law allows, we are not liable for indirect or consequential losses arising from your use of the Site. Nothing in these Terms limits liability that cannot be limited under Thai law."
+        },
+        {
+          "title": "Changes and governing law",
+          "body": "We may update these Terms from time to time; the date at the top shows the current version. These Terms are governed by the laws of Thailand, and the courts of Thailand have jurisdiction over any dispute."
+        }
+      ],
+      "aup_title": "Work we don't take on",
+      "aup_desc": "Command & Palette works with legitimate, lawful businesses only. We don't take on, and may stop work on, projects involving:",
+      "aup_items": [
+        "Gambling or betting.",
+        "Adult or sexually explicit content.",
+        "Scams and high-risk schemes: phishing, spam, unlicensed lending or fraudulent investment offers."
+      ],
+      "aup_note": "We may refuse or end any engagement that we reasonably believe breaks the law or these Terms.",
+      "footer_note": "Questions about these Terms? Email"
     },
     "Difference": {
       "title": "Why Command & Palette?",
@@ -222,6 +266,8 @@
       "terms": "Terms of Service"
     },
     "Contact": {
+    "meta_title": "Contact | Command & Palette",
+    "meta_description": "Tell me about your project. I reply within 24 hours.",
     "title_1": "Get in ",
     "title_highlight": "touch",
     "subtitle": "Tell me about your project. I reply within 24 hours on weekdays.",
