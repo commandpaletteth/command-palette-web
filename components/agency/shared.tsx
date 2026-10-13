@@ -10,6 +10,12 @@ export const CALENDLY_URL = "https://calendly.com/command-palette-th/45min";
  * Metadata for the new agency pages.
  * Hidden from search engines until AGENCY_PAGES_LIVE (lib/launch.ts) is set to true.
  */
+// Share preview (LINE, Facebook, Slack...). Set explicitly because a page-level
+// openGraph object replaces the one generated from app/opengraph-image.tsx.
+export const OG_IMAGES = [
+  { url: "/opengraph-image", width: 1200, height: 630, alt: "Command & Palette" },
+];
+
 export async function agencyMetadata(locale: string, namespace: string, path: string): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace });
   return {
@@ -20,7 +26,15 @@ export async function agencyMetadata(locale: string, namespace: string, path: st
       canonical: `/${locale}${path}`,
       languages: { en: `/en${path}`, th: `/th${path}` },
     },
-    openGraph: { title: t("meta_title"), description: t("meta_description") },
+    openGraph: {
+      title: t("meta_title"),
+      description: t("meta_description"),
+      url: `/${locale}${path}`,
+      siteName: "Command & Palette",
+      type: "website",
+      images: OG_IMAGES,
+    },
+    twitter: { card: "summary_large_image", title: t("meta_title"), description: t("meta_description"), images: ["/opengraph-image"] },
   };
 }
 

@@ -16,7 +16,7 @@ import {
   LayoutGrid,
   BadgeDollarSign,
 } from "lucide-react";
-import { AmbientBackground, CallButton, DarkCta, GlassCard, Hero } from "@/components/agency/shared";
+import { AmbientBackground, CallButton, DarkCta, GlassCard, Hero, OG_IMAGES } from "@/components/agency/shared";
 
 // Previous homepage is kept at /home-v1 (unlinked, noindex).
 
@@ -32,7 +32,15 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     title: t("meta_title"),
     description: t("meta_description"),
     alternates: { canonical: `/${locale}`, languages: { en: "/en", th: "/th" } },
-    openGraph: { title: t("meta_title"), description: t("meta_description") },
+    openGraph: {
+      title: t("meta_title"),
+      description: t("meta_description"),
+      url: `/${locale}`,
+      siteName: "Command & Palette",
+      type: "website",
+      images: OG_IMAGES,
+    },
+    twitter: { card: "summary_large_image", title: t("meta_title"), description: t("meta_description"), images: ["/opengraph-image"] },
   };
 }
 

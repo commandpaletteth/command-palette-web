@@ -1,23 +1,22 @@
 import { ImageResponse } from 'next/og';
 
 export const runtime = 'edge';
-export const alt = 'Command & Palette - Where Logic Meets Creativity';
+export const alt = 'Command & Palette: websites that bring customers to you';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
+// Share preview for LINE, Facebook, Slack, X. Logo mark on the left, name and promise on the right.
 export default async function Image() {
   return new ImageResponse(
     (
-      <div style={{ background: '#f8fafc', width: '100%', height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', fontFamily: 'sans-serif', position: 'relative', overflow: 'hidden' }}>
+      <div style={{ background: '#f8fafc', width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'sans-serif', position: 'relative', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', top: '-200px', left: '-200px', width: '800px', height: '800px', background: 'rgba(191, 219, 254, 0.5)', filter: 'blur(120px)', borderRadius: '50%' }} />
         <div style={{ position: 'absolute', bottom: '-200px', right: '-200px', width: '700px', height: '700px', background: 'rgba(233, 213, 255, 0.5)', filter: 'blur(120px)', borderRadius: '50%' }} />
-        <div style={{ position: 'absolute', top: '20%', left: '20%', width: '500px', height: '500px', background: 'rgba(251, 207, 232, 0.4)', filter: 'blur(100px)', borderRadius: '50%' }} />
 
-        <div style={{ display: 'flex', width: '900px', alignItems: 'center', justifyContent: 'center', zIndex: 10 }}>
-          <svg width="962" height="536" viewBox="0 0 962 536" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <div style={{ display: 'flex', alignItems: 'center', gap: '56px', zIndex: 10 }}>
+          <svg width="260" height="260" viewBox="281 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M481 0C591.457 0 681 89.5431 681 200C681 232.084 673.443 262.403 660.015 289.276C651.833 283.437 641.818 280 631 280C603.386 280 581 302.386 581 330C581 343.372 586.249 355.518 594.799 364.489C562.496 386.88 523.28 400 481 400C370.543 400 281 310.457 281 200C281 89.5431 370.543 0 481 0Z" fill="url(#g1)"/>
             <path d="M443.972 277.267C438.337 277.267 433.176 275.894 428.489 273.148C423.801 270.354 420.061 266.614 417.267 261.926C414.521 257.239 413.148 252.078 413.148 246.443C413.148 240.761 414.521 235.577 417.267 230.889C420.061 226.202 423.801 222.461 428.489 219.668C433.176 216.874 438.337 215.477 443.972 215.477H460.449V186.926H443.972C438.337 186.926 433.176 185.553 428.489 182.807C423.801 180.013 420.061 176.296 417.267 171.656C414.521 166.969 413.148 161.784 413.148 156.102C413.148 150.42 414.521 145.259 417.267 140.619C420.061 135.932 423.801 132.215 428.489 129.469C433.176 126.675 438.337 125.278 443.972 125.278C449.653 125.278 454.838 126.675 459.526 129.469C464.213 132.215 467.954 135.932 470.747 140.619C473.541 145.259 474.938 150.42 474.938 156.102V172.438H503.489V156.102C503.489 150.42 504.862 145.259 507.608 140.619C510.402 135.932 514.118 132.215 518.759 129.469C523.446 126.675 528.631 125.278 534.312 125.278C539.994 125.278 545.155 126.675 549.795 129.469C554.483 132.215 558.2 135.932 560.946 140.619C563.74 145.259 565.136 150.42 565.136 156.102C565.136 161.784 563.74 166.969 560.946 171.656C558.2 176.296 554.483 180.013 549.795 182.807C545.155 185.553 539.994 186.926 534.312 186.926H517.977V215.477H534.312C539.994 215.477 545.155 216.874 549.795 219.668C554.483 222.461 558.2 226.202 560.946 230.889C563.74 235.577 565.136 240.761 565.136 246.443C565.136 252.078 563.74 257.239 560.946 261.926C558.2 266.614 554.483 270.354 549.795 273.148C545.155 275.894 539.994 277.267 534.312 277.267C528.631 277.267 523.446 275.894 518.759 273.148C514.118 270.354 510.402 266.614 507.608 261.926C504.862 257.239 503.489 252.078 503.489 246.443V229.966H474.938V246.443C474.938 252.078 473.541 257.239 470.747 261.926C467.954 266.614 464.213 270.354 459.526 273.148C454.838 275.894 449.653 277.267 443.972 277.267ZM474.938 215.477H503.489V186.926H474.938V215.477Z" fill="white"/>
-            <path d="M70.4901 464.734H54.9361C54.652 462.722 54.072 460.935 53.196 459.372C52.3201 457.786 51.1956 456.437 49.8224 455.324C48.4493 454.211 46.8632 453.359 45.0639 452.767C43.2884 452.175 41.3589 451.879 39.2756 451.879C35.5114 451.879 32.2325 452.814 29.4389 454.685C26.6454 456.531 24.4792 459.23 22.9403 462.781C21.4015 466.309 20.6321 470.594 20.6321 475.636C20.6321 480.821 21.4015 485.177 22.9403 488.705C24.5028 492.232 26.6809 494.895 29.4744 496.695C32.268 498.494 35.4995 499.393 39.169 499.393C41.2287 499.393 43.1345 499.121 44.8864 498.577C46.6619 498.032 48.2363 497.239 49.6094 496.197C50.9825 495.132 52.1188 493.842 53.0185 492.327C53.9418 490.812 54.581 489.083 54.9361 487.142L70.4901 487.213C70.0876 490.551 69.0814 493.771 67.4716 496.872C65.8854 499.95 63.7429 502.708 61.044 505.146C58.3688 507.561 55.1728 509.479 51.456 510.899C47.7628 512.296 43.5843 512.994 38.9205 512.994C32.4337 512.994 26.6335 511.527 21.5199 508.591C16.4299 505.655 12.4053 501.406 9.44602 495.842C6.51042 490.279 5.04261 483.544 5.04261 475.636C5.04261 467.705 6.53409 460.958 9.51705 455.395C12.5 449.831 16.5483 445.594 21.6619 442.682C26.7756 439.746 32.5284 438.278 38.9205 438.278C43.1345 438.278 47.0407 438.87 50.6392 440.054C54.2614 441.238 57.4692 442.966 60.2628 445.239C63.0563 447.488 65.3291 450.246 67.081 453.513C68.8565 456.78 69.9929 460.52 70.4901 464.734Z" fill="#1E293B"/>
             <defs>
               <linearGradient id="g1" x1="348.5" y1="57" x2="644" y2="350.5" gradientUnits="userSpaceOnUse">
                 <stop stopColor="#2563EB"/>
@@ -25,11 +24,18 @@ export default async function Image() {
               </linearGradient>
             </defs>
           </svg>
-        </div>
 
-        {/* Solid color — CSS gradient text ไม่ work ใน Satori */}
-        <div style={{ fontSize: '32px', color: '#7c3aed', textAlign: 'center', maxWidth: '900px', fontWeight: 700, letterSpacing: '-0.5px', marginTop: '20px', zIndex: 10 }}>
-          Where Logic Meets Creativity
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <div style={{ display: 'flex', fontSize: '76px', fontWeight: 700, color: '#0f172a', letterSpacing: '-2px', lineHeight: 1.05 }}>
+              Command <span style={{ color: '#7c3aed', margin: '0 18px' }}>&amp;</span> Palette
+            </div>
+            <div style={{ display: 'flex', fontSize: '36px', color: '#334155', marginTop: '22px' }}>
+              Websites that bring customers to you
+            </div>
+            <div style={{ display: 'flex', fontSize: '26px', color: '#2563eb', fontWeight: 700, marginTop: '26px' }}>
+              Fixed price · Live in 3 weeks · Bangkok
+            </div>
+          </div>
         </div>
       </div>
     ),

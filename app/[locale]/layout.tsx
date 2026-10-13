@@ -27,8 +27,14 @@ export const metadata: Metadata = {
   // (ถ้ามี Env แนะนำให้ดึงจาก process.env.NEXT_PUBLIC_BASE_URL แทนเพื่อความชัวร์ในแต่ละ Environment)
   metadataBase: new URL('https://www.command-palette.co'), 
   
-  title: "Command & Palette | Digital Asset Agency",
-  description: "High-Performance Web & AI Automation Agency based in Bangkok.",
+  title: "Command & Palette | Websites that bring customers to you",
+  description: "Fast, modern websites for growing businesses. Fixed price from $4,500, live in 3 weeks.",
+  openGraph: {
+    siteName: "Command & Palette",
+    type: "website",
+    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Command & Palette" }],
+  },
+  twitter: { card: "summary_large_image", images: ["/opengraph-image"] },
   icons: {
     icon: '/favicon.svg',
   },
