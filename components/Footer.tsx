@@ -35,6 +35,7 @@ export default function Footer() {
       links: [
         { href: "/privacy", label: t("privacy") },
         { href: "/terms", label: t("terms") },
+        { href: "/kado/privacy", label: t("kado_privacy") },
       ],
     },
   ];
