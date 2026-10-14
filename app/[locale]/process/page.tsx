@@ -137,6 +137,19 @@ export default async function ProcessPage({
         </div>
       </section>
 
+      {/* Growth: the Launch timeline plus 1–2 weeks */}
+      <section className="relative z-10 px-6 pb-6">
+        <div className="max-w-5xl mx-auto flex flex-col md:flex-row md:items-center gap-3 md:gap-6 bg-white/70 backdrop-blur-xl border border-white/80 rounded-[2rem] px-8 py-6 shadow-sm">
+            <div className="inline-flex self-start md:self-auto items-center px-3 py-1 rounded-full bg-purple-50 text-purple-700 text-xs font-bold tracking-wider uppercase border border-purple-100 shrink-0">
+                {t('growth_badge')}
+            </div>
+            <div>
+                <h2 className="text-lg font-bold text-slate-900">{t('growth_title')}</h2>
+                <p className="text-sm text-slate-600 leading-relaxed">{t('growth_desc')}</p>
+            </div>
+        </div>
+      </section>
+
       {/* Starter: the same process, compressed into one week */}
       <section className="relative z-10 px-6 pb-8">
         <div className="max-w-5xl mx-auto bg-white/70 backdrop-blur-xl border border-white/80 rounded-[2.5rem] p-8 md:p-10 shadow-lg">
