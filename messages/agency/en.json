@@ -146,7 +146,8 @@
       }
     ],
     "payment_title": "How payment works",
-    "payment_desc": "50% to book your slot and start, 50% before launch. Invoiced in USD.",
+    "payment_steps": [{"pct": "40%", "label": "To book your slot and start"}, {"pct": "30%", "label": "When you approve the design"}, {"pct": "30%", "label": "Before launch"}],
+    "payment_note": "Invoiced in USD.",
     "excluded_title": "Not included",
     "excluded_desc": "Domain registration, third-party subscriptions (booking software, WhatsApp Business API), ad spend, photography and any regulatory approval your industry requires.",
     "faq_title": "Common questions",

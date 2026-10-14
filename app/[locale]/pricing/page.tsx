@@ -5,6 +5,7 @@ import { AmbientBackground, CallButton, DarkCta, GlassCard, Hero, agencyMetadata
 
 type AddOn = { name: string; price: string };
 type Faq = { q: string; a: string };
+type PaymentStep = { pct: string; label: string };
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -29,6 +30,7 @@ export default async function PricingPage({ params }: { params: Promise<{ locale
   const t = await getTranslations("Pricing");
   const addons = t.raw("addons") as AddOn[];
   const faq = t.raw("faq") as Faq[];
+  const paymentSteps = t.raw("payment_steps") as PaymentStep[];
 
   return (
     <div className="min-h-screen bg-slate-50 font-sans text-slate-900 selection:bg-purple-100/50 overflow-hidden relative flex flex-col">
@@ -114,7 +116,15 @@ export default async function PricingPage({ params }: { params: Promise<{ locale
           </GlassCard>
           <GlassCard>
             <h3 className="text-lg font-bold mb-4">{t("payment_title")}</h3>
-            <p className="text-slate-600 leading-relaxed">{t("payment_desc")}</p>
+            <ol className="space-y-3">
+              {paymentSteps.map((s, i) => (
+                <li key={i} className="flex items-baseline gap-3 text-slate-700">
+                  <span className="w-12 shrink-0 font-bold text-slate-900">{s.pct}</span>
+                  <span className="leading-relaxed">{s.label}</span>
+                </li>
+              ))}
+            </ol>
+            <p className="mt-4 pt-4 border-t border-slate-200/70 text-sm text-slate-500">{t("payment_note")}</p>
           </GlassCard>
           <GlassCard>
             <h3 className="text-lg font-bold mb-4">{t("excluded_title")}</h3>
