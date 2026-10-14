@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://www.command-palette.co'), 
   
   title: "Command & Palette | Websites that bring customers to you",
-  description: "Fast, modern websites for growing businesses. Fixed price from $4,500, live in 3 weeks.",
+  description: "Fast, modern websites for growing businesses. Fixed price from $1,750, live in 1 to 3 weeks.",
   openGraph: {
     siteName: "Command & Palette",
     type: "website",

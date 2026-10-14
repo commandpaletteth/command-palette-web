@@ -46,9 +46,26 @@ export default async function PricingPage({ params }: { params: Promise<{ locale
 
       {/* Packages */}
       <section className="relative z-10 container mx-auto px-6 pb-16 max-w-6xl">
-        <div className="grid lg:grid-cols-2 gap-8 items-stretch">
+        <div className="grid lg:grid-cols-3 gap-6 items-stretch">
+          {/* Starter */}
+          <GlassCard className="rounded-[2.5rem] md:p-8 flex flex-col order-2 lg:order-1">
+            <h2 className="text-2xl font-bold mb-2">{t("starter_name")}</h2>
+            <p className="text-slate-600 mb-6">{t("starter_desc")}</p>
+            <div className="mb-1 text-sm text-slate-500">{t("from")}</div>
+            <div className="text-5xl font-bold mb-2">{t("starter_price")}</div>
+            <div className="text-sm text-emerald-700 font-medium mb-8">{t("starter_time")}</div>
+            <div className="flex-grow">
+              <FeatureList items={t.raw("starter_features") as string[]} />
+              <p className="mt-6 text-sm text-slate-500 leading-relaxed">{t("starter_excludes")}</p>
+            </div>
+            <p className="mt-6 text-xs text-slate-500">{t("starter_note")}</p>
+            <div className="mt-6">
+              <CallButton label={t("cta_btn")} />
+            </div>
+          </GlassCard>
+
           {/* Launch (highlighted) */}
-          <div className="relative bg-slate-900 text-white rounded-[2.5rem] p-8 md:p-10 shadow-2xl border border-slate-800 flex flex-col">
+          <div className="relative bg-slate-900 text-white rounded-[2.5rem] p-8 md:p-8 shadow-2xl border border-slate-800 flex flex-col order-1 lg:order-2">
             <span className="absolute -top-3 left-8 px-4 py-1 rounded-full bg-blue-600 text-white text-xs font-bold tracking-wide shadow-lg">
               {t("popular")}
             </span>
@@ -66,7 +83,7 @@ export default async function PricingPage({ params }: { params: Promise<{ locale
           </div>
 
           {/* Growth */}
-          <GlassCard className="rounded-[2.5rem] md:p-10 flex flex-col">
+          <GlassCard className="rounded-[2.5rem] md:p-8 flex flex-col order-3">
             <h2 className="text-2xl font-bold mb-2">{t("growth_name")}</h2>
             <p className="text-slate-600 mb-6">{t("growth_desc")}</p>
             <div className="mb-1 text-sm text-slate-500">{t("from")}</div>
