@@ -56,7 +56,8 @@ export default async function PricingPage({ params }: { params: Promise<{ locale
             <div className="text-sm text-emerald-700 font-medium mb-8">{t("starter_time")}</div>
             <div className="flex-grow">
               <FeatureList items={t.raw("starter_features") as string[]} />
-              <p className="mt-6 text-sm text-slate-500 leading-relaxed">{t("starter_excludes")}</p>
+              <p className="mt-6 text-sm text-slate-600 leading-relaxed">{t("starter_terms")}</p>
+              <p className="mt-3 text-sm text-slate-500 leading-relaxed">{t("starter_excludes")}</p>
             </div>
             <p className="mt-6 text-xs text-slate-500">{t("starter_note")}</p>
             <div className="mt-6">

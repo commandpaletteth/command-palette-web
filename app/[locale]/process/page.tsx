@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Search, Palette, Code2, Rocket, CheckCircle2, ArrowRight } from "lucide-react";
 import { getTranslations } from 'next-intl/server'; // ✅ เปลี่ยนมาใช้ Server-side
@@ -10,6 +11,8 @@ type ChecklistKey =
   | 'checklist_item_4'
   | 'checklist_item_5'
   | 'checklist_item_6';
+
+type StarterStep = { when: string; title: string; desc: string };
 
 const CHECKLIST_KEYS: ChecklistKey[] = [
   'checklist_item_1',
@@ -36,6 +39,7 @@ export default async function ProcessPage({
   
   // ✅ ใช้ getTranslations แทน useTranslations
   const t = await getTranslations('Process');
+  const starterSteps = t.raw('starter_steps') as StarterStep[];
 
   return (
     <div className="min-h-screen bg-slate-50 font-sans selection:bg-purple-100/50 overflow-hidden relative flex flex-col">
@@ -129,6 +133,32 @@ export default async function ProcessPage({
                     </div>
                 </div>
 
+            </div>
+        </div>
+      </section>
+
+      {/* Starter: the same process, compressed into one week */}
+      <section className="relative z-10 px-6 pb-8">
+        <div className="max-w-5xl mx-auto bg-white/70 backdrop-blur-xl border border-white/80 rounded-[2.5rem] p-8 md:p-10 shadow-lg">
+            <div className="inline-flex items-center px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold tracking-wider uppercase border border-emerald-100 mb-4">
+                {t('starter_badge')}
+            </div>
+            <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-2">{t('starter_title')}</h2>
+            <p className="text-slate-600 mb-8">{t('starter_subtitle')}</p>
+            <ol className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                {starterSteps.map((step) => (
+                    <li key={step.when} className="p-5 bg-white rounded-2xl border border-slate-100 shadow-sm">
+                        <div className="text-xs font-bold text-emerald-700 uppercase tracking-wider mb-2">{step.when}</div>
+                        <div className="font-bold text-slate-900 mb-1">{step.title}</div>
+                        <p className="text-sm text-slate-600 leading-relaxed">{step.desc}</p>
+                    </li>
+                ))}
+            </ol>
+            <div className="mt-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                <p className="text-xs text-slate-500">{t('starter_note')}</p>
+                <Link href={`/${locale}/pricing`} className="inline-flex items-center gap-2 text-sm font-bold text-slate-900 hover:text-purple-700 transition-colors group">
+                    {t('starter_link')} <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
             </div>
         </div>
       </section>

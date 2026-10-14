@@ -64,6 +64,12 @@
     "checklist_item_4": "Hosting on Vercel",
     "checklist_item_5": "Inquiry tracking & analytics",
     "checklist_item_6": "30 days of support",
+    "starter_badge": "Starter",
+    "starter_title": "Starting smaller? Starter is live in 1 week",
+    "starter_subtitle": "The same approach with a smaller scope: 1 to 3 pages built from our template.",
+    "starter_steps": [{"when": "Day 1", "title": "Kickoff", "desc": "A short call and a checklist for your text, photos and logo."}, {"when": "Days 2–4", "title": "Build", "desc": "Your pages built from our template in your colors, in English and Thai."}, {"when": "Day 5", "title": "Review", "desc": "One round of changes on a live preview link."}, {"when": "Launch", "title": "Go live", "desc": "Live on your domain, with 14 days of support."}],
+    "starter_note": "Counted from the day I receive your text and photos.",
+    "starter_link": "Compare packages",
       "cta_title": "Ready to start?",
       "cta_btn": "Book a call"
     },
