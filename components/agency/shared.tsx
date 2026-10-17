@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
+import { useLocale, useTranslations } from "next-intl";
 import { ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AGENCY_PAGES_LIVE } from "@/lib/launch";
 
-export const CALENDLY_URL = "https://calendly.com/command-palette-th/45min";
+import { CALENDLY_URL, contactHref } from "@/lib/contact";
+
+export { CALENDLY_URL };
 
 /**
  * Metadata for the new agency pages.
@@ -80,8 +83,9 @@ export function Hero({
 }
 
 export function CallButton({ label, dark = true }: { label: string; dark?: boolean }) {
+  const locale = useLocale();
   return (
-    <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer">
+    <a href={contactHref(locale)} target="_blank" rel="noopener noreferrer">
       <Button
         size="lg"
         className={`rounded-full px-8 h-14 text-lg shadow-xl transition-transform hover:scale-105 group ${
@@ -108,6 +112,21 @@ export function DarkCta({ title, subtitle, button }: { title: string; subtitle?:
       <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 text-balance">{title}</h2>
       {subtitle && <p className="text-slate-300 mb-10 max-w-xl mx-auto text-lg text-balance">{subtitle}</p>}
       <CallButton label={button} dark={false} />
+      <SecondaryCallLink />
     </section>
+  );
+}
+
+// On Thai pages the main button opens LINE, so offer the video call as a quieter second option.
+function SecondaryCallLink() {
+  const locale = useLocale();
+  const t = useTranslations("ContactCta");
+  if (locale !== "th") return null;
+  return (
+    <p className="mt-6 text-sm text-slate-400">
+      <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:text-white transition-colors">
+        {t("video_call")}
+      </a>
+    </p>
   );
 }

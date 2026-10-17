@@ -370,5 +370,8 @@
     "accept": "Accept",
     "decline": "Decline",
     "learn_more": "Privacy Policy"
+  },
+  "ContactCta": {
+    "video_call": "Or book a 45-minute video call"
   }
 }

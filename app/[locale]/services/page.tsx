@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Code2, Cpu, Palette, ChevronRight, ArrowRight } from "lucide-react";
 import { useLocale, useTranslations } from 'next-intl';
 import { agencyMetadata } from "@/components/agency/shared";
+import { contactHref } from "@/lib/contact";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -89,7 +90,7 @@ export default function ServicesPage() {
       <section className="relative z-10 py-24 px-6 text-center">
         <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">{t('cta_title')}</h2>
         <p className="text-slate-600 mb-8 max-w-xl mx-auto text-lg text-balance">{t('cta_subtitle')}</p>
-        <a href="https://calendly.com/command-palette-th/45min" target="_blank" rel="noopener noreferrer">
+        <a href={contactHref(locale)} target="_blank" rel="noopener noreferrer">
             <Button size="lg" className="rounded-full px-8 h-14 text-lg bg-slate-900 hover:bg-slate-800 text-white shadow-xl transition-transform hover:scale-105 group">
                 {t('cta_btn')} <ChevronRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
             </Button>

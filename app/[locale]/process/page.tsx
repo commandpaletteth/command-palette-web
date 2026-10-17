@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Search, Palette, Code2, Rocket, CheckCircle2, ArrowRight } from "lucide-react";
 import { getTranslations } from 'next-intl/server'; // ✅ เปลี่ยนมาใช้ Server-side
 import { agencyMetadata } from "@/components/agency/shared";
+import { contactHref } from "@/lib/contact";
 
 type ChecklistKey =
   | 'checklist_item_1'
@@ -195,7 +196,7 @@ export default async function ProcessPage({
       <section className="relative z-10 py-10 px-6 text-center">
         <div className="max-w-3xl mx-auto">
             <h2 className="text-3xl font-bold mb-6 text-slate-900">{t('cta_title')}</h2>
-            <a href="https://calendly.com/command-palette-th/45min" target="_blank" rel="noopener noreferrer">
+            <a href={contactHref(locale)} target="_blank" rel="noopener noreferrer">
                 <Button size="lg" className="h-14 px-10 rounded-full text-lg bg-slate-900 text-white hover:bg-slate-800 shadow-xl shadow-slate-900/20 group">
                     {t('cta_btn')} <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>

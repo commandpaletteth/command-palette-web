@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { ExternalLink, Zap, Smartphone, Globe, Hammer, ArrowRight } from "lucide-react";
 import { getTranslations } from 'next-intl/server';
 import { agencyMetadata } from "@/components/agency/shared";
+import { contactHref } from "@/lib/contact";
 
 // Kado on the Chrome Web Store
 const KADO_STORE_URL = "https://chromewebstore.google.com/detail/hlpahcjndodkppkeicpgoblnjokjkece";
@@ -17,7 +18,7 @@ export default async function WorksPage({
 }: {
   params: Promise<{ locale: string }>
 }) {
-  await params;
+  const { locale } = await params;
   const t = await getTranslations('Works');
   const tk = await getTranslations('WorksKado');
 
@@ -173,7 +174,7 @@ export default async function WorksPage({
                 </div>
                 <h4 className="text-2xl font-bold text-slate-500 mb-3 whitespace-pre-line">{t('coming_soon_title')}</h4>
                 <p className="text-slate-400 max-w-xs mx-auto whitespace-pre-line mb-8 leading-relaxed">{t('coming_soon_desc')}</p>
-                <a href="https://calendly.com/command-palette-th/45min" target="_blank" rel="noopener noreferrer">
+                <a href={contactHref(locale)} target="_blank" rel="noopener noreferrer">
                     <Button variant="outline" className="rounded-full border-slate-300 text-slate-500 hover:text-slate-800 hover:border-slate-800 bg-transparent h-12 px-8">
                         {t('coming_soon_btn')}
                     </Button>
@@ -188,7 +189,7 @@ export default async function WorksPage({
         <div className="max-w-3xl mx-auto">
             <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 tracking-tight">{t('cta_title')}</h2>
             <p className="text-slate-400 mb-10 text-xl leading-relaxed">{t('cta_subtitle')}</p>
-            <a href="https://calendly.com/command-palette-th/45min" target="_blank" rel="noopener noreferrer">
+            <a href={contactHref(locale)} target="_blank" rel="noopener noreferrer">
                 <Button size="lg" className="bg-white text-slate-900 hover:bg-slate-200 rounded-full px-10 h-14 font-bold shadow-lg transition-transform hover:scale-105 text-lg group">
                     {t('cta_btn')} <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform"/>
                 </Button>

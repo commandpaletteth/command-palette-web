@@ -5,8 +5,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { Menu, Calendar, ArrowLeft } from "lucide-react";
+import { Menu, Calendar, ArrowLeft, MessageCircle } from "lucide-react";
 import { useTranslations, useLocale } from "next-intl";
+import { contactHref } from "@/lib/contact";
 
 export default function Navbar() {
   const t = useTranslations("Nav");
@@ -136,9 +137,9 @@ export default function Navbar() {
 
             {/* Call Button: ซ่อนใน Mobile (hidden) โชว์เฉพาะ Desktop (lg:flex) */}
             {/* เพราะใน Mobile พื้นที่ไม่พอ และมันมีปุ่มใหญ่ใน Menu Drawer อยู่แล้ว */}
-            <a href="https://calendly.com/command-palette-th/45min" target="_blank" rel="noopener noreferrer" className="hidden lg:flex order-1">
+            <a href={contactHref(locale)} target="_blank" rel="noopener noreferrer" className="hidden lg:flex order-1">
               <Button className="bg-slate-900/90 hover:bg-slate-800 text-white rounded-full px-5 md:px-6 shadow-lg shadow-slate-900/10 backdrop-blur-sm border border-slate-800/50 flex items-center gap-2">
-                <Calendar className="w-4 h-4" /> {t("consult")}
+                {locale === "th" ? <MessageCircle className="w-4 h-4" /> : <Calendar className="w-4 h-4" />} {t("consult")}
               </Button>
             </a>
 
@@ -185,9 +186,9 @@ export default function Navbar() {
                 
                 {/* ✅ เพิ่มปุ่ม Book a call ใน Mobile Menu (เพราะเราซ่อนจาก Navbar) */}
                 <div className="pt-4">
-                     <a href="https://calendly.com/command-palette-th/45min" target="_blank" rel="noopener noreferrer">
+                     <a href={contactHref(locale)} target="_blank" rel="noopener noreferrer">
                         <Button className="w-full bg-slate-900 text-white rounded-full py-6 text-lg shadow-xl flex items-center justify-center gap-3">
-                            <Calendar className="w-5 h-5" /> {t("consult")}
+                            {locale === "th" ? <MessageCircle className="w-5 h-5" /> : <Calendar className="w-5 h-5" />} {t("consult")}
                         </Button>
                     </a>
                 </div>
